@@ -78,12 +78,12 @@ public class Login extends javax.swing.JFrame {
             try {
                 if (this.controlador.verificarDatos(Integer.parseInt(usuario.getText()), password.getText())) {
                     switch (this.controlador.verificarRol(Integer.parseInt(usuario.getText()))) {
-                        case "cajero":
+                        case "cajeros":
                             PrincipalCajero pc = new PrincipalCajero();
                             pc.setVisible(true);
                             this.setVisible(false);
                             break;
-                        case "Cajero":
+                        case "Cajeros":
                             PrincipalCajero pc2 = new PrincipalCajero();
                             pc2.setVisible(true);
                             this.setVisible(false);

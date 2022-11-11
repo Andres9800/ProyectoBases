@@ -1,15 +1,3 @@
-/*
-Greivin Quesada Castillo
-Marianela Aguirre Hernandez
-Jose Gonzalez Hernandez
-Yendri Sileni Masis Brenes
-Luis Villegas Campos
-*/
-
-/***********************************************************/
-/* No hay problema con los usuarios, aprobado por la profe */
-/***********************************************************/
-
 alter session set "_ORACLE_SCRIPT"=true;
 
 /**************************************  Creacion de usuarios y roles *****************************************************/
@@ -534,3 +522,22 @@ EXCEPTION
 END;
 /
 
+/*------------------------------------------------------------------------------------------------Inserts*/
+
+
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (111,'cajero1','cajerito','Cajeros','cajeros','cajeros');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (222,'cajero2','cajerito','Cajeros','cajeros','cajeros');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (333,'cajero3','cajerito','Cajeros','cajeros','cajeros');
+
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (444,'gerenteAbarrotes','Ninguno','Abarrote','gerentes','gerentes');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (555,'gerenteCuidadoPersonal','Ninguno','Personal','gerentes','gerentes');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (666,'gerenteMercancias','Ninguno','Mercancia','gerentes','gerentes');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (777,'gerenteFrescos','Ninguno','Fresco','gerentes','gerentes');
+
+
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (888,'gerenteGeneral1','Ninguno','general','gerentesGenerales','gerentesG');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (999,'gerenteGeneral2','Ninguno','general','gerentesGenerales','gerentesG');
+
+
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (1010,'ingeniero1','Ninguno','Sistemas','ingenieros','ingenieros');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (1111,'ingeniero2','Ninguno','Sistemas','ingenieros','ingenieros');
