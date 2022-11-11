@@ -1,5 +1,31 @@
 alter session set "_ORACLE_SCRIPT"=true;
 
+/**************************************  Drops *****************************************************/
+--Drop de usuarios
+drop user "cajero" CASCADE;
+drop user "gerentefrescos" CASCADE;
+drop user "gerenteabarrotes" CASCADE;
+drop user "gerentepersonal" CASCADE;
+drop user "gerentemercancia" CASCADE;
+drop user "gerentegeneral" CASCADE;
+drop user "sistemas" CASCADE;
+--Drop de tablas
+DROP TABLE usuario CASCADE CONSTRAINTS;
+DROP TABLE producto CASCADE CONSTRAINTS;
+DROP TABLE factura CASCADE CONSTRAINTS;
+DROP TABLE detalle CASCADE CONSTRAINTS;
+DROP TABLE auditoria_mov CASCADE CONSTRAINTS;
+DROP TABLE auditoria_cajeros CASCADE CONSTRAINTS;
+DROP TABLE registroUsuario CASCADE CONSTRAINTS;
+DROP TABLE movimientoProducto CASCADE CONSTRAINTS;
+--Drop de roles
+drop role "cajeros";
+drop role "fresco";
+drop role "mercancia";
+drop role "personal";
+drop role "abarrote";
+drop role "general";
+drop role "sistema";
 /**************************************  Creacion de usuarios y roles *****************************************************/
 
 create user "cajero" identified by "cajero"
@@ -275,7 +301,7 @@ BEGIN
     INSERT INTO producto values (cod,descripcion,cantidad,precio,tipo,p,cate);
 EXCEPTION
     WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserci髇 incorrectos en producto');
+        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserci贸n incorrectos en producto');
 END;
 /
 
@@ -288,7 +314,7 @@ BEGIN
     INSERT INTO usuario values (ced,nombre,apellido,areaAsig,rol,pas);
 EXCEPTION
     WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserci髇 incorrectos en usuario');
+        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserci贸n incorrectos en usuario');
 END;
 /
 
@@ -424,7 +450,7 @@ BEGIN
 
 EXCEPTION
     WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserci髇 incorrectos');
+        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserci贸n incorrectos');
 END;
 /
 
@@ -435,7 +461,7 @@ BEGIN
 
 EXCEPTION
     WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserci髇 incorrectos');
+        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserci贸n incorrectos');
 END;
 /
 
