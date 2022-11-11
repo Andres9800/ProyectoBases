@@ -69,7 +69,8 @@ public class Controlador {
     }
 
     ////////////////////////////////////////////////////////////////////////////
-    public void modificarProducto(Producto prod) throws SQLException {
+    public void modificarProducto(Producto prod ) throws SQLException { // que reciba el area y verifique que el area sea igual a la del codigo si es igual que haga la actualizacion
+        
         dao.registroMovimiento(prod.getCodigo(), prod.getDescripcion());
         dao.updateProducto(prod);
     }

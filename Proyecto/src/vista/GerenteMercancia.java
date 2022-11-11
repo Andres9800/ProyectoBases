@@ -94,7 +94,7 @@ public class GerenteMercancia extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ModificarProducto mod = new ModificarProducto(1,1);
+        ModificarProducto mod = new ModificarProducto(2,2);
         mod.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
