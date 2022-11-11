@@ -525,9 +525,9 @@ END;
 /*------------------------------------------------------------------------------------------------Inserts*/
 
 
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (111,'cajero1','cajerito','Cajeros','cajeros','cajeros');
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (222,'cajero2','cajerito','Cajeros','cajeros','cajeros');
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (333,'cajero3','cajerito','Cajeros','cajeros','cajeros');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (111,'cajero1','cajerito','cajeros','cajeros','cajeros');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (222,'cajero2','cajerito','cajeros','cajeros','cajeros');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (333,'cajero3','cajerito','cajeros','cajeros','cajeros');
 
 Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (444,'gerenteAbarrotes','Ninguno','Abarrote','gerentes','gerentes');
 Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (555,'gerenteCuidadoPersonal','Ninguno','Personal','gerentes','gerentes');
