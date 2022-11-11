@@ -40,10 +40,10 @@ public class Controlador {
         this.contador = contador;
     }
 
-    public boolean verificarDatos(int cedula, String password) throws SQLException {
+    public boolean verificarDatos(String userName, String password) throws SQLException {
         List<Usuario> users = dao.listUsuario();
         for (Usuario user : users) {
-            if (user.getCedula() == cedula && user.getPass().equals(password)) {
+            if (user.getNombre().equals(userName) && user.getPass().equals(password)) {
                 modelo.setUser(user);
                 System.out.println(modelo.getUser());
                 return true;
@@ -52,10 +52,10 @@ public class Controlador {
         return false;
     }
 
-    public String verificarRol(int cedula) throws SQLException {
+    public String verificarRol(String username) throws SQLException {
         List<Usuario> users = dao.listUsuario();
         for (Usuario user : users) {
-            if (user.getCedula() == cedula) {
+            if (user.getNombre().equals(username)) {
                 dao.registroUsuario(user);
                 return user.getAreaAsignada();
             }

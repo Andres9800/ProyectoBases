@@ -76,8 +76,8 @@ public class Login extends javax.swing.JFrame {
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         if (!this.usuario.getText().isEmpty() && !this.password.getText().isEmpty()) {
             try {
-                if (this.controlador.verificarDatos(Integer.parseInt(usuario.getText()), password.getText())) {
-                    switch (this.controlador.verificarRol(Integer.parseInt(usuario.getText()))) {
+                if (this.controlador.verificarDatos(usuario.getText(), password.getText())) {
+                    switch (this.controlador.verificarRol(usuario.getText())) {
                         case "cajeros":
                             PrincipalCajero pc = new PrincipalCajero();
                             pc.setVisible(true);
@@ -157,7 +157,7 @@ public class Login extends javax.swing.JFrame {
                     Object[] mensaje = {"Usuario o contraseña no válido"};
                     JOptionPane.showMessageDialog(Login.this, mensaje, "Error", JOptionPane.OK_OPTION);
                 }
-            } catch (SQLException | NumberFormatException ex) {
+            } catch (SQLException ex) {
                 Object[] mensaje = {"Digitar solo números en cédula"};
                 JOptionPane.showMessageDialog(Login.this, mensaje, "Error", JOptionPane.OK_OPTION);
             }
