@@ -74,7 +74,7 @@ quota unlimited on users
 
 create table usuario (
 cedula int not NULL,
-nombre varchar(45) not null,
+username varchar(45) not null,
 areaAsignada varchar(45) not null,
 rol varchar(20),
 pass varchar(20),
@@ -197,7 +197,7 @@ hora varchar(5) not null
 );
 create table registroUsuario(
 cedula int not null,
-nombre varchar(45) not null,
+username varchar(45) not null,
 constraint FK_cedula_RU foreign key (cedula) references usuario (cedula)
 );
 create table movimientoProducto(
@@ -218,7 +218,7 @@ v_hora varchar(5);
 v_usuario varchar(30);
 v_descripcion varchar(40);
 begin
-select max(nombre) into v_usuario from registroUsuario where rowid = (select max(rowid) from registroUsuario);
+select max(username) into v_usuario from registroUsuario where rowid = (select max(rowid) from registroUsuario);
 select sysdate into v_fecha from dual;
 SELECT TO_CHAR(SYSDATE,'HH24:MI') into v_hora FROM DUAL;
 select max(descripcion) into v_descripcion from movimientoProducto where rowid = (select max(rowid) from movimientoProducto);
@@ -237,7 +237,7 @@ v_hora varchar(5);
 v_usuario varchar(30);
 v_descripcion varchar(40);
 begin
-select max(nombre) into v_usuario from registroUsuario where rowid = (select max(rowid) from registroUsuario);
+select max(username) into v_usuario from registroUsuario where rowid = (select max(rowid) from registroUsuario);
 select sysdate into v_fecha from dual;
 SELECT TO_CHAR(SYSDATE,'HH24:MI') into v_hora FROM DUAL;
 select max(descripcion) into v_descripcion from movimientoProducto where rowid = (select max(rowid) from movimientoProducto);
@@ -256,7 +256,7 @@ v_hora varchar(5);
 v_usuario varchar(30);
 v_descripcion varchar(40);
 begin
-select max(nombre) into v_usuario from registroUsuario where rowid = (select max(rowid) from registroUsuario);
+select max(username) into v_usuario from registroUsuario where rowid = (select max(rowid) from registroUsuario);
 select sysdate into v_fecha from dual;
 SELECT TO_CHAR(SYSDATE,'HH24:MI') into v_hora FROM DUAL;
 select max(descripcion) into v_descripcion from movimientoProducto where rowid = (select max(rowid) from movimientoProducto);
@@ -278,7 +278,7 @@ v_numCaja int;
 v_numFact int;
 v_montoTot float;
 begin
-select max(nombre) into v_usuario from registroUsuario where rowid = (select max(rowid) from registroUsuario);
+select max(username) into v_usuario from registroUsuario where rowid = (select max(rowid) from registroUsuario);
 select sysdate into v_fecha from dual;
 SELECT TO_CHAR(SYSDATE,'HH24:MI') into v_hora FROM DUAL;
 select max(num_caja) into v_numCaja from factura where rowid = (select max(rowid) from factura);
@@ -300,19 +300,19 @@ BEGIN
     INSERT INTO producto values (cod,descripcion,cantidad,precio,tipo,p,cate);
 EXCEPTION
     WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserción incorrectos en producto');
+        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserciÃ³n incorrectos en producto');
 END;
 /
 
 /**************************************************** Inserta usuario *********************************************************/
 
-CREATE OR REPLACE NONEDITIONABLE PROCEDURE inserta_usuario (ced usuario.cedula%type, nombre usuario.nombre%type, areaAsig usuario.areaAsignada%type, rol usuario.rol%type, pas usuario.pass%type)
+CREATE OR REPLACE NONEDITIONABLE PROCEDURE inserta_usuario (ced usuario.cedula%type, username usuario.username%type, areaAsig usuario.areaAsignada%type, rol usuario.rol%type, pas usuario.pass%type)
 AS
 BEGIN
-    INSERT INTO usuario values (ced,nombre,areaAsig,rol,pas);
+    INSERT INTO usuario values (ced,username,areaAsig,rol,pas);
 EXCEPTION
     WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserción incorrectos en usuario');
+        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserciÃ³n incorrectos en usuario');
 END;
 /
 
@@ -382,7 +382,7 @@ end;
 
 /************************************************** Registrar usuario ***********************************************************/
 
-create or replace procedure registrarUsuario (ced registroUsuario.cedula%type, nom registroUsuario.nombre%type)
+create or replace procedure registrarUsuario (ced registroUsuario.cedula%type, nom registroUsuario.username%type)
 AS
 BEGIN
     insert into registroUsuario values(ced,nom);
@@ -443,12 +443,12 @@ AS
 BEGIN
     select sysdate into v_fecha from dual;
     SELECT TO_CHAR(SYSDATE,'HH24:MI') into v_hora FROM DUAL;
-    select max(nombre) into v_usuario from registroUsuario where rowid = (select max(rowid) from registroUsuario);
+    select max(username) into v_usuario from registroUsuario where rowid = (select max(rowid) from registroUsuario);
     INSERT into factura(num_caja,nombre_cajero,fecha,hora) values(caj,v_usuario,v_fecha,v_hora);
 
 EXCEPTION
     WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserción incorrectos');
+        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserciÃ³n incorrectos');
 END;
 /
 
@@ -459,7 +459,7 @@ BEGIN
 
 EXCEPTION
     WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserción incorrectos');
+        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserciÃ³n incorrectos');
 END;
 /
 
@@ -549,24 +549,20 @@ END;
 /*------------------------------------------------------------------------------------------------Inserts*/
 
 
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (111,'cajero1','cajeros','cajeros','cajeros');
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (222,'cajero2','cajeros','cajeros','cajeros');
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (333,'cajero3','cajeros','cajeros','cajeros');
+Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (111,'cajero1','cajeros','cajeros','cajeros');
+Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (222,'cajero2','cajeros','cajeros','cajeros');
+Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (333,'cajero3','cajeros','cajeros','cajeros');
+Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (444,'gerenteAbarrotes','Abarrote','gerentes','gerentes');
+Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (555,'gerenteCuidadoPersonal','Personal','gerentes','gerentes');
+Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (666,'gerenteMercancias','Mercancia','gerentes','gerentes');
+Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (777,'gerenteFrescos','Fresco','gerentes','gerentes');
+Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (888,'gerenteGeneral1','general','gerentesGenerales','gerentesG');
+Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (999,'gerenteGeneral2','general','gerentesGenerales','gerentesG');
+Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (1010,'ingeniero1','Sistemas','ingenieros','ingenieros');
+Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (1111,'ingeniero2','Sistemas','ingenieros','ingenieros');
 
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (444,'gerenteAbarrotes','Abarrote','gerentes','gerentes');
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (555,'gerenteCuidadoPersonal','Personal','gerentes','gerentes');
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (666,'gerenteMercancias','Mercancia','gerentes','gerentes');
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (777,'gerenteFrescos','Fresco','gerentes','gerentes');
+--select *from usuario;
 
-
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (888,'gerenteGeneral1','general','gerentesGenerales','gerentesG');
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (999,'gerenteGeneral2','general','gerentesGenerales','gerentesG');
-
-
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (1010,'ingeniero1','Sistemas','ingenieros','ingenieros');
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (1111,'ingeniero2','Sistemas','ingenieros','ingenieros');
-
-select *from usuario;
-
+commit;
 --quitar nombre y apellido
 --nombre se pasa a username
