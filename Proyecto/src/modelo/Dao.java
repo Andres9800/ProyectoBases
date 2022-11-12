@@ -25,15 +25,15 @@ public class Dao {
 
     public void insertProducto(Producto p) throws SQLException {
         conn = c.conectar();
-        CallableStatement cst = conn.prepareCall("{call inserta_producto (?,?,?,?,?,?,?)}");
-        cst.setString(1, p.getCodigo());
-        cst.setString(2, p.getDescripcion());
-        cst.setInt(3, p.getCantidad());
-        cst.setFloat(4, p.getPrecio());
-        cst.setString(5, p.getTipo());
-        cst.setFloat(6, p.getPeso());
-        cst.setString(7, p.getCategoria());
-        cst.execute();
+        CallableStatement cst = conn.prepareCall("{call inserta_producto (?,?,?,?,?,?,?,?)}");
+        cst.setInt(1, p.getProducto_id());
+        cst.setInt(2, p.getPlu());
+        cst.setDouble(3, p.getEan());
+        cst.setString(4, p.getDescripcion());
+        cst.setInt(5, p.getPrecio());
+        cst.setInt(6, p.getPeso());
+        cst.setInt(7, p.getCantidad());
+        cst.setInt(8, p.getArea());
         conn.close();
     }
 

@@ -10,16 +10,15 @@ import entidades.Producto;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class InsertarEAN extends javax.swing.JFrame {
+public class InsertarProducto extends javax.swing.JFrame {
 
     /**
      * Creates new form InsertarEAN
      */
-    public InsertarEAN(int numero, int numero2) {
+    public InsertarProducto(int pagina) {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.numero = numero;
-        this.numero2 = numero2;
+        this.pagina = pagina;
     }
 
     /**
@@ -31,31 +30,33 @@ public class InsertarEAN extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CampoTipo = new javax.swing.JTextField();
+        CampoArea = new javax.swing.JTextField();
         CampoPrecio = new javax.swing.JTextField();
         CampoCantidad = new javax.swing.JTextField();
+        CampoCodigo = new javax.swing.JTextField();
+        CampoPeso = new javax.swing.JTextField();
         CampoDescripcion = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        CampoCodigo = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         Modificar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         Salir = new javax.swing.JButton();
         FondoCliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CampoTipo.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
-        CampoTipo.addActionListener(new java.awt.event.ActionListener() {
+        CampoArea.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
+        CampoArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoTipoActionPerformed(evt);
+                CampoAreaActionPerformed(evt);
             }
         });
-        getContentPane().add(CampoTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 400, 310, -1));
+        getContentPane().add(CampoArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 410, 310, -1));
 
         CampoPrecio.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
         CampoPrecio.addActionListener(new java.awt.event.ActionListener() {
@@ -63,7 +64,7 @@ public class InsertarEAN extends javax.swing.JFrame {
                 CampoPrecioActionPerformed(evt);
             }
         });
-        getContentPane().add(CampoPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 310, -1));
+        getContentPane().add(CampoPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 310, -1));
 
         CampoCantidad.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
         CampoCantidad.addActionListener(new java.awt.event.ActionListener() {
@@ -71,35 +72,7 @@ public class InsertarEAN extends javax.swing.JFrame {
                 CampoCantidadActionPerformed(evt);
             }
         });
-        getContentPane().add(CampoCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 310, -1));
-
-        CampoDescripcion.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
-        getContentPane().add(CampoDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 310, -1));
-
-        jLabel5.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel5.setText("Tipo");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel4.setText("Precio");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel3.setText("Cantidad");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel2.setText("Descripción");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
-
-        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel1.setText("Insertar datos del producto");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, -1));
+        getContentPane().add(CampoCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, 310, -1));
 
         CampoCodigo.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
         CampoCodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +80,53 @@ public class InsertarEAN extends javax.swing.JFrame {
                 CampoCodigoActionPerformed(evt);
             }
         });
-        getContentPane().add(CampoCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 310, -1));
+        getContentPane().add(CampoCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 310, -1));
+
+        CampoPeso.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
+        CampoPeso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CampoPesoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CampoPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 310, -1));
+
+        CampoDescripcion.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
+        getContentPane().add(CampoDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 310, -1));
+
+        jLabel6.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(153, 255, 153));
+        jLabel6.setText("Código ");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(153, 255, 153));
+        jLabel5.setText("Peso");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(153, 255, 153));
+        jLabel4.setText("Precio");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(153, 255, 153));
+        jLabel3.setText("Cantidad");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(153, 255, 153));
+        jLabel2.setText("Descripción");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 255, 153));
+        jLabel1.setText("Insertar datos del producto");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(153, 255, 153));
+        jLabel7.setText("Area");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, -1, -1));
 
         Modificar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         Modificar.setText("Insertar");
@@ -116,12 +135,7 @@ public class InsertarEAN extends javax.swing.JFrame {
                 ModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 460, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel6.setText("Código ");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, -1, -1));
+        getContentPane().add(Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, -1, -1));
 
         Salir.setText("Salir");
         Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -133,14 +147,14 @@ public class InsertarEAN extends javax.swing.JFrame {
 
         FondoCliente.setForeground(new java.awt.Color(153, 255, 153));
         FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen_1.jpg"))); // NOI18N
-        getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, -40, -1, 620));
+        getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CampoTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoTipoActionPerformed
+    private void CampoAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoAreaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoTipoActionPerformed
+    }//GEN-LAST:event_CampoAreaActionPerformed
 
     private void CampoPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoPrecioActionPerformed
         // TODO add your handling code here:
@@ -155,83 +169,49 @@ public class InsertarEAN extends javax.swing.JFrame {
     }//GEN-LAST:event_CampoCodigoActionPerformed
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
-        switch (numero2) {
-            case 1: {
-                try {
-                    if (!this.CampoCodigo.getText().isEmpty() && !this.CampoCantidad.getText().isEmpty()
-                            && !this.CampoDescripcion.getText().isEmpty() && !this.CampoPrecio.getText().isEmpty()
-                            && !this.CampoTipo.getText().isEmpty()) {
-                        controlador.insertarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
-                                Integer.parseInt(this.CampoCantidad.getText()), Float.parseFloat(this.CampoPrecio.getText()),
-                                this.CampoTipo.getText(), 0, "Abarrote"));
-                        limpiarCampos();
-                    } else {
-                        Object[] message = {"Hay campos vacios"};
-                        JOptionPane.showMessageDialog(InsertarEAN.this, message, "Error", JOptionPane.OK_OPTION);
-                    }
-                    break;
-                } catch (SQLException | NumberFormatException ex) {
-                    Object[] message = {"Código ya existe u ocurrió error al ingresar un dato"};
-                    JOptionPane.showMessageDialog(InsertarEAN.this, message, "Error", JOptionPane.OK_OPTION);
-                    limpiarCampos();
-                    break;
-                }
+
+        try {
+            if (this.camposLlenos()) {
+                Producto nuevo_producto = new Producto(
+                    Integer.parseInt(this.CampoCodigo.getText()),
+                    this.CampoDescripcion.getText(),
+                    Integer.parseInt(this.CampoPrecio.getText()),
+                    Integer.parseInt(this.CampoPeso.getText()),
+                    Integer.parseInt(this.CampoCantidad.getText()),
+                    Integer.parseInt(this.CampoArea.getText())
+                );
+                controlador.insertarProducto(nuevo_producto);
+                limpiarCampos();
+            } else {
+                Object[] message = {"Hay campos vacios"};
+                JOptionPane.showMessageDialog(InsertarProducto.this, message, "Error", JOptionPane.OK_OPTION);
             }
-            case 3: {
-                try {
-                    if (!this.CampoCodigo.getText().isEmpty() && !this.CampoCantidad.getText().isEmpty()
-                            && !this.CampoDescripcion.getText().isEmpty() && !this.CampoPrecio.getText().isEmpty()
-                            && !this.CampoTipo.getText().isEmpty()) {
-                        controlador.insertarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
-                                Integer.parseInt(this.CampoCantidad.getText()), Float.parseFloat(this.CampoPrecio.getText()),
-                                this.CampoTipo.getText(), 0, "Mercancia"));
-                        limpiarCampos();
-                    } else {
-                        Object[] message = {"Hay campos vacios"};
-                        JOptionPane.showMessageDialog(InsertarEAN.this, message, "Error", JOptionPane.OK_OPTION);
-                    }
-                } catch (SQLException | NumberFormatException ex) {
-                    Object[] message = {"Código ya existe u ocurrió error al ingresar un dato"};
-                    JOptionPane.showMessageDialog(InsertarEAN.this, message, "Error", JOptionPane.OK_OPTION);
-                    limpiarCampos();
-                    break;
-                }
-            }
-            break;
-            case 4: {
-                try {
-                    if (!this.CampoCodigo.getText().isEmpty() && !this.CampoCantidad.getText().isEmpty()
-                            && !this.CampoDescripcion.getText().isEmpty() && !this.CampoPrecio.getText().isEmpty()
-                            && !this.CampoTipo.getText().isEmpty()) {
-                        controlador.insertarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
-                                Integer.parseInt(this.CampoCantidad.getText()), Float.parseFloat(this.CampoPrecio.getText()),
-                                this.CampoTipo.getText(), 0, "Personal"));
-                        limpiarCampos();
-                    } else {
-                        Object[] message = {"Hay campos vacios"};
-                        JOptionPane.showMessageDialog(InsertarEAN.this, message, "Error", JOptionPane.OK_OPTION);
-                    }
-                    break;
-                } catch (SQLException | NumberFormatException ex) {
-                    Object[] message = {"Código ya existe u ocurrió error al ingresar un dato"};
-                    JOptionPane.showMessageDialog(InsertarEAN.this, message, "Error", JOptionPane.OK_OPTION);
-                    limpiarCampos();
-                    break;
-                }
-            }
+        } catch (SQLException | NumberFormatException ex) {
+            Object[] message = {"Código ya existe u ocurrió error al ingresar un dato"};
+            JOptionPane.showMessageDialog(InsertarProducto.this, message, "Error", JOptionPane.OK_OPTION);
+            limpiarCampos();
         }
     }//GEN-LAST:event_ModificarActionPerformed
 
+    private boolean camposLlenos(){
+    
+        return (!this.CampoCodigo.getText().isEmpty()
+                && !this.CampoCantidad.getText().isEmpty()
+                && !this.CampoDescripcion.getText().isEmpty()
+                && !this.CampoPrecio.getText().isEmpty()
+                && !this.CampoArea.getText().isEmpty()
+        );
+    }
     private void limpiarCampos() {
         this.CampoCodigo.setText(null);
         this.CampoDescripcion.setText(null);
         this.CampoCantidad.setText(null);
         this.CampoPrecio.setText(null);
-        this.CampoTipo.setText(null);
+        this.CampoArea.setText(null);
     }
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        switch (numero) {
+        switch (pagina) {
             case 5:
                 this.setVisible(false);
                 GerenteGeneral gg = new GerenteGeneral();
@@ -244,6 +224,10 @@ public class InsertarEAN extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_SalirActionPerformed
+
+    private void CampoPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoPesoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CampoPesoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,17 +243,30 @@ public class InsertarEAN extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InsertarEAN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InsertarEAN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InsertarEAN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InsertarEAN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InsertarProducto.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(InsertarProducto.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(InsertarProducto.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(InsertarProducto.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -277,17 +274,18 @@ public class InsertarEAN extends javax.swing.JFrame {
             public void run() {
                 int n = 0;
                 int m = 0;
-                new InsertarEAN(n,m).setVisible(true);
+                new InsertarProducto(n,m).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CampoArea;
     private javax.swing.JTextField CampoCantidad;
     private javax.swing.JTextField CampoCodigo;
     private javax.swing.JTextField CampoDescripcion;
+    private javax.swing.JTextField CampoPeso;
     private javax.swing.JTextField CampoPrecio;
-    private javax.swing.JTextField CampoTipo;
     private javax.swing.JLabel FondoCliente;
     private javax.swing.JButton Modificar;
     private javax.swing.JButton Salir;
@@ -297,8 +295,8 @@ public class InsertarEAN extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
-    int numero;
-    int numero2;
+    int pagina;
     Controlador controlador = new Controlador();
 }

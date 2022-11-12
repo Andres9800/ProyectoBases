@@ -82,13 +82,14 @@ constraint PK_cedula primary key (cedula)
 );
 
 create table producto (
-codigo varchar(30) not null,
+producto_id number not null,
+plu number,
+ean number,
 descripcion varchar(40) not null,
-cantidad int,
-precio float not null,
-tipo varchar(15) not null,
-peso float,
-categoria varchar(30) not null,
+precio number not null,
+peso number,
+cantidad number not null,
+area number not null,
 constraint PK_Codigo primary key (codigo)
 );
 
@@ -293,14 +294,22 @@ end;
 
 /**************************************************** Inserta Producto ************************************************************/
 
-CREATE OR REPLACE NONEDITIONABLE PROCEDURE inserta_producto (cod producto.codigo%type, descripcion producto.descripcion%type, 
-cantidad producto.cantidad%type, precio producto.precio%type, tipo producto.tipo%type, p producto.peso%type, cate producto.categoria%type)
+CREATE OR REPLACE NONEDITIONABLE PROCEDURE inserta_producto (
+p_codigo in number,
+p_plu in number,
+p_ean in number,
+p_desc in varchar,
+p_precio in number,
+p_peso in number,
+p_cantidad in number,
+p_area in number
+)
 AS
 BEGIN
-    INSERT INTO producto values (cod,descripcion,cantidad,precio,tipo,p,cate);
+    INSERT INTO producto values (p_codigo, p_plu, p_ean, p_desc, p_precio, p_peso, p_cantidad, p_area);
 EXCEPTION
     WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserciÃ³n incorrectos en producto');
+        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de insercion incorrectos en producto');
 END;
 /
 

@@ -169,7 +169,7 @@ public class PrincipalSistemas extends javax.swing.JFrame {
                     JOptionPane.DEFAULT_OPTION, null, productos, productos[0]);
             switch (respuesta) {
                 case "Abarrote":
-                    InsertarEAN ean = new InsertarEAN(7, 1);
+                    InsertarProducto ean = new InsertarProducto(7, 1);
                     ean.setVisible(true);
                     this.setVisible(false);
                     break;
@@ -179,12 +179,12 @@ public class PrincipalSistemas extends javax.swing.JFrame {
                     this.setVisible(false);
                     break;
                 case "Mercancia":
-                    InsertarEAN ean2 = new InsertarEAN(7, 3);
+                    InsertarProducto ean2 = new InsertarProducto(7, 3);
                     ean2.setVisible(true);
                     this.setVisible(false);
                     break;
                 case "Personal":
-                    InsertarEAN ean3 = new InsertarEAN(7, 4);
+                    InsertarProducto ean3 = new InsertarProducto(7, 4);
                     ean3.setVisible(true);
                     this.setVisible(false);
                     break;

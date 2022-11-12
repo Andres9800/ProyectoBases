@@ -3,40 +3,48 @@ package entidades;
 import javax.xml.bind.annotation.XmlTransient;
 
 public class Producto {
-    String codigo;
+    int producto_id;
+    int plu;
+    double ean;
     String descripcion;
+    int precio;
+    int peso;
     int cantidad;
-    float precio;
-    String tipo;
-    float peso;
-    String categoria;
-
-    public Producto(String codigo, String descripcion, int cantidad, float precio, String tipo, float peso, String categoria) {
-        this.codigo = codigo;
+    int area;
+    
+    public Producto(int producto_id, String descripcion, int precio, int peso, int cantidad, int area) {
+        this.producto_id = producto_id;
         this.descripcion = descripcion;
-        this.cantidad = cantidad;
         this.precio = precio;
-        this.tipo = tipo;
         this.peso = peso;
-        this.categoria = categoria;
+        this.cantidad = cantidad;
+        this.area = area;
+        this.plu = peso > 0 ? producto_id + 4000 : 0;
+        this.ean = (producto_id - 3784247000000l);
     }
 
-    public Producto() {
-        this.codigo = "";
-        this.descripcion = "";
-        this.cantidad = 0;
-        this.precio = 0;
-        this.tipo = "";
-        this.peso = 0;
-        this.categoria = "";
+    public int getProducto_id() {
+        return producto_id;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public void setProducto_id(int producto_id) {
+        this.producto_id = producto_id;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public int getPlu() {
+        return plu;
+    }
+
+    public void setPlu(int plu) {
+        this.plu = plu;
+    }
+
+    public double getEan() {
+        return ean;
+    }
+
+    public void setEan(double ean) {
+        this.ean = ean;
     }
 
     public String getDescripcion() {
@@ -47,6 +55,22 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+
+    public int getPeso() {
+        return peso;
+    }
+
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
+
     public int getCantidad() {
         return cantidad;
     }
@@ -55,48 +79,23 @@ public class Producto {
         this.cantidad = cantidad;
     }
 
-    public float getPrecio() {
-        return precio;
+    public int getArea() {
+        return area;
     }
 
-    public void setPrecio(float precio) {
-        this.precio = precio;
+    public void setArea(int area) {
+        this.area = area;
     }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public float getPeso() {
-        return peso;
-    }
-
-    public void setPeso(float peso) {
-        this.peso = peso;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
+      
     @Override
     public String toString() {
-        return "\n" +  "codigo=" + codigo + "\n" +
-                ", descripcion=" + descripcion + "\n" +
-                ", cantidad=" + cantidad + "\n" +
-                ", precio=" + precio + "\n" +
-                ", tipo=" + tipo + "\n" +
-                ", peso=" + peso + "\n" +
-                ", categoria=" + categoria;
+        return "\n" + "codigo=" + producto_id + "\n"
+                + ", ean=" + ean + "\n"
+                + ", plu=" + plu + "\n"
+                + ", descripcion=" + descripcion + "\n"
+                + ", cantidad=" + cantidad + "\n"
+                + ", precio=" + precio + "\n"
+                + ", peso=" + peso + "\n"
+                + ", area=" + area;
     }
-    
-    
 }
