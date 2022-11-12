@@ -62,15 +62,15 @@ public class Controlador {
         }
         return "";
     }
-    
+
     public void registrar(Observer obs) {
         System.out.println("Registrando observador..");
         modelo.addObserver(obs);
     }
 
     ////////////////////////////////////////////////////////////////////////////
-    public void modificarProducto(Producto prod ) throws SQLException { // que reciba el area y verifique que el area sea igual a la del codigo si es igual que haga la actualizacion
-        
+    public void modificarProducto(Producto prod) throws SQLException { // que reciba el area y verifique que el area sea igual a la del codigo si es igual que haga la actualizacion
+
         dao.registroMovimiento(prod.getCodigo(), prod.getDescripcion());
         dao.updateProducto(prod);
     }
@@ -110,6 +110,16 @@ public class Controlador {
         for (Producto producto : lista) {
             if (producto.getDescripcion().equals(descrip)) {
                 return producto.toString();
+            }
+        }
+        return null;
+    }
+
+    public Producto recuperarProductoPorCodOb(String codigo) throws SQLException {
+        List<Producto> listaA = dao.listaProductos();
+        for (Producto p : listaA) {
+            if (p.getCodigo().equals(codigo)) {
+                return p;
             }
         }
         return null;
@@ -158,7 +168,7 @@ public class Controlador {
     public List<MonitoreoProd> listarMovimientos() throws SQLException {
         return dao.listMovimiento();
     }
-    
+
     public List<MonitoreoDet> listarDetallesBit() throws SQLException {
         return dao.listMovDet();
     }
@@ -220,91 +230,94 @@ public class Controlador {
         }
         return null;
     }
-    
-    public void meterAlCarro(String a,float cant) throws SQLException{
-        Producto p=recuperarProducto(a);
-        if(p==null){
-            throw new SQLException ("product not found");
-        }else{
-            if("Fresco".equals(p.getArea())){
-                if(p.getPeso()<cant){
-                    throw new SQLException ("exceed cant");
-                    
-                }else{
+
+    public void meterAlCarro(String a, float cant) throws SQLException {
+        Producto p = recuperarProducto(a);
+        if (p == null) {
+            throw new SQLException("product not found");
+        } else {
+            if ("Fresco".equals(p.getArea())) {
+                if (p.getPeso() < cant) {
+                    throw new SQLException("exceed cant");
+
+                } else {
                     p.setPeso(cant);
                 }
-            }else{
-                if(p.getCantidad()<Math.round(cant)){
-                    throw new SQLException ("exceed cant");
-                }else{
+            } else {
+                if (p.getCantidad() < Math.round(cant)) {
+                    throw new SQLException("exceed cant");
+                } else {
                     p.setCantidad(Math.round(cant));
                 }
-                
+
             }
             modelo.meterAlCarro(p);
         }
-        
+
     }
-    
-    public void sacarDelCarro(String cod) throws Exception{
-        Producto elim=null;
+
+    public void sacarDelCarro(String cod) throws Exception {
+        Producto elim = null;
         for (Producto p : modelo.todoCarrito()) {
-            if(p.getCodigo().equals(cod)){
-                elim=p;
+            if (p.getCodigo().equals(cod)) {
+                elim = p;
             }
         }
-        if(elim==null){throw new Exception("a");}
+        if (elim == null) {
+            throw new Exception("a");
+        }
         modelo.sacarDelCarro(elim);
     }
-    
-    public void vaciarCarro(){
+
+    public void vaciarCarro() {
         modelo.vaciarCarro();
     }
 
-    public List<Producto> todoCarrito(){ return modelo.todoCarrito();}
-    
-    
-    public String parseaLista(List<Producto> lista){
-        String fin="Codigo   Descripcion     Peso       Precio c/u      Total"+"\n";
+    public List<Producto> todoCarrito() {
+        return modelo.todoCarrito();
+    }
+
+    public String parseaLista(List<Producto> lista) {
+        String fin = "Codigo   Descripcion     Peso       Precio c/u      Total" + "\n";
         for (Producto p : lista) {
             if (p.getArea().equals("Fresco")) {
-                fin+=p.getCodigo()+"        "+p.getDescripcion()+"      "+p.getPeso()+"           "+p.getPrecio()+"       "+(p.getPeso()*p.getPrecio())+"\n";
-            }else{
-                fin+=p.getCodigo()+"        "+p.getDescripcion()+"      "+p.getCantidad()+"           "+p.getPrecio()+"        "+(p.getCantidad()*p.getPrecio())+"\n";
+                fin += p.getCodigo() + "        " + p.getDescripcion() + "      " + p.getPeso() + "           " + p.getPrecio() + "       " + (p.getPeso() * p.getPrecio()) + "\n";
+            } else {
+                fin += p.getCodigo() + "        " + p.getDescripcion() + "      " + p.getCantidad() + "           " + p.getPrecio() + "        " + (p.getCantidad() * p.getPrecio()) + "\n";
             }
         }
         return fin;
     }
-    
-    public float suma(){
-        float tot=0f;
+
+    public float suma() {
+        float tot = 0f;
         for (Producto p : modelo.todoCarrito()) {
             if (p.getArea().equals("Fresco")) {
-                tot=tot+(p.getPeso()*p.getPrecio());
-            }else{
-                tot=tot+(p.getCantidad()*p.getPrecio());
+                tot = tot + (p.getPeso() * p.getPrecio());
+            } else {
+                tot = tot + (p.getCantidad() * p.getPrecio());
             }
         }
         return tot;
     }
 
-    public void enviar(int numCaj) throws SQLException{
+    public void enviar(int numCaj) throws SQLException {
         dao.insertarFactura(numCaj);
-        int fact=dao.dameMaxFact();
- 
-        for(Producto u:modelo.todoCarrito()){
-            if(u.getArea().equals("Fresco")||u.getArea().equals("fresco")){
-                dao.insertarDetalle(fact,0,u.getPeso(),u.getCodigo(),1);
-            }else{
-                dao.insertarDetalle(fact,u.getCantidad(),0.0f,u.getCodigo(),0);
+        int fact = dao.dameMaxFact();
+
+        for (Producto u : modelo.todoCarrito()) {
+            if (u.getArea().equals("Fresco") || u.getArea().equals("fresco")) {
+                dao.insertarDetalle(fact, 0, u.getPeso(), u.getCodigo(), 1);
+            } else {
+                dao.insertarDetalle(fact, u.getCantidad(), 0.0f, u.getCodigo(), 0);
             }
-            
+
         }
-        
+
         //cajero deberia estar guardado en model
     }
-    
-    public Usuario empleado(){
+
+    public Usuario empleado() {
         return modelo.getUser();
     }
     private final Modelo modelo;

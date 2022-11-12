@@ -15,6 +15,23 @@ public class ModificarProducto extends javax.swing.JFrame {
     /**
      * Creates new form ModificarProducto
      */
+    public String retornaArea(int numero) {
+        String area = " ";
+        if (numero == 1) {
+            area = "Abarrote";
+        }
+        if (numero == 2) {
+            area = "Mercancia";
+        }
+        if (numero == 3) {
+            area = "Personal";
+        }
+        if (numero == 4) {
+            area = "Fresco";
+        }
+        return area;
+    }
+
     public ModificarProducto(int numero, int numero2) {
         initComponents();
         this.numero = numero;
@@ -135,91 +152,42 @@ public class ModificarProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_CampoCodigoActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        switch (numero2) {
-            case 1: {
-                try {
-                    if (controlador.verificarCodigo(this.CampoCodigo.getText())) {
-//                        controlador.modificarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
-//                                Integer.parseInt(this.CampoCantidad.getText()), controlador.recuperarProducto(this.CampoCodigo.getText()).getPrecio(),
-//                                controlador.recuperarProducto(this.CampoCodigo.getText()).getArea(), 0, "Abarrote"));
-                        limpiarCampos();
-                    } else {
-                        Object[] message = {"Codigo no valido para actualizar"};
-                        JOptionPane.showMessageDialog(ModificarProducto.this, message, "Error", JOptionPane.OK_OPTION);
-                        limpiarCampos();
-                    }
-                    break;
-                } catch (SQLException | NumberFormatException ex) {
-                    Object[] message = {"Código ya existe u ocurrió error al ingresar un dato"};
-                    JOptionPane.showMessageDialog(ModificarProducto.this, message, "Error", JOptionPane.OK_OPTION);
-                    limpiarCampos();
-                    break;
-                }
-            }
-            case 2: {
-                try {
-                    if (controlador.verificarCodigo(this.CampoCodigo.getText())) {
-//                        controlador.modificarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
-//                                Integer.parseInt(this.CampoCantidad.getText()), controlador.recuperarProducto(this.CampoCodigo.getText()).getPrecio(),
-//                                controlador.recuperarProducto(this.CampoCodigo.getText()).getTipo(), 0, "Mercancia"));
-                        limpiarCampos();
-                    } else {
-                        Object[] message = {"Codigo no valido para actualizar"};
-                        JOptionPane.showMessageDialog(ModificarProducto.this, message, "Error", JOptionPane.OK_OPTION);
-                        limpiarCampos();
-                    }
-                } catch (SQLException | NumberFormatException ex) {
-                    Object[] message = {"Código ya existe u ocurrió error al ingresar un dato"};
-                    JOptionPane.showMessageDialog(ModificarProducto.this, message, "Error", JOptionPane.OK_OPTION);
-                    limpiarCampos();
-                    break;
-                }
-            }
-            break;
 
-            case 3: {
-                try {
-                    if (controlador.verificarCodigo(this.CampoCodigo.getText())) {
-//                        controlador.modificarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
-//                                Integer.parseInt(this.CampoCantidad.getText()), controlador.recuperarProducto(this.CampoCodigo.getText()).getPrecio(),
-//                                controlador.recuperarProducto(this.CampoCodigo.getText()).getTipo(), 0, "Personal"));
-                        limpiarCampos();
-                    } else {
-                        Object[] message = {"Codigo no valido para actualizar"};
-                        JOptionPane.showMessageDialog(ModificarProducto.this, message, "Error", JOptionPane.OK_OPTION);
-                        limpiarCampos();
-                    }
-                    break;
-                } catch (SQLException | NumberFormatException ex) {
-                    Object[] message = {"Código ya existe u ocurrió error al ingresar un dato"};
-                    JOptionPane.showMessageDialog(ModificarProducto.this, message, "Error", JOptionPane.OK_OPTION);
-                    limpiarCampos();
-                    break;
-                }
-            }
-            case 4: {
-                try {
-                    if (controlador.verificarCodigo(this.CampoCodigo.getText())) {
-//                        controlador.modificarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
-//                                0, controlador.recuperarProducto(this.CampoCodigo.getText()).getPrecio(),
-//                                controlador.recuperarProducto(this.CampoCodigo.getText()).getTipo(),0, "Fresco"));
-                        limpiarCampos();
-                    } else {
-                        Object[] message = {"Codigo no valido para actualizar"};
-                        JOptionPane.showMessageDialog(ModificarProducto.this, message, "Error", JOptionPane.OK_OPTION);
-                        limpiarCampos();
-                    }
-                } catch (SQLException | NumberFormatException ex) {
-                    Object[] message = {"Código ya existe u ocurrió error al ingresar un dato"};
+        String areaRecibida = " ";
+
+        areaRecibida = retornaArea(numero2);
+
+        try {
+            if (controlador.verificarCodigo(this.CampoCodigo.getText())) {
+
+                Producto prod = controlador.recuperarProductoPorCodOb(this.CampoCodigo.getText());
+
+                if (prod.getArea().equals(areaRecibida)) {
+
+                    prod.setDescripcion(this.CampoDescripcion.getText());
+                    prod.setCantidad(Integer.parseInt(this.CampoCantidad.getText()));
+                    controlador.modificarProducto(prod);
+
+                } else {
+                    Object[] message = {"El gerente no Pertenece al area del producto"};
                     JOptionPane.showMessageDialog(ModificarProducto.this, message, "Error", JOptionPane.OK_OPTION);
                     limpiarCampos();
                 }
-            }
-            default:
-                Object[] message = {"Codigo no valido para actualizar"};
+
+                limpiarCampos();
+            } else {
+                Object[] message = {"Codigo No existe"};
                 JOptionPane.showMessageDialog(ModificarProducto.this, message, "Error", JOptionPane.OK_OPTION);
-                break;
+                limpiarCampos();
+            }
+
+        } catch (SQLException | NumberFormatException ex) {
+            Object[] message = {" ocurrió error "};
+            JOptionPane.showMessageDialog(ModificarProducto.this, message, "Error", JOptionPane.OK_OPTION);
+            limpiarCampos();
+
         }
+
     }
 
     private void limpiarCampos() {

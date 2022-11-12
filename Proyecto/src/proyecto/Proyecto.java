@@ -1,6 +1,6 @@
-
 package proyecto;
 
+import controlador.Controlador;
 import entidades.Producto;
 import entidades.Usuario;
 import java.sql.SQLException;
@@ -13,26 +13,32 @@ import modelo.Dao;
 import vista.Login;
 
 public class Proyecto {
+    
+
+
+
 
     public static void main(String[] args) throws SQLException {
-               
-            Dao miDao = new Dao();
-                
-            Producto miP = new Producto("6060","Atun",10,10,10,"Fresco",10,10);
-            miDao.insertProducto(miP);
-            
-            
-             List<Producto> miLista = miDao.listaProductos();
-             
-             
-             
-         
-            for(int i = 0;i<miLista.size();i++){
-             System.out.print(miLista.get(i).toString()+"\n");
-            } 
-            
-            
-            
+
+        Dao miDao = new Dao();
+        Controlador miControl = new Controlador();
+        
+        
+
+        
+
+        //Producto prod = miControl.recuperarProductoPorCodOb("1234");
+        //prod.setDescripcion("MODIFI");
+        //prod.setCantidad(22);
+        // miControl.modificarProducto(prod);
+        // System.out.print(prod.toString()+"\n");
+//            Producto miP = new Producto("6060","Atun",10,10,10,"Fresco",10,10);
+//            miDao.insertProducto(miP);
+        List<Producto> miLista = miDao.listaProductos();
+
+        // for(int i = 0;i<miLista.size();i++){
+        //  System.out.print(miLista.get(i).toString()+"\n");
+        // } 
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             JFrame.setDefaultLookAndFeelDecorated(true);
@@ -43,7 +49,7 @@ public class Proyecto {
         }
         new Proyecto().init();
     }
-    
+
     public void init() {
         SwingUtilities.invokeLater(() -> {
             mostrarInterfaz();
