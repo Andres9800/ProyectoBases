@@ -599,6 +599,7 @@ Insert into SYSTEM.PRODUCTO (CODIGO,PLU,EAN,DESCRIPCION,PRECIO,PESO,CANTIDAD,ARE
 
 
 --select *from usuario;
+--holaaaaaaaaaaaaaaaaaaaaaaa
 
 commit;
 --quitar nombre y apellido
