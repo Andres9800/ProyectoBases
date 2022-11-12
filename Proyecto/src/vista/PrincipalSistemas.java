@@ -126,10 +126,10 @@ public class PrincipalSistemas extends javax.swing.JFrame {
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel7.setText("Agregar usuario");
+        jLabel7.setText("Back up and recovery");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, -1, -1));
 
-        Registrar.setText("Registrar");
+        Registrar.setText("Entrar");
         Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegistrarActionPerformed(evt);
@@ -271,7 +271,7 @@ public class PrincipalSistemas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-        RegistrarUsuario u = new RegistrarUsuario();
+        BackupRecovery u = new BackupRecovery();
         u.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_RegistrarActionPerformed

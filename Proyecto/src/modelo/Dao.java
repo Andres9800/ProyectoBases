@@ -38,17 +38,7 @@ public class Dao {
         conn.close();
     }
 
-    public void insertarUsuario(Usuario p) throws SQLException {
-        conn = c.conectar();
-        CallableStatement cst = conn.prepareCall("{call inserta_usuario (?,?,?,?,?,?)}");
-        cst.setInt(1, p.getCedula());
-        cst.setString(2, p.getUsername());
-         cst.setString(4, p.getAreaAsignada());
-        cst.setString(5, p.getRol());
-        cst.setString(6, p.getPass());
-        cst.execute();
-        conn.close();
-    }
+
 
     public List<Producto> listaProductos() throws SQLException {
         List<Producto> lista = new ArrayList<>();

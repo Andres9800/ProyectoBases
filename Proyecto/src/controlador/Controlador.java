@@ -173,9 +173,7 @@ public class Controlador {
         return dao.listMovDet();
     }
 
-    public void insertarUsuario(Usuario u) throws SQLException {
-        dao.insertarUsuario(u);
-    }
+
 
     public List listaAbarrotes() throws SQLException {
         List<Producto> lista = dao.listaProductos();
