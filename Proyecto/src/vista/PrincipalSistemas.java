@@ -241,22 +241,22 @@ public class PrincipalSistemas extends javax.swing.JFrame {
                     JOptionPane.DEFAULT_OPTION, null, productos, productos[0]);
             switch (respuesta) {
                 case "Abarrote":
-                    ModificarEAN mod = new ModificarEAN(7, 1);
+                    ModificarEAN mod = new ModificarEAN(7);
                     mod.setVisible(true);
                     this.setVisible(false);
                     break;
                 case "Fresco":
-                    ModificarPLU mod2 = new ModificarPLU(7);
+                    ModificarEAN mod2 = new ModificarEAN(7);
                     mod2.setVisible(true);
                     this.setVisible(false);
                     break;
                 case "Mercancia":
-                    ModificarEAN mod3 = new ModificarEAN(7, 2);
+                    ModificarEAN mod3 = new ModificarEAN(7);
                     mod3.setVisible(true);
                     this.setVisible(false);
                     break;
                 case "Personal":
-                    ModificarEAN mod4 = new ModificarEAN(7, 3);
+                    ModificarEAN mod4 = new ModificarEAN(7);
                     mod4.setVisible(true);
                     this.setVisible(false);
                     break;

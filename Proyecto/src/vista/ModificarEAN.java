@@ -15,11 +15,11 @@ public class ModificarEAN extends javax.swing.JFrame {
     /**
      * Creates new form ModificarEAN
      */
-    public ModificarEAN(int numero, int numero2) {
+    public ModificarEAN(int numero) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.numero = numero;
-        this.numero2 = numero2;
+
     }
 
     /**
@@ -32,7 +32,7 @@ public class ModificarEAN extends javax.swing.JFrame {
     private void initComponents() {
 
         Salir = new javax.swing.JButton();
-        CampoTipo = new javax.swing.JTextField();
+        CampoPeso = new javax.swing.JTextField();
         CampoPrecio = new javax.swing.JTextField();
         CampoCantidad = new javax.swing.JTextField();
         CampoDescripcion = new javax.swing.JTextField();
@@ -44,6 +44,8 @@ public class ModificarEAN extends javax.swing.JFrame {
         CampoCodigo = new javax.swing.JTextField();
         Modificar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        CampoArea = new javax.swing.JTextField();
         FondoCliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,13 +59,13 @@ public class ModificarEAN extends javax.swing.JFrame {
         });
         getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 530, 90, -1));
 
-        CampoTipo.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
-        CampoTipo.addActionListener(new java.awt.event.ActionListener() {
+        CampoPeso.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
+        CampoPeso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoTipoActionPerformed(evt);
+                CampoPesoActionPerformed(evt);
             }
         });
-        getContentPane().add(CampoTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 400, 310, -1));
+        getContentPane().add(CampoPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 310, -1));
 
         CampoPrecio.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
         CampoPrecio.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +73,7 @@ public class ModificarEAN extends javax.swing.JFrame {
                 CampoPrecioActionPerformed(evt);
             }
         });
-        getContentPane().add(CampoPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 310, -1));
+        getContentPane().add(CampoPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, 310, -1));
 
         CampoCantidad.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
         CampoCantidad.addActionListener(new java.awt.event.ActionListener() {
@@ -79,35 +81,35 @@ public class ModificarEAN extends javax.swing.JFrame {
                 CampoCantidadActionPerformed(evt);
             }
         });
-        getContentPane().add(CampoCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 310, -1));
+        getContentPane().add(CampoCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, 310, -1));
 
         CampoDescripcion.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
-        getContentPane().add(CampoDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 310, -1));
+        getContentPane().add(CampoDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, 310, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel5.setText("Tipo");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, -1, -1));
+        jLabel5.setText("Area");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 255, 153));
         jLabel4.setText("Precio");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 255, 153));
         jLabel3.setText("Cantidad");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 255, 153));
         jLabel2.setText("Descripción");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 255, 153));
         jLabel1.setText("Datos a modificar");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, -1, -1));
 
         CampoCodigo.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
         CampoCodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +117,7 @@ public class ModificarEAN extends javax.swing.JFrame {
                 CampoCodigoActionPerformed(evt);
             }
         });
-        getContentPane().add(CampoCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 310, -1));
+        getContentPane().add(CampoCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 310, -1));
 
         Modificar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         Modificar.setText("Modificar");
@@ -130,6 +132,19 @@ public class ModificarEAN extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(153, 255, 153));
         jLabel6.setText("Ingrese el código del producto");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(153, 255, 153));
+        jLabel7.setText("Peso");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 375, 90, 50));
+
+        CampoArea.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
+        CampoArea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CampoAreaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CampoArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, 310, -1));
 
         FondoCliente.setForeground(new java.awt.Color(153, 255, 153));
         FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen_1.jpg"))); // NOI18N
@@ -152,9 +167,9 @@ public class ModificarEAN extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SalirActionPerformed
 
-    private void CampoTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoTipoActionPerformed
+    private void CampoPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoPesoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoTipoActionPerformed
+    }//GEN-LAST:event_CampoPesoActionPerformed
 
     private void CampoPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoPrecioActionPerformed
         // TODO add your handling code here:
@@ -165,72 +180,29 @@ public class ModificarEAN extends javax.swing.JFrame {
     }//GEN-LAST:event_CampoCantidadActionPerformed
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
-        switch (numero2) {
-            case 1: {
-                try {
-                    if (controlador.verificarCodigo(this.CampoCodigo.getText())) {
-//                        controlador.modificarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
-//                                Integer.parseInt(this.CampoCantidad.getText()), Float.parseFloat(this.CampoPrecio.getText()),
-//                                this.CampoTipo.getText(), 0, "Abarrote"));
-                        limpiarCampos();
-                    } else {
-                        Object[] message = {"Codigo no valido para actualizar"};
-                        JOptionPane.showMessageDialog(ModificarEAN.this, message, "Error", JOptionPane.OK_OPTION);
-                        limpiarCampos();
-                    }
-                    break;
-                } catch (SQLException | NumberFormatException ex) {
-                    Object[] message = {"Código ya existe u ocurrió error al ingresar un dato"};
-                    JOptionPane.showMessageDialog(ModificarEAN.this, message, "Error", JOptionPane.OK_OPTION);
-                    limpiarCampos();
-                    break;
-                }
-            }
-            case 2: {
-                try {
-                    if (controlador.verificarCodigo(this.CampoCodigo.getText())) {
-//                        controlador.modificarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
-//                                Integer.parseInt(this.CampoCantidad.getText()), Float.parseFloat(this.CampoPrecio.getText()),
-//                                this.CampoTipo.getText(), 0, "Mercancia"));
-                        limpiarCampos();
-                    } else {
-                        Object[] message = {"Codigo no valido para actualizar"};
-                        JOptionPane.showMessageDialog(ModificarEAN.this, message, "Error", JOptionPane.OK_OPTION);
-                        limpiarCampos();
-                    }
-                } catch (SQLException | NumberFormatException ex) {
-                    Object[] message = {"Código ya existe u ocurrió error al ingresar un dato"};
-                    JOptionPane.showMessageDialog(ModificarEAN.this, message, "Error", JOptionPane.OK_OPTION);
-                    limpiarCampos();
-                    break;
-                }
-            }
-            break;
 
-            case 3: {
-                try {
-                    if (controlador.verificarCodigo(this.CampoCodigo.getText())) {
-//                        controlador.modificarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
-//                                Integer.parseInt(this.CampoCantidad.getText()), Float.parseFloat(this.CampoPrecio.getText()),
-//                                this.CampoTipo.getText(), 0, "Personal"));
-                        limpiarCampos();
-                    } else {
-                        Object[] message = {"Codigo no valido para actualizar"};
-                        JOptionPane.showMessageDialog(ModificarEAN.this, message, "Error", JOptionPane.OK_OPTION);
-                        limpiarCampos();
-                    }
-                    break;
-                } catch (SQLException | NumberFormatException ex) {
-                    Object[] message = {"Código ya existe u ocurrió error al ingresar un dato"};
-                    JOptionPane.showMessageDialog(ModificarEAN.this, message, "Error", JOptionPane.OK_OPTION);
-                    limpiarCampos();
-                    break;
-                }
-            }
-            default:
+        try {
+            if (controlador.verificarCodigo(this.CampoCodigo.getText())) {
+                Producto prod = controlador.recuperarProductoPorCodOb(this.CampoCodigo.getText());
+                prod.setDescripcion(this.CampoDescripcion.getText());
+                prod.setCantidad(Integer.parseInt(this.CampoCantidad.getText()));
+                prod.setPrecio(Float.parseFloat(this.CampoPrecio.getText()));
+                prod.setArea(this.CampoArea.getText());
+                prod.setPeso(Float.parseFloat(this.CampoPeso.getText()));
+                controlador.modificarProducto(prod);
+                JOptionPane.showMessageDialog(null, "Accion realizada Correctamente!");
+                limpiarCampos();
+            } else {
                 Object[] message = {"Codigo no valido para actualizar"};
                 JOptionPane.showMessageDialog(ModificarEAN.this, message, "Error", JOptionPane.OK_OPTION);
-                break;
+                limpiarCampos();
+            }
+
+        } catch (SQLException | NumberFormatException ex) {
+            Object[] message = {"Código ya existe u ocurrió error al ingresar un dato"};
+            JOptionPane.showMessageDialog(ModificarEAN.this, message, "Error", JOptionPane.OK_OPTION);
+            limpiarCampos();
+
         }
     }//GEN-LAST:event_ModificarActionPerformed
 
@@ -238,12 +210,17 @@ public class ModificarEAN extends javax.swing.JFrame {
 
     }//GEN-LAST:event_CampoCodigoActionPerformed
 
+    private void CampoAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoAreaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CampoAreaActionPerformed
+
     private void limpiarCampos() {
         this.CampoCodigo.setText(null);
         this.CampoDescripcion.setText(null);
         this.CampoCantidad.setText(null);
         this.CampoPrecio.setText(null);
-        this.CampoTipo.setText(null);
+        this.CampoPeso.setText(null);
+        this.CampoArea.setText(null);
     }
 
     /**
@@ -277,18 +254,18 @@ public class ModificarEAN extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 int i = 0;
-                int j = 0;
-                new ModificarEAN(i, j).setVisible(true);
+                new ModificarEAN(i).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CampoArea;
     private javax.swing.JTextField CampoCantidad;
     private javax.swing.JTextField CampoCodigo;
     private javax.swing.JTextField CampoDescripcion;
+    private javax.swing.JTextField CampoPeso;
     private javax.swing.JTextField CampoPrecio;
-    private javax.swing.JTextField CampoTipo;
     private javax.swing.JLabel FondoCliente;
     private javax.swing.JButton Modificar;
     private javax.swing.JButton Salir;
@@ -298,8 +275,9 @@ public class ModificarEAN extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
     Controlador controlador = new Controlador();
     int numero;
-    int numero2;
+
 }

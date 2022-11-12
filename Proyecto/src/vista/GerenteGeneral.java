@@ -171,35 +171,18 @@ public class GerenteGeneral extends javax.swing.JFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         try {
-            String[] productos = {"Abarrote", "Fresco", "Mercancia", "Personal"};
-            String respuesta = (String) JOptionPane.showInputDialog(null, "Seleccione el producto a insertar", "Producto",
-                    JOptionPane.DEFAULT_OPTION, null, productos, productos[0]);
-            switch (respuesta) {
-                case "Abarrote":
-                    ModificarEAN mod = new ModificarEAN(5, 1);
+            
+          
+            
+                    ModificarEAN mod = new ModificarEAN(5);
                     mod.setVisible(true);
                     this.setVisible(false);
-                    break;
-                case "Fresco":
-                    ModificarPLU mod2 = new ModificarPLU(5);
-                    mod2.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                case "Mercancia":
-                    ModificarEAN mod3 = new ModificarEAN(5, 2);
-                    mod3.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                case "Personal":
-                    ModificarEAN mod4 = new ModificarEAN(5, 3);
-                    mod4.setVisible(true);
-                    this.setVisible(false);
-                    break;
+                 
             }
-        } catch (NullPointerException e) {
+         catch (NullPointerException e) {
             Object[] message = {"Se ha cancelado"};
             JOptionPane.showMessageDialog(GerenteGeneral.this, message, "Error", JOptionPane.OK_OPTION);
-        }
+         }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
