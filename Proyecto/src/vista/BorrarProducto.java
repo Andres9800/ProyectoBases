@@ -101,6 +101,7 @@ public class BorrarProducto extends javax.swing.JFrame {
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
         try {
             if (!this.CampoCodigo.getText().isEmpty()) {
+                
                 controlador.eliminarProducto(returnProducto());
                 limpiarCampos();
             } else {
@@ -117,7 +118,7 @@ public class BorrarProducto extends javax.swing.JFrame {
         this.CampoCodigo.setText(null);
     }
 
-    private Producto returnProducto() {
+    private Producto returnProducto() { // eliminar
         Producto p = new Producto();
         p.setCodigo(this.CampoCodigo.getText());
         return p;

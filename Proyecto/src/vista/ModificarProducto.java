@@ -123,6 +123,10 @@ public class ModificarProducto extends javax.swing.JFrame {
                 GerentePersonal ss = new GerentePersonal();
                 ss.setVisible(true);
                 break;
+            case 4:
+                GerenteFresco sst = new GerenteFresco();
+                sst.setVisible(true);
+                break;
         }
     }//GEN-LAST:event_SalirActionPerformed
 
@@ -191,6 +195,24 @@ public class ModificarProducto extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(ModificarProducto.this, message, "Error", JOptionPane.OK_OPTION);
                     limpiarCampos();
                     break;
+                }
+            }
+            case 4: {
+                try {
+                    if (controlador.verificarCodigo(this.CampoCodigo.getText())) {
+                        controlador.modificarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
+                                0, controlador.recuperarProducto(this.CampoCodigo.getText()).getPrecio(),
+                                controlador.recuperarProducto(this.CampoCodigo.getText()).getTipo(),0, "Fresco"));
+                        limpiarCampos();
+                    } else {
+                        Object[] message = {"Codigo no valido para actualizar"};
+                        JOptionPane.showMessageDialog(ModificarProducto.this, message, "Error", JOptionPane.OK_OPTION);
+                        limpiarCampos();
+                    }
+                } catch (SQLException | NumberFormatException ex) {
+                    Object[] message = {"Código ya existe u ocurrió error al ingresar un dato"};
+                    JOptionPane.showMessageDialog(ModificarProducto.this, message, "Error", JOptionPane.OK_OPTION);
+                    limpiarCampos();
                 }
             }
             default:
