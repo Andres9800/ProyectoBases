@@ -1,6 +1,7 @@
 
 package proyecto;
 
+import entidades.Producto;
 import entidades.Usuario;
 import java.sql.SQLException;
 import java.util.List;
@@ -16,11 +17,22 @@ public class Proyecto {
     public static void main(String[] args) throws SQLException {
                
             Dao miDao = new Dao();
-             List<Usuario> miLista = miDao.listUsuario();
+                
+            Producto miP = new Producto("6060","Atun",10,10,10,"Fresco",10,10);
+            miDao.insertProducto(miP);
+            
+            
+             List<Producto> miLista = miDao.listaProductos();
+             
+             
+             
          
             for(int i = 0;i<miLista.size();i++){
              System.out.print(miLista.get(i).toString()+"\n");
-            }        
+            } 
+            
+            
+            
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             JFrame.setDefaultLookAndFeelDecorated(true);

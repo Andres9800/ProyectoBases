@@ -211,6 +211,8 @@ constraint PK_movimiento primary key (movimiento)
 /***************************************** Creacion de TRIGGERS ************************************************************/
 /**************************************** Insercion de productos ***********************************************************/
 
+
+
 create or replace NONEDITIONABLE trigger audita_insertar_producto
 after insert on producto
 declare
@@ -294,6 +296,7 @@ end;
 
 /**************************************************** Inserta Producto ************************************************************/
 
+
 CREATE OR REPLACE NONEDITIONABLE PROCEDURE inserta_producto (
     p_codigo in varchar,
     p_plu in int,
@@ -304,14 +307,21 @@ CREATE OR REPLACE NONEDITIONABLE PROCEDURE inserta_producto (
     p_cantidad in int,
     p_area in varchar
 )
-AS
+IS
 BEGIN
-    INSERT INTO producto values (p_codigo, p_plu, p_ean, p_desc, p_precio, p_peso, p_cantidad, p_area);
+    INSERT INTO producto(codigo, plu, ean, descripcion, precio, peso, cantidad, area)
+        values (p_codigo, p_plu, p_ean, p_desc, p_precio, p_peso, p_cantidad, p_area);
+        commit;
 EXCEPTION
     WHEN OTHERS THEN 
         RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de insercion incorrectos en producto');
 END;
 /
+show error
+
+
+
+
 
 /**************************************************** Inserta usuario *********************************************************/
 
@@ -321,7 +331,7 @@ BEGIN
     INSERT INTO usuario values (ced,username,areaAsig,rol,pas);
 EXCEPTION
     WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserciÃ³n incorrectos en usuario');
+        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserciÃƒÂ³n incorrectos en usuario');
 END;
 /
 
@@ -463,7 +473,7 @@ BEGIN
 
 EXCEPTION
     WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserciÃ³n incorrectos');
+        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserciÃƒÂ³n incorrectos');
 END;
 /
 
@@ -474,7 +484,7 @@ BEGIN
 
 EXCEPTION
     WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserciÃ³n incorrectos');
+        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserciÃƒÂ³n incorrectos');
 END;
 /
 
@@ -577,7 +587,7 @@ Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (1010,
 Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (1111,'ingeniero2','Sistemas','ingenieros','ingenieros');
 
 --select *from usuario;
-
+drop trigger audita_insertar_producto;
 commit;
 --quitar nombre y apellido
 --nombre se pasa a username

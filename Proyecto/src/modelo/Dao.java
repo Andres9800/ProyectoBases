@@ -34,6 +34,7 @@ public class Dao {
         cst.setFloat(6, p.getPeso());
         cst.setInt(7, p.getCantidad());
         cst.setString(8, p.getArea());
+        cst.execute();
         conn.close();
     }
 
