@@ -132,7 +132,7 @@ public class GerenteGeneral extends javax.swing.JFrame {
                     JOptionPane.DEFAULT_OPTION, null, productos, productos[0]);
             switch (respuesta) {
                 case "Abarrote":
-                    InsertarEAN ean = new InsertarEAN(5, 1);
+                    InsertarProducto ean = new InsertarProducto(5, 1);
                     ean.setVisible(true);
                     this.setVisible(false);
                     break;
@@ -142,12 +142,12 @@ public class GerenteGeneral extends javax.swing.JFrame {
                     this.setVisible(false);
                     break;
                 case "Mercancia":
-                    InsertarEAN ean2 = new InsertarEAN(5, 3);
+                    InsertarProducto ean2 = new InsertarProducto(5, 3);
                     ean2.setVisible(true);
                     this.setVisible(false);
                     break;
                 case "Personal":
-                    InsertarEAN ean3 = new InsertarEAN(5, 4);
+                    InsertarProducto ean3 = new InsertarProducto(5, 4);
                     ean3.setVisible(true);
                     this.setVisible(false);
                     break;
