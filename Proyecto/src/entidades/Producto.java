@@ -1,7 +1,5 @@
 package entidades;
 
-import javax.xml.bind.annotation.XmlTransient;
-
 public class Producto {
     String codigo;
     String descripcion;
