@@ -164,33 +164,11 @@ public class PrincipalSistemas extends javax.swing.JFrame {
 
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
         try {
-            String[] productos = {"Abarrote", "Fresco", "Mercancia", "Personal"};
-            String respuesta = (String) JOptionPane.showInputDialog(null, "Seleccione el producto a insertar", "Producto",
-                    JOptionPane.DEFAULT_OPTION, null, productos, productos[0]);
-            switch (respuesta) {
-                case "Abarrote":
-                    InsertarProducto ean = new InsertarProducto(7);
-                    ean.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                case "Fresco":
-                    InsertarProducto plu = new InsertarProducto(7);
-                    plu.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                case "Mercancia":
-                    InsertarProducto ean2 = new InsertarProducto(7);
-                    ean2.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                case "Personal":
-                    InsertarProducto ean3 = new InsertarProducto(7);
-                    ean3.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                default:
-                    break;
-            }
+
+            InsertarProducto ean = new InsertarProducto(7);
+            ean.setVisible(true);
+            this.setVisible(false);
+
         } catch (NullPointerException e) {
             Object[] message = {"Se ha cancelado"};
             JOptionPane.showMessageDialog(PrincipalSistemas.this, message, "Error", JOptionPane.OK_OPTION);
@@ -200,33 +178,11 @@ public class PrincipalSistemas extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         try {
-            String[] productos = {"Abarrote", "Fresco", "Mercancia", "Personal"};
-            String respuesta = (String) JOptionPane.showInputDialog(null, "Seleccione el producto a insertar", "Producto",
-                    JOptionPane.DEFAULT_OPTION, null, productos, productos[0]);
-            switch (respuesta) {
-                case "Abarrote":
-                    BorrarProducto ean = new BorrarProducto(7, 1);
-                    ean.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                case "Fresco":
-                    BorrarProducto plu = new BorrarProducto(7, 2);
-                    plu.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                case "Mercancia":
-                    BorrarProducto ean2 = new BorrarProducto(7, 3);
-                    ean2.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                case "Personal":
-                    BorrarProducto ean3 = new BorrarProducto(7, 4);
-                    ean3.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                default:
-                    break;
-            }
+
+            BorrarProducto ean = new BorrarProducto(7);
+            ean.setVisible(true);
+            this.setVisible(false);
+
         } catch (NullPointerException e) {
             Object[] message = {"Se ha cancelado"};
             JOptionPane.showMessageDialog(PrincipalSistemas.this, message, "Error", JOptionPane.OK_OPTION);
@@ -236,33 +192,11 @@ public class PrincipalSistemas extends javax.swing.JFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         try {
-            String[] productos = {"Abarrote", "Fresco", "Mercancia", "Personal"};
-            String respuesta = (String) JOptionPane.showInputDialog(null, "Seleccione el producto a insertar", "Producto",
-                    JOptionPane.DEFAULT_OPTION, null, productos, productos[0]);
-            switch (respuesta) {
-                case "Abarrote":
-                    ModificarEAN mod = new ModificarEAN(7);
-                    mod.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                case "Fresco":
-                    ModificarEAN mod2 = new ModificarEAN(7);
-                    mod2.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                case "Mercancia":
-                    ModificarEAN mod3 = new ModificarEAN(7);
-                    mod3.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                case "Personal":
-                    ModificarEAN mod4 = new ModificarEAN(7);
-                    mod4.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                default:
-                    break;
-            }
+
+            ModificarEAN mod = new ModificarEAN(7);
+            mod.setVisible(true);
+            this.setVisible(false);
+
         } catch (NullPointerException e) {
             Object[] message = {"Se ha cancelado"};
             JOptionPane.showMessageDialog(PrincipalSistemas.this, message, "Error", JOptionPane.OK_OPTION);

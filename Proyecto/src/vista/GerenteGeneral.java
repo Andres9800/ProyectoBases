@@ -127,31 +127,11 @@ public class GerenteGeneral extends javax.swing.JFrame {
 
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
         try {
-            String[] productos = {"Abarrote", "Fresco", "Mercancia", "Personal"};
-            String respuesta = (String) JOptionPane.showInputDialog(null, "Seleccione el producto a insertar", "Producto",
-                    JOptionPane.DEFAULT_OPTION, null, productos, productos[0]);
-            switch (respuesta) {
-                case "Abarrote":
-                    InsertarProducto ean = new InsertarProducto(5);
-                    ean.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                case "Fresco":
-                    InsertarProducto plu = new InsertarProducto(5);
-                    plu.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                case "Mercancia":
-                    InsertarProducto ean2 = new InsertarProducto(5);
-                    ean2.setVisible(true);
-                    this.setVisible(false);
-                    break;
-                case "Personal":
-                    InsertarProducto ean3 = new InsertarProducto(5);
-                    ean3.setVisible(true);
-                    this.setVisible(false);
-                    break;
-            }
+
+            InsertarProducto ean = new InsertarProducto(5);
+            ean.setVisible(true);
+            this.setVisible(false);
+
         } catch (NullPointerException e) {
             Object[] message = {"Se ha cancelado"};
             JOptionPane.showMessageDialog(GerenteGeneral.this, message, "Error", JOptionPane.OK_OPTION);
@@ -160,7 +140,7 @@ public class GerenteGeneral extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         try {
-            BorrarProducto ean = new BorrarProducto(5, 1);
+            BorrarProducto ean = new BorrarProducto(5);
             ean.setVisible(true);
             this.setVisible(false);
         } catch (NullPointerException e) {
@@ -171,18 +151,15 @@ public class GerenteGeneral extends javax.swing.JFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         try {
-            
-          
-            
-                    ModificarEAN mod = new ModificarEAN(5);
-                    mod.setVisible(true);
-                    this.setVisible(false);
-                 
-            }
-         catch (NullPointerException e) {
+
+            ModificarEAN mod = new ModificarEAN(5);
+            mod.setVisible(true);
+            this.setVisible(false);
+
+        } catch (NullPointerException e) {
             Object[] message = {"Se ha cancelado"};
             JOptionPane.showMessageDialog(GerenteGeneral.this, message, "Error", JOptionPane.OK_OPTION);
-         }
+        }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     /**

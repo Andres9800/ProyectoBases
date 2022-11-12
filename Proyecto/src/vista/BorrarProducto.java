@@ -15,11 +15,11 @@ public class BorrarProducto extends javax.swing.JFrame {
     /**
      * Creates new form BorrarEAN
      */
-    public BorrarProducto(int numero, int numero2) {
+    public BorrarProducto(int numero) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.numero = numero;
-        this.numero2 = numero2;
+        
     }
 
     /**
@@ -103,7 +103,9 @@ public class BorrarProducto extends javax.swing.JFrame {
             if (!this.CampoCodigo.getText().isEmpty()) {
                 
                 controlador.eliminarProducto(returnProducto());
+                JOptionPane.showMessageDialog(null, "Accion realizada Correctamente!");
                 limpiarCampos();
+                
             } else {
                 Object[] message = {"Hay campos vacíos"};
                 JOptionPane.showMessageDialog(BorrarProducto.this, message, "Error", JOptionPane.OK_OPTION);
@@ -161,7 +163,7 @@ public class BorrarProducto extends javax.swing.JFrame {
             public void run() {
                 int numero = 0;
                 int numero2 = 0;
-                new BorrarProducto(numero, numero2).setVisible(true);
+                new BorrarProducto(numero).setVisible(true);
             }
         });
     }

@@ -172,37 +172,22 @@ public class InsertarProducto extends javax.swing.JFrame {
 
         try {
             if (this.camposLlenos()) {
-                
-                //     public Producto(String codigo, String descripcion, int cantidad, float precio, float peso, String area ,int plu ,float ean ) {
 
+                //     public Producto(String codigo, String descripcion, int cantidad, float precio, float peso, String area ,int plu ,float ean ) {
                 Producto nuevo_producto = new Producto(
-                    this.CampoCodigo.getText(),
-                    this.CampoDescripcion.getText(),
-                    Integer.parseInt(this.CampoCantidad.getText()),
-                    Float.parseFloat(this.CampoPrecio.getText()),
-                    Float.parseFloat(this.CampoPeso.getText()),
-                    this.CampoArea.getText()
+                        this.CampoCodigo.getText(),
+                        this.CampoDescripcion.getText(),
+                        Integer.parseInt(this.CampoCantidad.getText()),
+                        Float.parseFloat(this.CampoPrecio.getText()),
+                        Float.parseFloat(this.CampoPeso.getText()),
+                        this.CampoArea.getText()
                 );
-                
-                
-//                    public void insertProducto(Producto p) throws SQLException {
-//        conn = c.conectar();
-//        CallableStatement cst = conn.prepareCall("{call inserta_producto (?,?,?,?,?,?,?,?)}");
-//        cst.setString(1, p.getCodigo());
-//        cst.setInt(2, p.getPlu());
-//        cst.setFloat(3, p.getEan());
-//        cst.setString(4, p.getDescripcion());
-//        cst.setFloat(5, p.getPrecio());
-//        cst.setFloat(6, p.getPeso());
-//        cst.setInt(7, p.getCantidad());
-//        cst.setString(8, p.getArea());
-//        conn.close();
-    
-                
-                
+
+
                 controlador.insertarProducto(nuevo_producto);
-                
-                
+                Object[] message = {"Accion Realizada Correctamente"};
+                JOptionPane.showMessageDialog(null, "Accion realizada Correctamente!");
+
                 limpiarCampos();
             } else {
                 Object[] message = {"Hay campos vacios"};
@@ -215,21 +200,22 @@ public class InsertarProducto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ModificarActionPerformed
 
-    private boolean camposLlenos(){
-    
+    private boolean camposLlenos() {
+
         return (!this.CampoCodigo.getText().isEmpty()
                 && !this.CampoCantidad.getText().isEmpty()
                 && !this.CampoDescripcion.getText().isEmpty()
                 && !this.CampoPrecio.getText().isEmpty()
-                && !this.CampoArea.getText().isEmpty()
-        );
+                && !this.CampoArea.getText().isEmpty());
     }
+
     private void limpiarCampos() {
         this.CampoCodigo.setText(null);
         this.CampoDescripcion.setText(null);
         this.CampoCantidad.setText(null);
         this.CampoPrecio.setText(null);
         this.CampoArea.setText(null);
+        this.CampoPeso.setText(null);
     }
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
@@ -266,27 +252,23 @@ public class InsertarProducto extends javax.swing.JFrame {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
 
-}
+                }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InsertarProducto.class  
+            java.util.logging.Logger.getLogger(InsertarProducto.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(InsertarProducto.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-} catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InsertarProducto.class  
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(InsertarProducto.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InsertarProducto.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InsertarProducto.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(InsertarProducto.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
