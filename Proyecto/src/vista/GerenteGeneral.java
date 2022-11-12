@@ -137,7 +137,7 @@ public class GerenteGeneral extends javax.swing.JFrame {
                     this.setVisible(false);
                     break;
                 case "Fresco":
-                    InsertarPLU plu = new InsertarPLU(5);
+                    InsertarProducto plu = new InsertarProducto(5);
                     plu.setVisible(true);
                     this.setVisible(false);
                     break;

@@ -172,15 +172,37 @@ public class InsertarProducto extends javax.swing.JFrame {
 
         try {
             if (this.camposLlenos()) {
+                
+                //     public Producto(String codigo, String descripcion, int cantidad, float precio, float peso, String area ,int plu ,float ean ) {
+
                 Producto nuevo_producto = new Producto(
-                    Integer.parseInt(this.CampoCodigo.getText()),
+                    this.CampoCodigo.getText(),
                     this.CampoDescripcion.getText(),
-                    Integer.parseInt(this.CampoPrecio.getText()),
-                    Integer.parseInt(this.CampoPeso.getText()),
                     Integer.parseInt(this.CampoCantidad.getText()),
-                    Integer.parseInt(this.CampoArea.getText())
+                    Float.parseFloat(this.CampoPrecio.getText()),
+                    Float.parseFloat(this.CampoPeso.getText()),
+                    this.CampoArea.getText()
                 );
+                
+                
+//                    public void insertProducto(Producto p) throws SQLException {
+//        conn = c.conectar();
+//        CallableStatement cst = conn.prepareCall("{call inserta_producto (?,?,?,?,?,?,?,?)}");
+//        cst.setString(1, p.getCodigo());
+//        cst.setInt(2, p.getPlu());
+//        cst.setFloat(3, p.getEan());
+//        cst.setString(4, p.getDescripcion());
+//        cst.setFloat(5, p.getPrecio());
+//        cst.setFloat(6, p.getPeso());
+//        cst.setInt(7, p.getCantidad());
+//        cst.setString(8, p.getArea());
+//        conn.close();
+    
+                
+                
                 controlador.insertarProducto(nuevo_producto);
+                
+                
                 limpiarCampos();
             } else {
                 Object[] message = {"Hay campos vacios"};

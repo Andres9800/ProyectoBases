@@ -1,6 +1,7 @@
 package entidades;
 
 public class Producto {
+
     String codigo;
     String descripcion;
     int cantidad;
@@ -10,7 +11,18 @@ public class Producto {
     float peso;
     String area;
 
-    public Producto(String codigo, String descripcion, int cantidad, float precio, float peso, String area ,int plu ,float ean ) {
+    public Producto(String codigo, String descripcion, int cantidad, float precio, float peso, String area) {
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.cantidad = cantidad;
+        this.precio = precio;
+        this.peso = peso;
+        this.area = area;
+        this.plu = (int)(peso > 0 ? precio + 4000 : 0);
+        this.ean = (precio - 3784247000000l);
+    }
+
+    public Producto(String codigo, String descripcion, int cantidad, float precio, float peso, String area, int plu, float ean) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
@@ -64,7 +76,6 @@ public class Producto {
         this.precio = precio;
     }
 
-
     public float getPeso() {
         return peso;
     }
@@ -97,23 +108,16 @@ public class Producto {
         this.ean = ean;
     }
 
-
-
-
-    
-    
-
     @Override
     public String toString() {
-        return "\n" +  "codigo=" + codigo + "\n" +
-                ", descripcion=" + descripcion + "\n" +
-                ", cantidad=" + cantidad + "\n" +
-                ", precio=" + precio + "\n" +
-                ", peso=" + peso + "\n" +
-                ", Plu=" + plu + "\n" +
-                ", Ean=" + ean + "\n" +
-                ", Area=" + area;
+        return "\n" + "codigo=" + codigo + "\n"
+                + ", descripcion=" + descripcion + "\n"
+                + ", cantidad=" + cantidad + "\n"
+                + ", precio=" + precio + "\n"
+                + ", peso=" + peso + "\n"
+                + ", Plu=" + plu + "\n"
+                + ", Ean=" + ean + "\n"
+                + ", Area=" + area;
     }
-    
-    
+
 }

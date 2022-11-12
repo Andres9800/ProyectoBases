@@ -174,7 +174,7 @@ public class PrincipalSistemas extends javax.swing.JFrame {
                     this.setVisible(false);
                     break;
                 case "Fresco":
-                    InsertarPLU plu = new InsertarPLU(7);
+                    InsertarProducto plu = new InsertarProducto(7);
                     plu.setVisible(true);
                     this.setVisible(false);
                     break;
