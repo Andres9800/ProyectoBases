@@ -134,9 +134,9 @@ public class ModificarPLU extends javax.swing.JFrame {
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
         try {
             if (controlador.verificarCodigo(this.CampoCodigo.getText())) {
-                        controlador.modificarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
-                                0, Float.parseFloat(this.CampoPrecio.getText()), "-", Float.parseFloat(this.CampoPeso.getText())
-                                , "Fresco"));
+//                        controlador.modificarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
+//                                0, Float.parseFloat(this.CampoPrecio.getText()), "-", Float.parseFloat(this.CampoPeso.getText())
+//                                , "Fresco"));
                 limpiarCampos();
             } else {
                 Object[] message = {"Codigo no valido para actualizar"};

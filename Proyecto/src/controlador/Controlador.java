@@ -171,7 +171,7 @@ public class Controlador {
         List<Producto> lista = dao.listaProductos();
         List<Producto> abarrotes = new ArrayList<>();
         for (Producto p : lista) {
-            if (p.getCategoria().equals("Abarrote")) {
+            if (p.getArea().equals("Abarrote")) {
                 abarrotes.add(p);
             }
         }
@@ -182,7 +182,7 @@ public class Controlador {
         List<Producto> lista = dao.listaProductos();
         List<Producto> frescos = new ArrayList<>();
         for (Producto p : lista) {
-            if (p.getCategoria().equals("Fresco")) {
+            if (p.getArea().equals("Fresco")) {
                 frescos.add(p);
             }
         }
@@ -193,7 +193,7 @@ public class Controlador {
         List<Producto> lista = dao.listaProductos();
         List<Producto> mercancias = new ArrayList<>();
         for (Producto p : lista) {
-            if (p.getCategoria().equals("Mercancia")) {
+            if (p.getArea().equals("Mercancia")) {
                 mercancias.add(p);
             }
         }
@@ -204,7 +204,7 @@ public class Controlador {
         List<Producto> lista = dao.listaProductos();
         List<Producto> personales = new ArrayList<>();
         for (Producto p : lista) {
-            if (p.getCategoria().equals("Personal")) {
+            if (p.getArea().equals("Personal")) {
                 personales.add(p);
             }
         }
@@ -226,7 +226,7 @@ public class Controlador {
         if(p==null){
             throw new SQLException ("product not found");
         }else{
-            if("Fresco".equals(p.getCategoria())){
+            if("Fresco".equals(p.getArea())){
                 if(p.getPeso()<cant){
                     throw new SQLException ("exceed cant");
                     
@@ -267,7 +267,7 @@ public class Controlador {
     public String parseaLista(List<Producto> lista){
         String fin="Codigo   Descripcion     Peso       Precio c/u      Total"+"\n";
         for (Producto p : lista) {
-            if (p.getCategoria().equals("Fresco")) {
+            if (p.getArea().equals("Fresco")) {
                 fin+=p.getCodigo()+"        "+p.getDescripcion()+"      "+p.getPeso()+"           "+p.getPrecio()+"       "+(p.getPeso()*p.getPrecio())+"\n";
             }else{
                 fin+=p.getCodigo()+"        "+p.getDescripcion()+"      "+p.getCantidad()+"           "+p.getPrecio()+"        "+(p.getCantidad()*p.getPrecio())+"\n";
@@ -279,7 +279,7 @@ public class Controlador {
     public float suma(){
         float tot=0f;
         for (Producto p : modelo.todoCarrito()) {
-            if (p.getCategoria().equals("Fresco")) {
+            if (p.getArea().equals("Fresco")) {
                 tot=tot+(p.getPeso()*p.getPrecio());
             }else{
                 tot=tot+(p.getCantidad()*p.getPrecio());
@@ -293,7 +293,7 @@ public class Controlador {
         int fact=dao.dameMaxFact();
  
         for(Producto u:modelo.todoCarrito()){
-            if(u.getCategoria().equals("Fresco")||u.getCategoria().equals("fresco")){
+            if(u.getArea().equals("Fresco")||u.getArea().equals("fresco")){
                 dao.insertarDetalle(fact,0,u.getPeso(),u.getCodigo(),1);
             }else{
                 dao.insertarDetalle(fact,u.getCantidad(),0.0f,u.getCodigo(),0);

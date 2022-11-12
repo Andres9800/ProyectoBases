@@ -26,14 +26,14 @@ public class Dao {
     public void insertProducto(Producto p) throws SQLException {
         conn = c.conectar();
         CallableStatement cst = conn.prepareCall("{call inserta_producto (?,?,?,?,?,?,?,?)}");
-        cst.setInt(1, p.getProducto_id());
+        cst.setString(1, p.getCodigo());
         cst.setInt(2, p.getPlu());
-        cst.setDouble(3, p.getEan());
+        cst.setFloat(3, p.getEan());
         cst.setString(4, p.getDescripcion());
-        cst.setInt(5, p.getPrecio());
-        cst.setInt(6, p.getPeso());
+        cst.setFloat(5, p.getPrecio());
+        cst.setFloat(6, p.getPeso());
         cst.setInt(7, p.getCantidad());
-        cst.setInt(8, p.getArea());
+        cst.setString(8, p.getArea());
         conn.close();
     }
 
@@ -64,28 +64,30 @@ public class Dao {
                             rs.getString("descripcion"),
                             rs.getInt("cantidad"),
                             rs.getFloat("precio"),
-                            rs.getString("tipo"),
                             rs.getFloat("peso"),
-                            rs.getString("categoria")
+                            rs.getString("area"),
+                            rs.getInt("plu"),
+                            rs.getFloat("ean")
                     )
             );
         }
         return lista;
     }
 
-    public void updateProducto(Producto p) throws SQLException {
+    public void updateProducto(Producto p) throws SQLException { // 
         conn = c.conectar();
         CallableStatement cst = conn.prepareCall("{call updateproducto (?,?,?,?,?,?,?)}");
         cst.setString(1, p.getDescripcion());
         cst.setInt(2, p.getCantidad());
         cst.setFloat(3, p.getPrecio());
-        cst.setString(4, p.getTipo());
+        cst.setString(4, p.getArea());
         cst.setFloat(5, p.getPeso());
-        cst.setString(6, p.getCategoria());
-        cst.setString(7, p.getCodigo());
+        cst.setString(6, p.getCodigo());
         cst.execute();
         conn.close();
     }
+    
+    
 
     public void deleteProducto(Producto p) throws SQLException {
         conn = c.conectar();

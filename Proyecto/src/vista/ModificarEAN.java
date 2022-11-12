@@ -169,9 +169,9 @@ public class ModificarEAN extends javax.swing.JFrame {
             case 1: {
                 try {
                     if (controlador.verificarCodigo(this.CampoCodigo.getText())) {
-                        controlador.modificarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
-                                Integer.parseInt(this.CampoCantidad.getText()), Float.parseFloat(this.CampoPrecio.getText()),
-                                this.CampoTipo.getText(), 0, "Abarrote"));
+//                        controlador.modificarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
+//                                Integer.parseInt(this.CampoCantidad.getText()), Float.parseFloat(this.CampoPrecio.getText()),
+//                                this.CampoTipo.getText(), 0, "Abarrote"));
                         limpiarCampos();
                     } else {
                         Object[] message = {"Codigo no valido para actualizar"};
@@ -189,9 +189,9 @@ public class ModificarEAN extends javax.swing.JFrame {
             case 2: {
                 try {
                     if (controlador.verificarCodigo(this.CampoCodigo.getText())) {
-                        controlador.modificarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
-                                Integer.parseInt(this.CampoCantidad.getText()), Float.parseFloat(this.CampoPrecio.getText()),
-                                this.CampoTipo.getText(), 0, "Mercancia"));
+//                        controlador.modificarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
+//                                Integer.parseInt(this.CampoCantidad.getText()), Float.parseFloat(this.CampoPrecio.getText()),
+//                                this.CampoTipo.getText(), 0, "Mercancia"));
                         limpiarCampos();
                     } else {
                         Object[] message = {"Codigo no valido para actualizar"};
@@ -210,9 +210,9 @@ public class ModificarEAN extends javax.swing.JFrame {
             case 3: {
                 try {
                     if (controlador.verificarCodigo(this.CampoCodigo.getText())) {
-                        controlador.modificarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
-                                Integer.parseInt(this.CampoCantidad.getText()), Float.parseFloat(this.CampoPrecio.getText()),
-                                this.CampoTipo.getText(), 0, "Personal"));
+//                        controlador.modificarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
+//                                Integer.parseInt(this.CampoCantidad.getText()), Float.parseFloat(this.CampoPrecio.getText()),
+//                                this.CampoTipo.getText(), 0, "Personal"));
                         limpiarCampos();
                     } else {
                         Object[] message = {"Codigo no valido para actualizar"};

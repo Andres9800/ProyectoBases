@@ -273,8 +273,7 @@ public class InsertarProducto extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 int n = 0;
-                int m = 0;
-                new InsertarProducto(n,m).setVisible(true);
+                new InsertarProducto(n).setVisible(true);
             }
         });
     }
