@@ -34,7 +34,6 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -42,7 +41,6 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         contrasena = new javax.swing.JTextField();
         cedula = new javax.swing.JTextField();
         nombre = new javax.swing.JTextField();
-        apellido = new javax.swing.JTextField();
         areaAsignada = new javax.swing.JTextField();
         rolcillo = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
@@ -65,11 +63,6 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(153, 255, 153));
         jLabel3.setText("Nombre");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel4.setText("Apellido");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 255, 153));
@@ -96,7 +89,6 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         getContentPane().add(contrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 440, 330, 30));
         getContentPane().add(cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 330, 30));
         getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 330, 30));
-        getContentPane().add(apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 330, 30));
         getContentPane().add(areaAsignada, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 330, 30));
         getContentPane().add(rolcillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, 330, 30));
 
@@ -116,10 +108,10 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (!this.cedula.getText().isEmpty() && !this.nombre.getText().isEmpty() && !this.apellido.getText().isEmpty()
+        if (!this.cedula.getText().isEmpty() && !this.nombre.getText().isEmpty() 
                 && !this.areaAsignada.getText().isEmpty() && !this.rolcillo.getText().isEmpty() && !this.contrasena.getText().isEmpty()) {
             try {
-                controlador.insertarUsuario(new Usuario(Integer.parseInt(cedula.getText()), nombre.getText(), apellido.getText(),
+                controlador.insertarUsuario(new Usuario(Integer.parseInt(cedula.getText()), nombre.getText(),
                         areaAsignada.getText(), rolcillo.getText(), contrasena.getText()));
                 limpiarCampos();
             } catch (SQLException ex) {
@@ -141,7 +133,6 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     private void limpiarCampos() {
         this.cedula.setText(null);
         this.nombre.setText(null);
-        this.apellido.setText(null);
         this.areaAsignada.setText(null);
         this.rolcillo.setText(null);
         this.contrasena.setText(null);
@@ -184,7 +175,6 @@ public class RegistrarUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FondoCliente;
-    private javax.swing.JTextField apellido;
     private javax.swing.JTextField areaAsignada;
     private javax.swing.JTextField cedula;
     private javax.swing.JTextField contrasena;
@@ -193,7 +183,6 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

@@ -75,7 +75,6 @@ quota unlimited on users
 create table usuario (
 cedula int not NULL,
 nombre varchar(45) not null,
-apellido varchar(45),
 areaAsignada varchar(45) not null,
 rol varchar(20),
 pass varchar(20),
@@ -307,11 +306,10 @@ END;
 
 /**************************************************** Inserta usuario *********************************************************/
 
-CREATE OR REPLACE NONEDITIONABLE PROCEDURE inserta_usuario (ced usuario.cedula%type, nombre usuario.nombre%type, 
-apellido usuario.apellido%type, areaAsig usuario.areaAsignada%type, rol usuario.rol%type, pas usuario.pass%type)
+CREATE OR REPLACE NONEDITIONABLE PROCEDURE inserta_usuario (ced usuario.cedula%type, nombre usuario.nombre%type, areaAsig usuario.areaAsignada%type, rol usuario.rol%type, pas usuario.pass%type)
 AS
 BEGIN
-    INSERT INTO usuario values (ced,nombre,apellido,areaAsig,rol,pas);
+    INSERT INTO usuario values (ced,nombre,areaAsig,rol,pas);
 EXCEPTION
     WHEN OTHERS THEN 
         RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserción incorrectos en usuario');
@@ -551,19 +549,24 @@ END;
 /*------------------------------------------------------------------------------------------------Inserts*/
 
 
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (111,'cajero1','cajerito','cajeros','cajeros','cajeros');
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (222,'cajero2','cajerito','cajeros','cajeros','cajeros');
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (333,'cajero3','cajerito','cajeros','cajeros','cajeros');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (111,'cajero1','cajeros','cajeros','cajeros');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (222,'cajero2','cajeros','cajeros','cajeros');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (333,'cajero3','cajeros','cajeros','cajeros');
 
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (444,'gerenteAbarrotes','Ninguno','Abarrote','gerentes','gerentes');
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (555,'gerenteCuidadoPersonal','Ninguno','Personal','gerentes','gerentes');
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (666,'gerenteMercancias','Ninguno','Mercancia','gerentes','gerentes');
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (777,'gerenteFrescos','Ninguno','Fresco','gerentes','gerentes');
-
-
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (888,'gerenteGeneral1','Ninguno','general','gerentesGenerales','gerentesG');
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (999,'gerenteGeneral2','Ninguno','general','gerentesGenerales','gerentesG');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (444,'gerenteAbarrotes','Abarrote','gerentes','gerentes');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (555,'gerenteCuidadoPersonal','Personal','gerentes','gerentes');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (666,'gerenteMercancias','Mercancia','gerentes','gerentes');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (777,'gerenteFrescos','Fresco','gerentes','gerentes');
 
 
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (1010,'ingeniero1','Ninguno','Sistemas','ingenieros','ingenieros');
-Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,APELLIDO,AREAASIGNADA,ROL,PASS) values (1111,'ingeniero2','Ninguno','Sistemas','ingenieros','ingenieros');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (888,'gerenteGeneral1','general','gerentesGenerales','gerentesG');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (999,'gerenteGeneral2','general','gerentesGenerales','gerentesG');
+
+
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (1010,'ingeniero1','Sistemas','ingenieros','ingenieros');
+Insert into SYSTEM.USUARIO (CEDULA,NOMBRE,AREAASIGNADA,ROL,PASS) values (1111,'ingeniero2','Sistemas','ingenieros','ingenieros');
+
+select *from usuario;
+
+--quitar nombre y apellido
+--nombre se pasa a username

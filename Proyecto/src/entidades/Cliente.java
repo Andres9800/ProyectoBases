@@ -4,10 +4,9 @@ import java.io.Serializable;
 
 public class Cliente implements Serializable{
 
-    public Cliente(int codigo, String nombre, String apellidos, String cedula, String direccion, int telefono) {
+    public Cliente(int codigo, String nombre, String cedula, String direccion, int telefono) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.apellidos = apellidos;
         this.cedula = cedula;
         this.direccion = direccion;
         this.telefono = telefono;
@@ -30,14 +29,6 @@ public class Cliente implements Serializable{
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
     }
 
     public String getCedula() {
@@ -66,7 +57,6 @@ public class Cliente implements Serializable{
 
     private int codigo;
     private String nombre;
-    private String apellidos;
     private String cedula;
     private String direccion;
     private int telefono;

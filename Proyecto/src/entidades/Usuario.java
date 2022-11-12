@@ -9,7 +9,6 @@ public class Usuario {
 
     int cedula;
     String nombre;
-    String apellido;
     String areaAsignada;
     String rol;
     String pass;
@@ -17,17 +16,16 @@ public class Usuario {
     public Usuario() {
         this.cedula = 0;
         this.nombre = "";
-        this.apellido = "";
+   
         this.areaAsignada = "";
         this.rol = "";
         this.pass = "";
     }
 
-    public Usuario(int cedula, String nombre, String apellido, String areaAsignada, String rol, String pass) {
+    public Usuario(int cedula, String nombre,  String areaAsignada, String rol, String pass) {
         this.cedula = cedula;
         this.nombre = nombre;
-        this.apellido = apellido;
-        this.areaAsignada = areaAsignada;
+            this.areaAsignada = areaAsignada;
         this.rol = rol;
         this.pass = pass;
     }
@@ -56,13 +54,7 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
 
     public String getAreaAsignada() {
         return areaAsignada;
@@ -82,7 +74,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", areaAsignada=" + areaAsignada + ", rol=" + rol + ", pass=" + pass + '}';
+        return "Usuario{" + "cedula=" + cedula + ", nombre=" + nombre + ", areaAsignada=" + areaAsignada + ", rol=" + rol + ", pass=" + pass + '}';
     }
 
 }

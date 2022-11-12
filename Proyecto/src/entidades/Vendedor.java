@@ -2,11 +2,10 @@ package entidades;
 
 public class Vendedor {
 
-    public Vendedor(int codigo, String nombre, String apellido) {
+    public Vendedor(int codigo, String nombre) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.apellido = apellido;
-    }
+        }
 
     public int getCodigo() {
         return codigo;
@@ -24,15 +23,8 @@ public class Vendedor {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
 
     private int codigo;
     private String nombre;
-    private String apellido;
 }
