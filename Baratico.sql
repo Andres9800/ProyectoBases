@@ -586,8 +586,20 @@ Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (999,'
 Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (1010,'ingeniero1','Sistemas','ingenieros','ingenieros');
 Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (1111,'ingeniero2','Sistemas','ingenieros','ingenieros');
 
---select *from usuario;
+
 drop trigger audita_insertar_producto;
+
+Insert into SYSTEM.PRODUCTO (CODIGO,PLU,EAN,DESCRIPCION,PRECIO,PESO,CANTIDAD,AREA) values ('1234',8912,378424715,'lechuga',750.6,400.2,15,'Fresco');
+Insert into SYSTEM.PRODUCTO (CODIGO,PLU,EAN,DESCRIPCION,PRECIO,PESO,CANTIDAD,AREA) values ('1235',1094,378424715,'Arroz',100,325.2,60,'Abarrote');
+Insert into SYSTEM.PRODUCTO (CODIGO,PLU,EAN,DESCRIPCION,PRECIO,PESO,CANTIDAD,AREA) values ('1236',4141,378424715,'Frijojes',100,325.2,55,'Abarrote');
+Insert into SYSTEM.PRODUCTO (CODIGO,PLU,EAN,DESCRIPCION,PRECIO,PESO,CANTIDAD,AREA) values ('1237',4165,154848115,'leche',7050,0,30,'Fresco');
+Insert into SYSTEM.PRODUCTO (CODIGO,PLU,EAN,DESCRIPCION,PRECIO,PESO,CANTIDAD,AREA) values ('6060',5478,514884544,'Atun',10,0,10,'Abarrote');
+Insert into SYSTEM.PRODUCTO (CODIGO,PLU,EAN,DESCRIPCION,PRECIO,PESO,CANTIDAD,AREA) values ('8080',4110,216451874,'TioPelon',110,1,20,'Mercancia');
+
+
+
+--select *from usuario;
+
 commit;
 --quitar nombre y apellido
 --nombre se pasa a username
