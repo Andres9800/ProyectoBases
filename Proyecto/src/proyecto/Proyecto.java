@@ -14,18 +14,13 @@ import vista.Login;
 public class Proyecto {
 
     public static void main(String[] args) throws SQLException {
-        
-        
+               
             Dao miDao = new Dao();
-        
-            List<Usuario> miLista = miDao.listUsuario();
+             List<Usuario> miLista = miDao.listUsuario();
          
             for(int i = 0;i<miLista.size();i++){
              System.out.print(miLista.get(i).toString()+"\n");
-            }
-        
-        
-        
+            }        
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             JFrame.setDefaultLookAndFeelDecorated(true);

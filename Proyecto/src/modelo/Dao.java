@@ -41,9 +41,8 @@ public class Dao {
         conn = c.conectar();
         CallableStatement cst = conn.prepareCall("{call inserta_usuario (?,?,?,?,?,?)}");
         cst.setInt(1, p.getCedula());
-        cst.setString(2, p.getNombre());
-        cst.setString(3, p.getApellido());
-        cst.setString(4, p.getAreaAsignada());
+        cst.setString(2, p.getUsername());
+         cst.setString(4, p.getAreaAsignada());
         cst.setString(5, p.getRol());
         cst.setString(6, p.getPass());
         cst.execute();
@@ -108,8 +107,7 @@ public class Dao {
             lista.add(
                     new Usuario(
                             rs.getInt("cedula"),
-                            rs.getString("nombre"),
-                            rs.getString("apellido"),
+                            rs.getString("username"),
                             rs.getString("areaAsignada"),
                             rs.getString("rol"),
                             rs.getString("pass")
@@ -123,7 +121,7 @@ public class Dao {
         conn = c.conectar();
         CallableStatement cst = conn.prepareCall("{call registrarUsuario (?,?)}");
         cst.setInt(1, p.getCedula());
-        cst.setString(2, p.getNombre());
+        cst.setString(2, p.getUsername());
         cst.execute();
         conn.close();
     }
