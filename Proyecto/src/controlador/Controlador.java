@@ -43,7 +43,7 @@ public class Controlador {
     public boolean verificarDatos(String userName, String password) throws SQLException {
         List<Usuario> users = dao.listUsuario();
         for (Usuario user : users) {
-            if (user.getNombre().equals(userName) && user.getPass().equals(password)) {
+            if (user.getUsername().equals(userName) && user.getPass().equals(password)) {
                 modelo.setUser(user);
                 System.out.println(modelo.getUser());
                 return true;
@@ -55,7 +55,7 @@ public class Controlador {
     public String verificarRol(String username) throws SQLException {
         List<Usuario> users = dao.listUsuario();
         for (Usuario user : users) {
-            if (user.getNombre().equals(username)) {
+            if (user.getUsername().equals(username)) {
                 dao.registroUsuario(user);
                 return user.getAreaAsignada();
             }

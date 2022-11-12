@@ -31,9 +31,6 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         Aceptar = new javax.swing.JButton();
         usuario = new javax.swing.JTextField();
         password = new javax.swing.JPasswordField();
@@ -42,33 +39,35 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel1.setText("Ingresar cédula");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 240, 30));
-
-        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel2.setText("Ingresar contraseña");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 290, 30));
-
-        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel3.setText("Iniciar sesión");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 380, 50));
-
-        Aceptar.setText("Aceptar");
+        Aceptar.setBackground(new java.awt.Color(51, 51, 51));
+        Aceptar.setFont(new java.awt.Font("Haettenschweiler", 0, 36)); // NOI18N
+        Aceptar.setForeground(new java.awt.Color(0, 0, 0));
+        Aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/button.png"))); // NOI18N
+        Aceptar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Aceptar.setBorderPainted(false);
         Aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AceptarActionPerformed(evt);
             }
         });
-        getContentPane().add(Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, 100, 40));
-        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 260, 40));
-        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, 260, 40));
+        getContentPane().add(Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 607, 150, 50));
 
-        FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen_1.jpg"))); // NOI18N
-        getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 650));
+        usuario.setBackground(new java.awt.Color(255, 255, 255));
+        usuario.setFont(new java.awt.Font("Haettenschweiler", 0, 48)); // NOI18N
+        usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 340, 50));
+
+        password.setBackground(new java.awt.Color(255, 255, 255));
+        password.setFont(new java.awt.Font("Haettenschweiler", 0, 48)); // NOI18N
+        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 480, 340, 50));
+
+        FondoCliente.setFont(new java.awt.Font("Haettenschweiler", 0, 36)); // NOI18N
+        FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Login.jpg"))); // NOI18N
+        getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1340, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -167,6 +166,10 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AceptarActionPerformed
 
+    private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usuarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -205,9 +208,6 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Aceptar;
     private javax.swing.JLabel FondoCliente;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables

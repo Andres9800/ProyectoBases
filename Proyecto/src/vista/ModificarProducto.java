@@ -135,8 +135,7 @@ public class ModificarProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_CampoCodigoActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // if numero2 == 4 varString == Fresco
-        switch (numero2) { // traer el producto por codigo // produc.area == varString(Fresco) // si son iguales aplique la modificacion 
+        switch (numero2) {
             case 1: {
                 try {
                     if (controlador.verificarCodigo(this.CampoCodigo.getText())) {
@@ -201,7 +200,6 @@ public class ModificarProducto extends javax.swing.JFrame {
             case 4: {
                 try {
                     if (controlador.verificarCodigo(this.CampoCodigo.getText())) {
-                        
                         controlador.modificarProducto(new Producto(this.CampoCodigo.getText(), this.CampoDescripcion.getText(),
                                 0, controlador.recuperarProducto(this.CampoCodigo.getText()).getPrecio(),
                                 controlador.recuperarProducto(this.CampoCodigo.getText()).getTipo(),0, "Fresco"));

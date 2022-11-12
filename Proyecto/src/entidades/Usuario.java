@@ -8,26 +8,24 @@ package entidades;
 public class Usuario {
 
     int cedula;
-    String nombre;
-    String apellido;
+    String username;
     String areaAsignada;
     String rol;
     String pass;
 
     public Usuario() {
         this.cedula = 0;
-        this.nombre = "";
-        this.apellido = "";
+        this.username = "";
+   
         this.areaAsignada = "";
         this.rol = "";
         this.pass = "";
     }
 
-    public Usuario(int cedula, String nombre, String apellido, String areaAsignada, String rol, String pass) {
+    public Usuario(int cedula, String username,  String areaAsignada, String rol, String pass) {
         this.cedula = cedula;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.areaAsignada = areaAsignada;
+        this.username = username;
+            this.areaAsignada = areaAsignada;
         this.rol = rol;
         this.pass = pass;
     }
@@ -48,21 +46,15 @@ public class Usuario {
         this.cedula = cedula;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
 
     public String getAreaAsignada() {
         return areaAsignada;
@@ -82,7 +74,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", areaAsignada=" + areaAsignada + ", rol=" + rol + ", pass=" + pass + '}';
+        return "Usuario{" + "cedula=" + cedula + ", Username=" + username + ", areaAsignada=" + areaAsignada + ", rol=" + rol + ", pass=" + pass + '}';
     }
 
 }
