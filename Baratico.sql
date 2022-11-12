@@ -82,14 +82,14 @@ constraint PK_cedula primary key (cedula)
 );
 
 create table producto (
-producto_id number not null,
-plu number,
-ean number,
+codigo varchar(30) not null,
+plu int,
+ean float,
 descripcion varchar(40) not null,
-precio number not null,
-peso number,
-cantidad number not null,
-area number not null,
+precio float not null,
+peso float,
+cantidad int not null,
+area varchar(15) not null,
 constraint PK_Codigo primary key (codigo)
 );
 
@@ -295,14 +295,14 @@ end;
 /**************************************************** Inserta Producto ************************************************************/
 
 CREATE OR REPLACE NONEDITIONABLE PROCEDURE inserta_producto (
-p_codigo in number,
-p_plu in number,
-p_ean in number,
-p_desc in varchar,
-p_precio in number,
-p_peso in number,
-p_cantidad in number,
-p_area in number
+    p_codigo in varchar,
+    p_plu in int,
+    p_ean in float,
+    p_desc in varchar,
+    p_precio in float,
+    p_peso in float,
+    p_cantidad in int,
+    p_area in varchar
 )
 AS
 BEGIN
@@ -329,11 +329,17 @@ END;
 
 /**************************************************** Actualizar producto **************************************************/
 
-create or replace procedure updateProducto (descrip producto.descripcion%type, cant producto.cantidad%type, 
-prec producto.precio%type, t producto.tipo%type, p producto.peso%type, cate producto.categoria%type, cod producto.codigo%type)
+create or replace procedure updateProducto (
+    descrip producto.descripcion%type,
+    cant producto.cantidad%type,
+    prec producto.precio%type, 
+    a producto.area%type, 
+    p producto.peso%type, 
+    cod producto.codigo%type
+)
 AS
 BEGIN
-    UPDATE producto SET descripcion = descrip, cantidad = cantidad + cant, precio = prec, tipo = t, peso = p, categoria = cate
+    UPDATE producto SET descripcion = descrip, cantidad = cantidad + cant, precio = prec, area = a, peso = p
     where codigo = cod;
 EXCEPTION
     WHEN OTHERS THEN 
