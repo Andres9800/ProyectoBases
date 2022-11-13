@@ -13,9 +13,7 @@ import javax.swing.JOptionPane;
 
 public class Facturar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Facturar
-     */
+
      public Facturar(int numero) {
         this.numero = numero;
         this.controlador = new Controlador();
@@ -178,13 +176,13 @@ public class Facturar extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(totalText, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(genFact, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)))
                 .addComponent(Volver1)
-                .addGap(21, 21, 21))
+                .addContainerGap())
         );
 
         pack();
@@ -242,6 +240,7 @@ public class Facturar extends javax.swing.JFrame {
              
              // TODO add your handling code here:
              controlador.meterAlCarro(this.codigoprod.getText(),(Float)this.cantProd.getValue());
+             
              this.productos.setText(controlador.parseaLista(controlador.todoCarrito()));
              this.codigoprod.setText("");
              this.cantProd.setValue(0f);

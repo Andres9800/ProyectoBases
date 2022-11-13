@@ -67,15 +67,13 @@ public class Dao {
 
     public void updateProducto(Producto p) throws SQLException { // 
         conn = c.conectar();
-        CallableStatement cst = conn.prepareCall("{call updateproducto (?,?,?,?,?,?,?,?)}");
+        CallableStatement cst = conn.prepareCall("{call updateproducto (?,?,?,?,?,?)}");
         cst.setString(1, p.getDescripcion());
         cst.setInt(2, p.getCantidad());
         cst.setFloat(3, p.getPrecio());
         cst.setString(4, p.getArea());
         cst.setFloat(5, p.getPeso());
-        cst.setInt(6, p.getPlu());
-        cst.setFloat(7, p.getEan());
-        cst.setString(8, p.getCodigo());
+        cst.setString(6, p.getCodigo());
         cst.execute();
         conn.close();
     }

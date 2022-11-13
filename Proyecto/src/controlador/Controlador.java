@@ -305,11 +305,11 @@ public class Controlador {
 
         for (Producto u : modelo.todoCarrito()) {
             if (u.getArea().equals("Fresco") || u.getArea().equals("fresco")) {
+                
                 dao.insertarDetalle(fact, 0, u.getPeso(), u.getCodigo(), 1);
             } else {
                 dao.insertarDetalle(fact, u.getCantidad(), 0.0f, u.getCodigo(), 0);
             }
-
         }
 
         //cajero deberia estar guardado en model

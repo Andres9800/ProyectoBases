@@ -36,9 +36,9 @@ public class Proyecto {
 //            miDao.insertProducto(miP);
         List<Producto> miLista = miDao.listaProductos();
 
-        // for(int i = 0;i<miLista.size();i++){
-        //  System.out.print(miLista.get(i).toString()+"\n");
-        // } 
+         for(int i = 0;i<miLista.size();i++){
+          System.out.print(miLista.get(i).toString()+"\n");
+         } 
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             JFrame.setDefaultLookAndFeelDecorated(true);

@@ -26,7 +26,7 @@ DROP TABLE detalle CASCADE CONSTRAINTS;
 
 DROP TABLE tabla_maestra_auditoria CASCADE CONSTRAINTS;
 
---DROP TABLE auditoria_mov CASCADE CONSTRAINTS;
+DROP TABLE auditoria_mov CASCADE CONSTRAINTS;
 DROP TABLE auditoria_cajeros CASCADE CONSTRAINTS;
 DROP TABLE registroUsuario CASCADE CONSTRAINTS;
 DROP TABLE movimientoProducto CASCADE CONSTRAINTS;
@@ -94,11 +94,6 @@ create table tabla_maestra_auditoria(
     fecha timestamp,
     usuario varchar(30),
     tabla_afectada varchar(30)
-);
-create table registroUsuario(
-cedula int not null,
-username varchar(45) not null,
-constraint FK_cedula_RU foreign key (cedula) references usuario (cedula)
 );
 
 /***************** SECCION DE USUARIOS Y ROLES **************************/
@@ -215,21 +210,18 @@ create or replace trigger audita_dml_producto
     after insert or update or delete
     on producto
     for each row
-declare
-vuser varchar(30);
 begin
-select max(username) into vuser from registroUsuario where rowid = (select max(rowid) from registroUsuario);
 if inserting then
     insert into tabla_maestra_auditoria(codigo,accion,fecha,usuario, tabla_afectada)
-    values (:new.codigo,'producto insertado',sysdate,vuser, 'producto');
+    values (:new.codigo,'producto insertado',sysdate,user, 'producto');
 end if;
 if updating then
     insert into tabla_maestra_auditoria(codigo,accion,fecha,usuario, tabla_afectada)
-    values (:old.codigo,'producto modificado',sysdate,vuser, 'producto');
+    values (:old.codigo,'producto modificado',sysdate,user, 'producto');
 end if;
 if deleting then
     insert into tabla_maestra_auditoria(codigo,accion,fecha,usuario, tabla_afectada)
-    values (:old.codigo,'producto borrado',sysdate,vuser, 'producto');
+    values (:old.codigo,'producto borrado',sysdate,user, 'producto');
 end if;
 end audita_dml_producto;
 /
@@ -284,7 +276,11 @@ monto_total float not null,
 fecha date not null,
 hora varchar(5) not null 
 );
-
+create table registroUsuario(
+cedula int not null,
+username varchar(45) not null,
+constraint FK_cedula_RU foreign key (cedula) references usuario (cedula)
+);
 create table movimientoProducto(
 movimiento NUMBER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1),
 codigo varchar(15) not null,
@@ -348,11 +344,6 @@ EXCEPTION
         RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de actualizacion incorrectos en producto');
 END;
 /
-show error
-
-call updateProducto('hola',10,10,'Personal',10,'1234');
-
-commit;
 
 /**************************************************** Eliminar producto **************************************************/
 CREATE OR REPLACE PROCEDURE deleteProducto (cod producto.codigo%type)
@@ -369,11 +360,11 @@ END;
 
 /************************************************** Creacion de cursor **************************************************************/
 
-CREATE OR REPLACE PACKAGE types
+/*CREATE OR REPLACE PACKAGE types
 AS
      TYPE ref_cursor IS REF CURSOR;
 END;
-/ 
+/ */
 
 /************************************************** Lista de productos ***********************************************************/
 
@@ -502,7 +493,6 @@ BEGIN
     select cantidad into v_old_cant from producto where codigo=prod;
     if((v_old_cant - cant)>-1) then
         UPDATE producto set cantidad=(v_old_cant - cant) where codigo=prod;
-        commit;
     else
         raise err1;
     end if;
@@ -513,7 +503,6 @@ EXCEPTION
         RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR usuario no logeado');
 END;
 /
-show error
 CREATE OR REPLACE PROCEDURE insertar_detalle (IDf factura.idfactura%type, cant detalle.cantidadProducto%type,pess detalle.pesoProducto%type, prod detalle.codigo%type, tipo int) 
 AS
     v_idprod int;
@@ -524,8 +513,7 @@ BEGIN
     if(v_idprod!=0) then
             producto_resta_cantidad(prod,cant);
             select precio into v_valor from producto where codigo=prod;
-            insert into detalle(idfacturaF,cantidadProducto,pesoProducto,subTotal,total,codigo) values (IDf,cant,pess,(pess*v_valor),(pess*v_valor),prod);
-            commit;
+            insert into detalle(idfacturaF,cantidadProducto,pesoProducto,subTotal,total,codigo) values (IDf,0,pess,(pess*v_valor),(pess*v_valor),prod);
     else 
         raise err1;
     end if;
@@ -536,10 +524,7 @@ EXCEPTION
         RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR error al insertar-contacte al admin');
 END;
 /
-show error
 
-
---call insertar_detalle(3,5,10,'1234',1);
 /*------------------------------------------------------------------------------------------------Inserts*/
 
 
@@ -557,12 +542,7 @@ Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (1111,
 
 
 
-Insert into SYSTEM.PRODUCTO (CODIGO,PLU,EAN,DESCRIPCION,PRECIO,PESO,CANTIDAD,AREA) values ('1234',8912,378424715,'lechuga',750.6,400.2,15,'Fresco');
-Insert into SYSTEM.PRODUCTO (CODIGO,PLU,EAN,DESCRIPCION,PRECIO,PESO,CANTIDAD,AREA) values ('1235',1094,378424715,'Arroz',100,325.2,60,'Abarrote');
-Insert into SYSTEM.PRODUCTO (CODIGO,PLU,EAN,DESCRIPCION,PRECIO,PESO,CANTIDAD,AREA) values ('1236',4141,378424715,'Frijojes',100,325.2,55,'Abarrote');
-Insert into SYSTEM.PRODUCTO (CODIGO,PLU,EAN,DESCRIPCION,PRECIO,PESO,CANTIDAD,AREA) values ('1237',4165,154848115,'leche',7050,0,30,'Fresco');
-Insert into SYSTEM.PRODUCTO (CODIGO,PLU,EAN,DESCRIPCION,PRECIO,PESO,CANTIDAD,AREA) values ('6060',5478,514884544,'Atun',10,0,10,'Abarrote');
-Insert into SYSTEM.PRODUCTO (CODIGO,PLU,EAN,DESCRIPCION,PRECIO,PESO,CANTIDAD,AREA) values ('8080',4110,216451874,'TioPelon',110,1,20,'Mercancia');
+
 
 
 
@@ -577,10 +557,6 @@ commit;
 --quitar nombre y apellido
 --nombre se pasa a username
 
---select* from tabla_maestra_auditoria;
---select* from registroUsuario;
-
---8:13
 
 
 
