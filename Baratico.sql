@@ -1,7 +1,15 @@
+-- Proyecto Administracion de Bases de Datos
+-- II Ciclo - 2022
+-- Autores:
+-- Andres Rojas Rojas
+-- Joaquin Barrientos
+-- Wendy Largaespada
+-- Andres Cordero
+
 alter session set "_ORACLE_SCRIPT"=true;
 
-/**************************************  Drops *****************************************************/
---Drop de usuarios
+/**************************** SECCION DE DROPS *******************************/
+PROMPT === DROPS DE USUARIOS ===
 drop user "cajero" CASCADE;
 drop user "gerentefrescos" CASCADE;
 drop user "gerenteabarrotes" CASCADE;
@@ -9,16 +17,21 @@ drop user "gerentepersonal" CASCADE;
 drop user "gerentemercancia" CASCADE;
 drop user "gerentegeneral" CASCADE;
 drop user "sistemas" CASCADE;
---Drop de tablas
+
+PROMPT === DROPS DE TABLAS ===
 DROP TABLE usuario CASCADE CONSTRAINTS;
 DROP TABLE producto CASCADE CONSTRAINTS;
 DROP TABLE factura CASCADE CONSTRAINTS;
 DROP TABLE detalle CASCADE CONSTRAINTS;
+
+DROP TABLE tabla_maestra_auditoria CASCADE CONSTRAINTS;
+
 DROP TABLE auditoria_mov CASCADE CONSTRAINTS;
 DROP TABLE auditoria_cajeros CASCADE CONSTRAINTS;
 DROP TABLE registroUsuario CASCADE CONSTRAINTS;
 DROP TABLE movimientoProducto CASCADE CONSTRAINTS;
---Drop de roles
+
+PROMPT === DROPS DE ROLES ===
 drop role "cajeros";
 drop role "fresco";
 drop role "mercancia";
@@ -26,52 +39,10 @@ drop role "personal";
 drop role "abarrote";
 drop role "general";
 drop role "sistema";
-/**************************************  Creacion de usuarios y roles *****************************************************/
 
-create user "cajero" identified by "cajero"
-default tablespace users
-temporary TABLESPACE temp
-quota unlimited on users
-;
 
-create user "gerentefrescos" identified by "gerentefrescos"
-default tablespace users
-temporary TABLESPACE temp
-quota unlimited on users
-;
-
-create user "gerenteabarrotes" identified by "gerenteabarrotes"
-default tablespace users
-temporary TABLESPACE temp
-quota unlimited on users
-;
-
-create user "gerentepersonal" identified by "gerentepersonal"
-default tablespace users
-temporary TABLESPACE temp
-quota unlimited on users
-;
-
-create user "gerentemercancia" identified by "gerentemercancia"
-default tablespace users
-temporary TABLESPACE temp
-quota unlimited on users
-;
-
-create user "gerentegeneral" identified by "gerentegeneral"
-default tablespace users
-temporary TABLESPACE temp
-quota unlimited on users
-;
-
-create user "sistemas" identified by "sistemas"
-default tablespace users
-temporary TABLESPACE temp
-quota unlimited on users
-;
-
-/***********************************************  Creacion de tablas ********************************************************/
-
+/******************  SECCION DE CREACION DE TABLAS ************************/
+PROMPT === CREAICON DE TABLAS DE NEGOCIO ===
 create table usuario (
 cedula int not NULL,
 username varchar(45) not null,
@@ -115,28 +86,54 @@ constraint FK_factura foreign key (idfacturaF) references factura(idfactura),
 constraint FK_codigo foreign key (codigo) references producto(codigo)
 );
 
-/*********************************************** Creacion de privilegios ***************************************************/
+PROMPT == CREACION DE TABLAS DE AUDITORIA ==
 
-grant connect, resource to "cajero";
-grant connect, resource to "gerentefrescos";
-grant connect, resource to "gerenteabarrotes";
-grant connect, resource to "gerentepersonal";
-grant connect, resource to "gerentemercancia";
-grant connect, resource to "gerentegeneral";
-grant connect, resource to "sistemas";
+create table tabla_maestra_auditoria(
+    codigo varchar(30) not null,
+    accion varchar(30)not null,
+    fecha timestamp,
+    usuario varchar(30),
+    tabla_afectada varchar(30)
+);
 
-/*********************************************** Creacion de sesion *********************************************************/
+/***************** SECCION DE USUARIOS Y ROLES **************************/
+PROMPT === CREACION DE USUARIOS ===
+create user "cajero" identified by "cajero"
+default tablespace users
+temporary TABLESPACE temp
+quota unlimited on users;
 
-grant create session to "cajero";
-grant create session to "gerentefrescos";
-grant create session to "gerenteabarrotes";
-grant create session to "gerentepersonal";
-grant create session to "gerentemercancia";
-grant create session to "gerentegeneral";
-grant create session to "sistemas";
+create user "gerentefrescos" identified by "gerentefrescos"
+default tablespace users
+temporary TABLESPACE temp
+quota unlimited on users;
 
-/*********************************************** Creacion de roles **********************************************************/
+create user "gerenteabarrotes" identified by "gerenteabarrotes"
+default tablespace users
+temporary TABLESPACE temp
+quota unlimited on users;
 
+create user "gerentepersonal" identified by "gerentepersonal"
+default tablespace users
+temporary TABLESPACE temp
+quota unlimited on users;
+
+create user "gerentemercancia" identified by "gerentemercancia"
+default tablespace users
+temporary TABLESPACE temp
+quota unlimited on users;
+
+create user "gerentegeneral" identified by "gerentegeneral"
+default tablespace users
+temporary TABLESPACE temp
+quota unlimited on users;
+
+create user "sistemas" identified by "sistemas"
+default tablespace users
+temporary TABLESPACE temp
+quota unlimited on users;
+
+PROMPT === CREAICION DE ROLES ===
 create role "cajeros";
 create role "fresco";
 create role "mercancia";
@@ -144,8 +141,6 @@ create role "personal";
 create role "abarrote";
 create role "general";
 create role "sistema";
-
-/*********************************************** Asignacion de funciones ****************************************************/
 
 grant update (descripcion, peso) on producto to "fresco";
 grant update (descripcion, cantidad) on producto to "abarrote";
@@ -165,8 +160,42 @@ grant insert on detalle to "cajeros";
 grant update, select on factura to "general";
 grant update, select on detalle to "general";
 
-/*********************************************** Asignacion de rol a cada usuario *******************************************/
+PROMPT === GRANT A USUARIOS ===
+grant connect, resource to "cajero";
+grant connect, resource to "gerentefrescos";
+grant connect, resource to "gerenteabarrotes";
+grant connect, resource to "gerentepersonal";
+grant connect, resource to "gerentemercancia";
+grant connect, resource to "gerentegeneral";
+grant connect, resource to "sistemas";
+grant create session to "cajero";
+grant create session to "gerentefrescos";
+grant create session to "gerenteabarrotes";
+grant create session to "gerentepersonal";
+grant create session to "gerentemercancia";
+grant create session to "gerentegeneral";
+grant create session to "sistemas";
 
+PROMPT === ASIGNAR PRIVILEGIOS A ROLES ===
+grant update (descripcion, peso) on producto to "fresco";
+grant update (descripcion, cantidad) on producto to "abarrote";
+grant update (descripcion, cantidad) on producto to "mercancia";
+grant update (descripcion, cantidad) on producto to "personal";
+grant select on producto to "fresco";
+grant select on producto to "abarrote";
+grant select on producto to "mercancia";
+grant select on producto to "personal";
+grant update (peso) on producto to "cajeros";
+grant update (cantidad) on producto to "cajeros";
+grant select on producto to "cajeros";
+grant select,update,insert,delete on producto to "general";
+grant select,update,insert,delete on producto to "sistema";
+grant insert on factura to "cajeros";
+grant insert on detalle to "cajeros";
+grant update, select on factura to "general";
+grant update, select on detalle to "general";
+
+PROMPT === ASIGNAR ROLES A USUARIOS ===
 grant "cajeros" to "cajero";
 grant "fresco" to "gerentefrescos";
 grant "mercancia" to "gerentemercancia";
@@ -175,17 +204,68 @@ grant "abarrote" to "gerenteabarrotes";
 grant "general" to "gerentegeneral";
 grant "sistema" to "sistemas";
 
-/*********************************************** Creacion de tablas de auditoria ********************************************/
-/*Insertar, modificar y eliminar productos*/
-create table auditoria_mov(
-id_venta NUMBER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1),
-descripcion varchar(40) not null,
-accion varchar(30) not null,
-fecha date not null,
-hora varchar(5) not null,
-usuario varchar(30) not null,
-tabla_afec varchar(30) not null
-);
+/****** SECCION DE CREACION DE TRIGGERS ****/
+PROMPT == CREACION DE TRIGGERS ==
+create or replace trigger audita_dml_producto
+    after insert or update or delete
+    on producto
+    for each row
+begin
+if inserting then
+    insert into tabla_maestra_auditoria(codigo,accion,fecha,usuario, tabla_afectada)
+    values (:new.codigo,'producto insertado',sysdate,user, 'producto');
+end if;
+if updating then
+    insert into tabla_maestra_auditoria(codigo,accion,fecha,usuario, tabla_afectada)
+    values (:old.codigo,'producto modificado',sysdate,user, 'producto');
+end if;
+if deleting then
+    insert into tabla_maestra_auditoria(codigo,accion,fecha,usuario, tabla_afectada)
+    values (:old.codigo,'producto borrado',sysdate,user, 'producto');
+end if;
+end audita_dml_producto;
+/
+
+create or replace trigger audita_dml_factura
+    after insert or update or delete
+    on factura
+    for each row
+begin
+if inserting then
+    insert into tabla_maestra_auditoria(codigo,accion,fecha,usuario, tabla_afectada)
+    values (:new.idfactura,'factura insertada',sysdate,user, 'factura');
+end if;
+if updating then
+    insert into tabla_maestra_auditoria(codigo,accion,fecha,usuario, tabla_afectada)
+    values (:old.idfactura,'facutra modificada',sysdate,user, 'factura');
+end if;
+if deleting then
+    insert into tabla_maestra_auditoria(codigo,accion,fecha,usuario, tabla_afectada)
+    values (:old.idfactura,'factura borrada',sysdate,user, 'factura');
+end if;
+end audita_dml_factura;
+/
+
+create or replace trigger audita_dml_detalle
+    after insert or update or delete
+    on detalle
+    for each row
+begin
+if inserting then
+    insert into tabla_maestra_auditoria(codigo,accion,fecha,usuario, tabla_afectada)
+    values (:new.idDetalle,'detalle de venta insertado',sysdate,user, 'detalle');
+end if;
+if updating then
+    insert into tabla_maestra_auditoria(codigo,accion,fecha,usuario, tabla_afectada)
+    values (:old.idDetalle,'detalle de venta modificado',sysdate,user, 'detalle');
+end if;
+if deleting then
+    insert into tabla_maestra_auditoria(codigo,accion,fecha,usuario, tabla_afectada)
+    values (:old.idDetalle,'detalle de venta borrado',sysdate,user, 'detalle');
+end if;
+end audita_dml_detalle;
+/
+
 /*Registra las ventas de los cajeros*/
 create table auditoria_cajeros(
 id_cajero NUMBER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1),
@@ -208,95 +288,22 @@ descripcion varchar(30) not null,
 constraint PK_movimiento primary key (movimiento)
 );
 
-/***************************************** Creacion de TRIGGERS ************************************************************/
-/**************************************** Insercion de productos ***********************************************************/
+/*************** SECCION DE CREACION DE VISTAS *********************/
+CREATE OR REPLACE VIEW auditoria_producto as
+    SELECT * FROM tabla_maestra_auditoria
+    where tabla_afectada = 'producto';
 
+CREATE OR REPLACE VIEW auditoria_factura as
+    SELECT * FROM tabla_maestra_auditoria
+    where tabla_afectada = 'factura';
+    
+CREATE OR REPLACE VIEW auditoria_datalle as
+    SELECT * FROM tabla_maestra_auditoria
+    where tabla_afectada = 'detalle';
+    
 
-
-create or replace NONEDITIONABLE trigger audita_insertar_producto
-after insert on producto
-declare
-v_fecha date;
-v_hora varchar(5);
-v_usuario varchar(30);
-v_descripcion varchar(40);
-begin
-select max(username) into v_usuario from registroUsuario where rowid = (select max(rowid) from registroUsuario);
-select sysdate into v_fecha from dual;
-SELECT TO_CHAR(SYSDATE,'HH24:MI') into v_hora FROM DUAL;
-select max(descripcion) into v_descripcion from movimientoProducto where rowid = (select max(rowid) from movimientoProducto);
-insert into auditoria_mov (descripcion,accion,fecha,hora,usuario,tabla_afec) values('Inserta Producto', v_descripcion, v_fecha, 
-v_hora, v_usuario,'producto');
-end;
-/
-
-/**************************************** Actualizacion de productos ***********************************************************/
-
-create or replace NONEDITIONABLE trigger audita_actualizar_producto
-after update on producto
-declare
-v_fecha date;
-v_hora varchar(5);
-v_usuario varchar(30);
-v_descripcion varchar(40);
-begin
-select max(username) into v_usuario from registroUsuario where rowid = (select max(rowid) from registroUsuario);
-select sysdate into v_fecha from dual;
-SELECT TO_CHAR(SYSDATE,'HH24:MI') into v_hora FROM DUAL;
-select max(descripcion) into v_descripcion from movimientoProducto where rowid = (select max(rowid) from movimientoProducto);
-insert into auditoria_mov(descripcion,accion,fecha,hora,usuario,tabla_afec)values('Actualizar Producto',v_descripcion,v_fecha,
-v_hora, v_usuario,'producto');
-end;
-/
-
-/********************************************** Borrado de productos ***********************************************************/
-
-create or replace NONEDITIONABLE trigger audita_elimina_producto
-before delete on producto
-declare
-v_fecha date;
-v_hora varchar(5);
-v_usuario varchar(30);
-v_descripcion varchar(40);
-begin
-select max(username) into v_usuario from registroUsuario where rowid = (select max(rowid) from registroUsuario);
-select sysdate into v_fecha from dual;
-SELECT TO_CHAR(SYSDATE,'HH24:MI') into v_hora FROM DUAL;
-select max(descripcion) into v_descripcion from movimientoProducto where rowid = (select max(rowid) from movimientoProducto);
-insert into auditoria_mov(descripcion,accion,fecha,hora,usuario,tabla_afec)values('Borra Producto',v_descripcion,v_fecha,v_hora, 
-v_usuario,'producto');
-end;
-/
-
-/********************************************** Insertar Detalle ***********************************************************/
-/******************************************** Revisar mas adelante *********************************************************/
-
-create or replace NONEDITIONABLE trigger audita_inserta_detalle
-after insert on detalle
-declare
-v_fecha date;
-v_hora varchar(5);
-v_usuario varchar(30);
-v_numCaja int;
-v_numFact int;
-v_montoTot float;
-begin
-select max(username) into v_usuario from registroUsuario where rowid = (select max(rowid) from registroUsuario);
-select sysdate into v_fecha from dual;
-SELECT TO_CHAR(SYSDATE,'HH24:MI') into v_hora FROM DUAL;
-select max(num_caja) into v_numCaja from factura where rowid = (select max(rowid) from factura);
-select max(idfactura) into v_numFact from factura where rowid = (select max(rowid) from factura);
-select max(total) into v_montoTot from detalle where rowid = (select max(rowid) from detalle);
-insert into auditoria_cajeros(usuario,num_caja,num_fact,monto_total,fecha,hora) values(v_usuario,v_numCaja,v_numFact,v_montoTot,v_fecha,
-v_hora);
-end;
-/
-
-/************************************* Creacion de PROCEDIMIENTOS ALMACENADOS ***************************************************/
-
-/**************************************************** Inserta Producto ************************************************************/
-
-
+    
+/*************** SECCION DE PROCEDIMIENTOS ALMACENADOS *********************/
 CREATE OR REPLACE NONEDITIONABLE PROCEDURE inserta_producto (
     p_codigo in varchar,
     p_plu in int,
@@ -314,32 +321,13 @@ BEGIN
         commit;
 EXCEPTION
     WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de insercion incorrectos en producto');
+        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR de insercion: datos incorrectos en producto');
 END;
 /
 show error
 
 
-
-
-
-/**************************************************** Inserta usuario *********************************************************/
-
-CREATE OR REPLACE NONEDITIONABLE PROCEDURE inserta_usuario (ced usuario.cedula%type, username usuario.username%type, areaAsig usuario.areaAsignada%type, rol usuario.rol%type, pas usuario.pass%type)
-AS
-BEGIN
-    INSERT INTO usuario values (ced,username,areaAsig,rol,pas);
-EXCEPTION
-    WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR datos de inserciÃƒÂ³n incorrectos en usuario');
-END;
-/
-
-
-
-/**************************************************** Actualizar producto **************************************************/
-
-create or replace procedure updateProducto (
+CREATE OR REPLACE PROCEDURE updateProducto (
     descrip producto.descripcion%type,
     cant producto.cantidad%type,
     prec producto.precio%type, 
@@ -358,8 +346,7 @@ END;
 /
 
 /**************************************************** Eliminar producto **************************************************/
-
-create or replace procedure deleteProducto (cod producto.codigo%type)
+CREATE OR REPLACE PROCEDURE deleteProducto (cod producto.codigo%type)
 AS
 BEGIN
     delete from producto where codigo = cod;
@@ -373,11 +360,11 @@ END;
 
 /************************************************** Creacion de cursor **************************************************************/
 
-CREATE OR REPLACE PACKAGE types
+/*CREATE OR REPLACE PACKAGE types
 AS
      TYPE ref_cursor IS REF CURSOR;
 END;
-/ 
+/ */
 
 /************************************************** Lista de productos ***********************************************************/
 
@@ -405,44 +392,8 @@ begin
 end;
 /
 
-/************************************************** Registrar usuario ***********************************************************/
 
-create or replace procedure registrarUsuario (ced registroUsuario.cedula%type, nom registroUsuario.username%type)
-AS
-BEGIN
-    insert into registroUsuario values(ced,nom);
-EXCEPTION
-    WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR al registrar datos en registroUsuario');
-END;
-/
-
-/************************************************** Movimiento de productos *****************************************************/
-
-create or replace procedure movimientosProductos (cod movimientoProducto.codigo%type, descrip movimientoProducto.descripcion%type)
-AS
-BEGIN
-    insert into movimientoProducto(codigo,descripcion) values(cod,descrip);
-EXCEPTION
-    WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR al registrar datos en movimientoProducto');
-END;
-/
-
-/************************************************** Lista de movimientos ********************************************************/
-
-create or replace function listarMovimientos
-return Types.ref_cursor
-as
-    solicitud_cursor_mov Types.ref_cursor;
-begin
-    open solicitud_cursor_mov for
-    select * from auditoria_mov;
-    return solicitud_cursor_mov;
-end;
-/
-
-/************************************************** Lista de movimientos DETALLES ********************************************************/
+/********* Lista de movimientos DETALLES ******************/
 
 create or replace function listarMovimientosDet
 return Types.ref_cursor
@@ -456,10 +407,7 @@ end;
 /
 
 
-
-/*********************************************************************************************************************/
-/**********************************************Insertar Factura*******************************************************/
-/*********************************************************************************************************************/
+/********************* Insertar Factura ****************/
 CREATE OR REPLACE NONEDITIONABLE PROCEDURE inserta_factura (caj factura.num_caja%type) 
 AS
     v_fecha date;
@@ -489,10 +437,7 @@ END;
 /
 
 
-
-
-/*********************************************************************************************************************/
-/*modificadores de peso y cant*/
+/**************** modificadores de peso y cant ***************/
 
 CREATE OR REPLACE PROCEDURE modifica_peso_fresco_dif (prod producto.codigo%type, cant producto.peso%type) 
 AS
@@ -526,7 +471,6 @@ BEGIN
     else
         raise err1;
     end if;
-
 EXCEPTION
     WHEN err1 THEN
         RAISE_APPLICATION_ERROR(NUM=> -20012, MSG=> 'SUPERA CANTIDAD');
@@ -541,6 +485,24 @@ END;
 /**********************************************Insertar Detalle*******************************************************/
 /*********************************************************************************************************************/
 
+CREATE OR REPLACE PROCEDURE producto_resta_cantidad (prod producto.codigo%type, cant producto.cantidad%type) 
+AS
+    v_old_cant int;
+    err1 exception;
+BEGIN
+    select cantidad into v_old_cant from producto where codigo=prod;
+    if((v_old_cant - cant)>-1) then
+        UPDATE producto set cantidad=(v_old_cant - cant) where codigo=prod;
+    else
+        raise err1;
+    end if;
+EXCEPTION
+    WHEN err1 THEN
+        RAISE_APPLICATION_ERROR(NUM=> -20012, MSG=> 'SUPERA CANTIDAD');
+    WHEN OTHERS THEN 
+        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR usuario no logeado');
+END;
+/
 CREATE OR REPLACE PROCEDURE insertar_detalle (IDf factura.idfactura%type, cant detalle.cantidadProducto%type,pess detalle.pesoProducto%type, prod detalle.codigo%type, tipo int) 
 AS
     v_idprod int;
@@ -549,20 +511,12 @@ AS
 BEGIN
     select count(codigo) into v_idprod from producto where codigo=prod;
     if(v_idprod!=0) then
-        if(tipo!=0) then
-            modifica_peso_fresco_dif(prod,pess);
+            producto_resta_cantidad(prod,cant);
             select precio into v_valor from producto where codigo=prod;
-            insert into detalle(idfacturaF,cantidadProducto,pesoProducto,subTotal,total,codigo) values (IDf,0,pess,(pess*v_valor),(pess*v_valor),prod);
-        else
-            modifica_cant_dif(prod,cant);
-            select precio into v_valor from producto where codigo=prod;
-            insert into detalle(idfacturaF,cantidadProducto,pesoProducto,subTotal,total,codigo) values (IDf,cant,0.0f,(cant*v_valor),(cant*v_valor),prod);
-        end if;
+            insert into detalle(idfacturaF,cantidadProducto,pesoProducto,subTotal,total,codigo) values (IDf,0,pess,(pessv_valor),(pessv_valor),prod);
     else 
         raise err1;
     end if;
-    
-
 EXCEPTION
     WHEN err1 THEN 
         RAISE_APPLICATION_ERROR(NUM=> -20012, MSG=> 'ERROR-PRODUCTO NO ENCONTRADO');
@@ -587,7 +541,26 @@ Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (1010,
 Insert into SYSTEM.USUARIO (CEDULA,USERNAME,AREAASIGNADA,ROL,PASS) values (1111,'ingeniero2','Sistemas','ingenieros','ingenieros');
 
 --select *from usuario;
-drop trigger audita_insertar_producto;
+
 commit;
 --quitar nombre y apellido
 --nombre se pasa a username
+select * from producto;
+delete from producto ;
+
+call inserta_producto (
+    '122344S',
+    8912,
+    378424715000000,
+    'repollo',
+    750.6,
+    400.2,
+    15,
+    'Fresco'
+);
+
+
+select * from tabla_maestra_auditoria;
+delete from tabla_maestra_auditoria;
+
+update producto set descripcion = 'repollo morado' where codigo = '122344S';
