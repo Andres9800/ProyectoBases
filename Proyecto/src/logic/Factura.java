@@ -1,18 +1,16 @@
-package entidades;
+package logic;
 
 import java.io.Serializable;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
 
 @XmlRootElement(name = "factura")
 @XmlType(propOrder = {"nomEmp", "direcEmp", "telEmp", "cedJur", "fecha", "numFactElec", "nomClie", "cedClie", "codCaja", "nomCaja", "lp", "subTotal", "descuento", "IVA", "total"})
 public class Factura implements Serializable {
 
     public Factura(String nomEmp, String DirecEmp, int TelEmp, int CedJur, String Fecha, int numFactElec, String nomClie, String cedClie, int codCaja, String nomCaja,
-            /*ListaProducto lp,*/ double subTotal, double descuento, double IVA, double total) {
+            double subTotal, double descuento, double IVA, double total) {
 
         this.nomEmp = nomEmp;
         this.DirecEmp = DirecEmp;
@@ -30,8 +28,8 @@ public class Factura implements Serializable {
         this.IVA = IVA;
         this.total = total;
     }
-    
-    public Factura(){
+
+    public Factura() {
         this.nomEmp = "-";
         this.DirecEmp = "-";
         this.TelEmp = 0;
@@ -42,7 +40,6 @@ public class Factura implements Serializable {
         this.cedClie = "-";
         this.codCaja = 0;
         this.nomCaja = "-";
-        //this.lp = null;
         this.subTotal = 0;
         this.descuento = 0;
         this.IVA = 0;
@@ -99,11 +96,6 @@ public class Factura implements Serializable {
         return nomCaja;
     }
 
-    /*@XmlElement
-    public ListaProducto getLp() {
-        return lp;
-    }*/
-
     @XmlElement
     public double getSubTotal() {
         return subTotal;
@@ -123,7 +115,7 @@ public class Factura implements Serializable {
     public double getTotal() {
         return total;
     }
-    
+
     @Override
     public String toString() {
         StringBuilder r = new StringBuilder();
@@ -147,8 +139,6 @@ public class Factura implements Serializable {
         r.append("\n");
         r.append(getNomCaja());
         r.append("\n");
-        //r.append(lp.toString());
-        //r.append("\n");
         r.append(getSubTotal());
         r.append("\n");
         r.append(getDescuento());
@@ -171,7 +161,6 @@ public class Factura implements Serializable {
     private final String cedClie;
     private final int codCaja;
     private final String nomCaja;
-    //private final ListaProducto lp;
     private final double subTotal;
     private final double descuento;
     private final double IVA;

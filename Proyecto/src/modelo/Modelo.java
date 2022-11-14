@@ -1,7 +1,7 @@
 package modelo;
 
-import entidades.Producto;
-import entidades.Usuario;
+import logic.Producto;
+import logic.Usuario;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

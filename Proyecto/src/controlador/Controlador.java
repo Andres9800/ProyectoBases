@@ -1,20 +1,16 @@
 package controlador;
 
-import entidades.Monitoreo;
-import entidades.Producto;
-import entidades.Usuario;
+import logic.Monitoreo;
+import logic.Producto;
+import logic.Usuario;
 import java.sql.SQLException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
 import modelo.Dao;
 import modelo.Modelo;
 
-/**
- *
- * @author Greivin
- */
+
 public class Controlador {
 
     public Controlador(Modelo modelo) {

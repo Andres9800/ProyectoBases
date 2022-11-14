@@ -6,7 +6,7 @@
 package vista;
 
 import controlador.Controlador;
-import entidades.Producto;
+import logic.Producto;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 

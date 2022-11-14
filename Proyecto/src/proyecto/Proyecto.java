@@ -1,9 +1,7 @@
 package proyecto;
 
 import controlador.Controlador;
-import entidades.Monitoreo;
-import entidades.Producto;
-import entidades.Usuario;
+import logic.Monitoreo;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JFrame;
@@ -14,19 +12,11 @@ import modelo.Dao;
 import vista.Login;
 
 public class Proyecto {
-    
-
-
-
 
     public static void main(String[] args) throws SQLException {
 
         Dao miDao = new Dao();
         Controlador miControl = new Controlador();
-        
-        
-
-        
 
         //Producto prod = miControl.recuperarProductoPorCodOb("1234");
         //prod.setDescripcion("MODIFI");
@@ -37,9 +27,9 @@ public class Proyecto {
 //            miDao.insertProducto(miP);
         List<Monitoreo> miLista = miDao.listarBitProductos();
 
-         for(int i = 0;i<miLista.size();i++){
-          System.out.print(miLista.get(i).toString()+"\n");
-         } 
+        for (int i = 0; i < miLista.size(); i++) {
+            System.out.print(miLista.get(i).toString() + "\n");
+        }
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             JFrame.setDefaultLookAndFeelDecorated(true);

@@ -1,4 +1,4 @@
-package entidades;
+package logic;
 
 import java.io.Serializable;
 
