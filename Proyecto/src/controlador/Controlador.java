@@ -1,13 +1,10 @@
 package controlador;
 
-import entidades.Cliente;
-import entidades.Factura;
-import entidades.MonitoreoDet;
-import entidades.MonitoreoProd;
+import entidades.Monitoreo;
 import entidades.Producto;
 import entidades.Usuario;
-import entidades.Vendedor;
 import java.sql.SQLException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
@@ -22,7 +19,6 @@ public class Controlador {
 
     public Controlador(Modelo modelo) {
         this.modelo = modelo;
-        System.out.println("Control inicializado..");
         contador = 1000;
         dao = new Dao();
     }
@@ -71,7 +67,6 @@ public class Controlador {
     ////////////////////////////////////////////////////////////////////////////
     public void modificarProducto(Producto prod) throws SQLException { // que reciba el area y verifique que el area sea igual a la del codigo si es igual que haga la actualizacion
 
-        dao.registroMovimiento(prod.getCodigo(), prod.getDescripcion());
         dao.updateProducto(prod);
     }
 
@@ -156,24 +151,26 @@ public class Controlador {
     }
 
     public void insertarProducto(Producto p) throws SQLException {
-        dao.registroMovimiento(p.getCodigo(), p.getDescripcion());
+
         dao.insertProducto(p);
     }
 
     public void eliminarProducto(Producto p) throws SQLException {
-        dao.registroMovimiento(p.getCodigo(), recuperarDescripcion(p.getCodigo()));
+
         dao.deleteProducto(p);
     }
 
-    public List<MonitoreoProd> listarMovimientos() throws SQLException {
-        return dao.listMovimiento();
+    public List<Monitoreo> listarBitProductos() throws SQLException {
+        return dao.listarBitProductos();
     }
 
-    public List<MonitoreoDet> listarDetallesBit() throws SQLException {
-        return dao.listMovDet();
+    public List<Monitoreo> listarFacturas() throws SQLException {
+        return dao.listarFacturas();
     }
 
-
+    public List<Monitoreo> listarDetalles() throws SQLException {
+        return dao.listarDetalles();
+    }
 
     public List listaAbarrotes() throws SQLException {
         List<Producto> lista = dao.listaProductos();
@@ -305,15 +302,17 @@ public class Controlador {
 
         for (Producto u : modelo.todoCarrito()) {
             if (u.getArea().equals("Fresco") || u.getArea().equals("fresco")) {
-                
+
                 dao.insertarDetalle(fact, 0, u.getPeso(), u.getCodigo(), 1);
             } else {
                 dao.insertarDetalle(fact, u.getCantidad(), 0.0f, u.getCodigo(), 0);
             }
         }
 
-        //cajero deberia estar guardado en model
+        
     }
+
+
 
     public Usuario empleado() {
         return modelo.getUser();

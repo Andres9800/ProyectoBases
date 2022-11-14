@@ -38,8 +38,6 @@ public class PrincipalSistemas extends javax.swing.JFrame {
         btnInsertar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        Registrar = new javax.swing.JButton();
         FondoCliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -123,20 +121,6 @@ public class PrincipalSistemas extends javax.swing.JFrame {
         });
         getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 360, 90, -1));
 
-        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel7.setText("Back up and recovery");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, -1, -1));
-
-        Registrar.setText("Entrar");
-        Registrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegistrarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 500, 90, 30));
-
         FondoCliente.setForeground(new java.awt.Color(153, 255, 153));
         FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen_1.jpg"))); // NOI18N
         getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, -60, -1, 650));
@@ -193,7 +177,7 @@ public class PrincipalSistemas extends javax.swing.JFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         try {
 
-            ModificarEAN mod = new ModificarEAN(7);
+            ModificarGerentes mod = new ModificarGerentes(7);
             mod.setVisible(true);
             this.setVisible(false);
 
@@ -203,12 +187,6 @@ public class PrincipalSistemas extends javax.swing.JFrame {
             String[] productos = {"Abarrote", "Fresco", "Mercancia", "Personal"};
         }
     }//GEN-LAST:event_btnModificarActionPerformed
-
-    private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
-        BackupRecovery u = new BackupRecovery();
-        u.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_RegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,7 +225,6 @@ public class PrincipalSistemas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FondoCliente;
-    private javax.swing.JButton Registrar;
     private javax.swing.JButton bitacora;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnInsertar;
@@ -260,6 +237,5 @@ public class PrincipalSistemas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }

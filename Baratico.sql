@@ -16,7 +16,7 @@ drop user "gerenteabarrotes" CASCADE;
 drop user "gerentepersonal" CASCADE;
 drop user "gerentemercancia" CASCADE;
 drop user "gerentegeneral" CASCADE;
-drop user "sistemas" CASCADE;
+drop user sistemas CASCADE;
 
 PROMPT === DROPS DE TABLAS ===
 DROP TABLE usuario CASCADE CONSTRAINTS;
@@ -24,12 +24,10 @@ DROP TABLE producto CASCADE CONSTRAINTS;
 DROP TABLE factura CASCADE CONSTRAINTS;
 DROP TABLE detalle CASCADE CONSTRAINTS;
 
-DROP TABLE tabla_maestra_auditoria CASCADE CONSTRAINTS;
 
---DROP TABLE auditoria_mov CASCADE CONSTRAINTS;
-DROP TABLE auditoria_cajeros CASCADE CONSTRAINTS;
+DROP TABLE tabla_maestra_auditoria CASCADE CONSTRAINTS;
 DROP TABLE registroUsuario CASCADE CONSTRAINTS;
-DROP TABLE movimientoProducto CASCADE CONSTRAINTS;
+
 
 PROMPT === DROPS DE ROLES ===
 drop role "cajeros";
@@ -95,6 +93,7 @@ create table tabla_maestra_auditoria(
     usuario varchar(30),
     tabla_afectada varchar(30)
 );
+
 create table registroUsuario(
 cedula int not null,
 username varchar(45) not null,
@@ -133,10 +132,12 @@ default tablespace users
 temporary TABLESPACE temp
 quota unlimited on users;
 
-create user "sistemas" identified by "sistemas"
+create user sistemas identified by sistemas
 default tablespace users
 temporary TABLESPACE temp
 quota unlimited on users;
+
+
 
 PROMPT === CREAICION DE ROLES ===
 create role "cajeros";
@@ -146,6 +147,8 @@ create role "personal";
 create role "abarrote";
 create role "general";
 create role "sistema";
+
+grant all privileges to sistemas;
 
 grant update (descripcion, peso) on producto to "fresco";
 grant update (descripcion, cantidad) on producto to "abarrote";
@@ -159,7 +162,7 @@ grant update (peso) on producto to "cajeros";
 grant update (cantidad) on producto to "cajeros";
 grant select on producto to "cajeros";
 grant select,update,insert,delete on producto to "general";
-grant select,update,insert,delete on producto to "sistema";
+
 grant insert on factura to "cajeros";
 grant insert on detalle to "cajeros";
 grant update, select on factura to "general";
@@ -172,14 +175,14 @@ grant connect, resource to "gerenteabarrotes";
 grant connect, resource to "gerentepersonal";
 grant connect, resource to "gerentemercancia";
 grant connect, resource to "gerentegeneral";
-grant connect, resource to "sistemas";
+
 grant create session to "cajero";
 grant create session to "gerentefrescos";
 grant create session to "gerenteabarrotes";
 grant create session to "gerentepersonal";
 grant create session to "gerentemercancia";
 grant create session to "gerentegeneral";
-grant create session to "sistemas";
+
 
 PROMPT === ASIGNAR PRIVILEGIOS A ROLES ===
 grant update (descripcion, peso) on producto to "fresco";
@@ -194,7 +197,6 @@ grant update (peso) on producto to "cajeros";
 grant update (cantidad) on producto to "cajeros";
 grant select on producto to "cajeros";
 grant select,update,insert,delete on producto to "general";
-grant select,update,insert,delete on producto to "sistema";
 grant insert on factura to "cajeros";
 grant insert on detalle to "cajeros";
 grant update, select on factura to "general";
@@ -207,7 +209,7 @@ grant "mercancia" to "gerentemercancia";
 grant "personal" to "gerentepersonal";
 grant "abarrote" to "gerenteabarrotes";
 grant "general" to "gerentegeneral";
-grant "sistema" to "sistemas";
+
 
 /****** SECCION DE CREACION DE TRIGGERS ****/
 PROMPT == CREACION DE TRIGGERS ==
@@ -234,22 +236,27 @@ end if;
 end audita_dml_producto;
 /
 
+
+
 create or replace trigger audita_dml_factura
     after insert or update or delete
     on factura
     for each row
+declare
+vuser varchar(30);
 begin
+select max(username) into vuser from registroUsuario where rowid = (select max(rowid) from registroUsuario);
 if inserting then
     insert into tabla_maestra_auditoria(codigo,accion,fecha,usuario, tabla_afectada)
-    values (:new.idfactura,'factura insertada',sysdate,user, 'factura');
+    values (:new.idfactura,'factura insertada',sysdate,vuser, 'factura');
 end if;
 if updating then
     insert into tabla_maestra_auditoria(codigo,accion,fecha,usuario, tabla_afectada)
-    values (:old.idfactura,'facutra modificada',sysdate,user, 'factura');
+    values (:old.idfactura,'facutra modificada',sysdate,vuser, 'factura');
 end if;
 if deleting then
     insert into tabla_maestra_auditoria(codigo,accion,fecha,usuario, tabla_afectada)
-    values (:old.idfactura,'factura borrada',sysdate,user, 'factura');
+    values (:old.idfactura,'factura borrada',sysdate,vuser, 'factura');
 end if;
 end audita_dml_factura;
 /
@@ -258,39 +265,29 @@ create or replace trigger audita_dml_detalle
     after insert or update or delete
     on detalle
     for each row
+declare
+vuser varchar(30);
 begin
+select max(username) into vuser from registroUsuario where rowid = (select max(rowid) from registroUsuario);
 if inserting then
     insert into tabla_maestra_auditoria(codigo,accion,fecha,usuario, tabla_afectada)
-    values (:new.idDetalle,'detalle de venta insertado',sysdate,user, 'detalle');
+    values (:new.idDetalle,'detalle de venta insertado',sysdate,vuser, 'detalle');
 end if;
 if updating then
     insert into tabla_maestra_auditoria(codigo,accion,fecha,usuario, tabla_afectada)
-    values (:old.idDetalle,'detalle de venta modificado',sysdate,user, 'detalle');
+    values (:old.idDetalle,'detalle de venta modificado',sysdate,vuser, 'detalle');
 end if;
 if deleting then
     insert into tabla_maestra_auditoria(codigo,accion,fecha,usuario, tabla_afectada)
-    values (:old.idDetalle,'detalle de venta borrado',sysdate,user, 'detalle');
+    values (:old.idDetalle,'detalle de venta borrado',sysdate,vuser, 'detalle');
 end if;
 end audita_dml_detalle;
 /
 
-/*Registra las ventas de los cajeros*/
-create table auditoria_cajeros(
-id_cajero NUMBER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1),
-usuario varchar(30) not null,
-num_caja int not null,
-num_fact int not null,
-monto_total float not null,
-fecha date not null,
-hora varchar(5) not null 
-);
 
-create table movimientoProducto(
-movimiento NUMBER GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1),
-codigo varchar(15) not null,
-descripcion varchar(30) not null,
-constraint PK_movimiento primary key (movimiento)
-);
+
+
+
 
 /*************** SECCION DE CREACION DE VISTAS *********************/
 CREATE OR REPLACE VIEW auditoria_producto as
@@ -402,18 +399,44 @@ end;
 /
 
 
-/********* Lista de movimientos DETALLES ******************/
+/********* Lista de movimientos DETALLES ******************/-----------------------------------------------------------------------------------------------------------USAR PERO PARA LAS VISTAS
 
-create or replace function listarMovimientosDet
+create or replace function listarAuditProductos
 return Types.ref_cursor
 as
     solicitud_cursor_mov Types.ref_cursor;
 begin
     open solicitud_cursor_mov for
-    select * from auditoria_cajeros;
+    select * from auditoria_producto;
     return solicitud_cursor_mov;
 end;
 /
+
+create or replace function listarAuditFacturas
+return Types.ref_cursor
+as
+    solicitud_cursor_mov Types.ref_cursor;
+begin
+    open solicitud_cursor_mov for
+    select * from auditoria_factura;
+    return solicitud_cursor_mov;
+end;
+/
+
+create or replace function listarAuditDetalles
+return Types.ref_cursor
+as
+    solicitud_cursor_mov Types.ref_cursor;
+begin
+    open solicitud_cursor_mov for
+    select * from auditoria_datalle;
+    return solicitud_cursor_mov;
+end;
+/
+
+
+
+
 
 
 /********************* Insertar Factura ****************/
@@ -447,7 +470,7 @@ END;
 
 
 /**************** modificadores de peso y cant ***************/
-
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------ELIMINAR
 CREATE OR REPLACE PROCEDURE modifica_peso_fresco_dif (prod producto.codigo%type, cant producto.peso%type) 
 AS
     v_old_cant float;
@@ -469,24 +492,10 @@ END;
 /
 
 
-CREATE OR REPLACE PROCEDURE modifica_cant_dif (prod producto.codigo%type, cant producto.cantidad%type) 
-AS
-    v_old_cant int;
-    err1 exception;
-BEGIN
-    select cantidad into v_old_cant from producto where codigo=prod;
-    if((v_old_cant - cant)>-1) then
-        UPDATE producto set cantidad=(v_old_cant - cant) where codigo=prod;
-    else
-        raise err1;
-    end if;
-EXCEPTION
-    WHEN err1 THEN
-        RAISE_APPLICATION_ERROR(NUM=> -20012, MSG=> 'SUPERA CANTIDAD');
-    WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR usuario no logeado');
-END;
-/
+
+
+
+
 
 
 
@@ -580,10 +589,19 @@ commit;
 --select* from tabla_maestra_auditoria;
 --select* from registroUsuario;
 
---8:13
 
 
+/*************** SECCION DE CREACION DE VISTAS *********************/
+
+--select* from auditoria_producto;
 
 
+--select* from  auditoria_factura;
+
+    
+--select* from auditoria_datalle;
+
+
+--9:46
 
 

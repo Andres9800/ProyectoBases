@@ -1,6 +1,7 @@
 package proyecto;
 
 import controlador.Controlador;
+import entidades.Monitoreo;
 import entidades.Producto;
 import entidades.Usuario;
 import java.sql.SQLException;
@@ -34,7 +35,7 @@ public class Proyecto {
         // System.out.print(prod.toString()+"\n");
 //            Producto miP = new Producto("6060","Atun",10,10,10,"Fresco",10,10);
 //            miDao.insertProducto(miP);
-        List<Producto> miLista = miDao.listaProductos();
+        List<Monitoreo> miLista = miDao.listarBitProductos();
 
          for(int i = 0;i<miLista.size();i++){
           System.out.print(miLista.get(i).toString()+"\n");

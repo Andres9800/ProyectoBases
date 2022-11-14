@@ -38,16 +38,16 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="Ver">
+    <Component class="javax.swing.JButton" name="audiProductos">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ver Productos"/>
+        <Property name="text" type="java.lang.String" value="Auditar Productos"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VerActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="audiProductosActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="250" y="70" width="110" height="40"/>
+          <AbsoluteConstraints x="190" y="70" width="110" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -90,16 +90,29 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="verdet">
+    <Component class="javax.swing.JButton" name="audiFacturas">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ver detalles"/>
+        <Property name="text" type="java.lang.String" value="Auditar Facturas"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verdetActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="audiFacturasActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="480" y="70" width="120" height="40"/>
+          <AbsoluteConstraints x="380" y="70" width="120" height="40"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JButton" name="audiventas">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Auditar ventas"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="audiventasActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="570" y="70" width="120" height="40"/>
         </Constraint>
       </Constraints>
     </Component>

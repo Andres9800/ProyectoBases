@@ -7,50 +7,52 @@ package entidades;
 
 import java.util.Date;
 
-public class MonitoreoProd {
-    int id_venta;
-    String descripcion;
+public class Monitoreo {
+    
+    
+    String codigo;
     String accion;
     Date fecha;
-    String hora;
     String usuario;
     String tabla_afec;
 
-    public MonitoreoProd(int id_venta, String accion, String descripcion, Date fecha, String hora, String usuario, String tabla_afectada) {
-        this.id_venta = id_venta;
-        this.descripcion = descripcion;
+    public Monitoreo(String codigo, String accion, Date fecha, String usuario, String tabla_afec) {
+        this.codigo = codigo;
         this.accion = accion;
         this.fecha = fecha;
-        this.hora = hora;
         this.usuario = usuario;
-        this.tabla_afec = tabla_afectada;
+        this.tabla_afec = tabla_afec;
     }
+    
+    
 
-    public MonitoreoProd() {
-        this.id_venta = 0;
-        this.descripcion = "";
+    public Monitoreo() {
+        
+        this.codigo = "";
         this.accion = "";
         this.fecha = new Date();
-        this.hora = "";
         this.usuario = "";
         this.tabla_afec = "";
     }
 
-    public int getId_venta() {
-        return id_venta;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setId_venta(int num_mov) {
-        this.id_venta = num_mov;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getTabla_afec() {
+        return tabla_afec;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setTabla_afec(String tabla_afec) {
+        this.tabla_afec = tabla_afec;
     }
+
+
+
 
     public String getAccion() {
         return accion;
@@ -68,13 +70,6 @@ public class MonitoreoProd {
         this.fecha = fecha;
     }
 
-    public String getHora() {
-        return hora;
-    }
-
-    public void setHora(String hora) {
-        this.hora = hora;
-    }
 
     public String getUsuario() {
         return usuario;
@@ -94,11 +89,9 @@ public class MonitoreoProd {
 
     @Override
     public String toString() {
-        return  "\n" + "\n" + "Num_mov: " + id_venta + ", " +
-                "descripcion: " + descripcion + ", " +
+        return  "\n" + "\n" + "Codigo: " + codigo + ", " +
                 "accion: " + accion + ", " +
                 "fecha: " + fecha + ", " +
-                "hora: " + hora + ", " +
                 "usuario: " + usuario + ", " +
                 "tabla_afectada: " + tabla_afec ;
     }

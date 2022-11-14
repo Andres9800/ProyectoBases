@@ -152,7 +152,7 @@ public class GerenteGeneral extends javax.swing.JFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         try {
 
-            ModificarEAN mod = new ModificarEAN(5);
+            ModificarGerentes mod = new ModificarGerentes(5);
             mod.setVisible(true);
             this.setVisible(false);
 

@@ -6,15 +6,14 @@ esto esta una prueba
  */
 package modelo;
 
-import entidades.MonitoreoDet;
-import entidades.MonitoreoProd;
+import java.util.Date;
+import entidades.Monitoreo;
 import entidades.Producto;
 import entidades.Usuario;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import oracle.jdbc.OracleTypes;
-
 
 public class Dao {
 
@@ -37,8 +36,6 @@ public class Dao {
         cst.execute();
         conn.close();
     }
-
-
 
     public List<Producto> listaProductos() throws SQLException {
         List<Producto> lista = new ArrayList<>();
@@ -77,8 +74,6 @@ public class Dao {
         cst.execute();
         conn.close();
     }
-    
-    
 
     public void deleteProducto(Producto p) throws SQLException {
         conn = c.conectar();
@@ -119,74 +114,82 @@ public class Dao {
         conn.close();
     }
 
-    public void registroMovimiento(String codigo, String descripcion) throws SQLException {
+    public List<Monitoreo> listarBitProductos() throws SQLException {
+        Date date = new Date();
+        List<Monitoreo> lista = new ArrayList<>();
         conn = c.conectar();
-        CallableStatement cst = conn.prepareCall("{call movimientosProductos (?,?)}");
-        cst.setString(1, codigo);
-        cst.setString(2, descripcion);
-        cst.execute();
-        conn.close();
-    }
-
-    public List<MonitoreoProd> listMovimiento() throws SQLException {
-        List<MonitoreoProd> lista = new ArrayList<>();
-        conn = c.conectar();
-        CallableStatement stm = conn.prepareCall("{? = call listarMovimientos()}");
+        CallableStatement stm = conn.prepareCall("{? = call listarAuditProductos()}");
         stm.registerOutParameter(1, OracleTypes.CURSOR);
         stm.execute();
         ResultSet rs = (ResultSet) stm.getObject(1);
 
         while (rs.next()) {
-            lista.add(
-                    new MonitoreoProd(
-                            rs.getInt("id_venta"),
-                            rs.getString("descripcion"),
-                            rs.getString("accion"),
-                            rs.getDate("fecha"),
-                            rs.getString("hora"),
-                            rs.getString("usuario"),
-                            rs.getString("tabla_afec")
-                    )
+            lista.add(new Monitoreo(
+                    rs.getString("codigo"),
+                    rs.getString("accion"),
+                    rs.getTimestamp("fecha"),
+                    rs.getString("usuario"),
+                    rs.getString("tabla_afectada")
+            )
             );
         }
         return lista;
     }
-    
-    public List<MonitoreoDet> listMovDet() throws SQLException {
-        List<MonitoreoDet> lista = new ArrayList<>();
+
+    // public Monitoreo(String codigo, String accion, Date fecha, String usuario, String tabla_afec) {
+    public List<Monitoreo> listarFacturas() throws SQLException {
+        List<Monitoreo> lista = new ArrayList<>();
         conn = c.conectar();
-        CallableStatement stm = conn.prepareCall("{? = call listarMovimientosDet()}");
+        CallableStatement stm = conn.prepareCall("{? = call listarAuditFacturas()}");
         stm.registerOutParameter(1, OracleTypes.CURSOR);
         stm.execute();
         ResultSet rs = (ResultSet) stm.getObject(1);
 
         while (rs.next()) {
-            lista.add(
-                    new MonitoreoDet(
-                            rs.getInt("id_cajero"),
-                            rs.getString("usuario"),
-                            rs.getInt("num_caja"),
-                            rs.getInt("num_fact"),
-                            rs.getFloat("monto_total"),
-                            rs.getDate("fecha"),
-                            rs.getString("hora")
-                    )
+            lista.add(new Monitoreo(
+                    rs.getString("codigo"),
+                    rs.getString("accion"),
+                    rs.getTimestamp("fecha"),
+                    rs.getString("usuario"),
+                    rs.getString("tabla_afectada")
+            )
             );
         }
         return lista;
     }
-    
+
+    public List<Monitoreo> listarDetalles() throws SQLException {
+        List<Monitoreo> lista = new ArrayList<>();
+        conn = c.conectar();
+        CallableStatement stm = conn.prepareCall("{? = call listarAuditDetalles()}");
+        stm.registerOutParameter(1, OracleTypes.CURSOR);
+        stm.execute();
+        ResultSet rs = (ResultSet) stm.getObject(1);
+
+        while (rs.next()) {
+            lista.add(new Monitoreo(
+                    rs.getString("codigo"),
+                    rs.getString("accion"),
+                    rs.getTimestamp("fecha"),
+                    rs.getString("usuario"),
+                    rs.getString("tabla_afectada")
+            )
+            );
+        }
+        return lista;
+    }
+
     public void insertarFactura(int p) throws SQLException {
         conn = c.conectar();
         CallableStatement cst = conn.prepareCall("{call inserta_factura (?)}");
         cst.setInt(1, p);
         cst.execute();
         conn.close();
-        
+
     }
-    
-    public int dameMaxFact() throws SQLException{
-        int maxi=0;
+
+    public int dameMaxFact() throws SQLException {
+        int maxi = 0;
         conn = c.conectar();
         CallableStatement stm = conn.prepareCall("{call dameMaxFact(?)}");
         stm.registerOutParameter(1, OracleTypes.INTEGER);
@@ -195,8 +198,8 @@ public class Dao {
         conn.close();
         return maxi;
     }
-    
-    public void insertarDetalle(int fact,int cant,float pe,String cod, int tipo) throws SQLException{
+
+    public void insertarDetalle(int fact, int cant, float pe, String cod, int tipo) throws SQLException {
         conn = c.conectar();
         CallableStatement cst = conn.prepareCall("{call insertar_detalle (?,?,?,?,?)}");
         cst.setInt(1, fact);

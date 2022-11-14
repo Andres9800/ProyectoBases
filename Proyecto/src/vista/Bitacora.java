@@ -12,9 +12,6 @@ import java.util.logging.Logger;
 
 public class Bitacora extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Bitacora
-     */
     public Bitacora() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -30,11 +27,12 @@ public class Bitacora extends javax.swing.JFrame {
     private void initComponents() {
 
         Volver = new javax.swing.JButton();
-        Ver = new javax.swing.JButton();
+        audiProductos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         movimiento = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        verdet = new javax.swing.JButton();
+        audiFacturas = new javax.swing.JButton();
+        audiventas = new javax.swing.JButton();
         FondoCliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,13 +46,13 @@ public class Bitacora extends javax.swing.JFrame {
         });
         getContentPane().add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 590, 90, -1));
 
-        Ver.setText("Ver Productos");
-        Ver.addActionListener(new java.awt.event.ActionListener() {
+        audiProductos.setText("Auditar Productos");
+        audiProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VerActionPerformed(evt);
+                audiProductosActionPerformed(evt);
             }
         });
-        getContentPane().add(Ver, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 110, 40));
+        getContentPane().add(audiProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 110, 40));
 
         movimiento.setColumns(20);
         movimiento.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -68,13 +66,21 @@ public class Bitacora extends javax.swing.JFrame {
         jLabel1.setText("Movimiento de productos");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, -1));
 
-        verdet.setText("Ver detalles");
-        verdet.addActionListener(new java.awt.event.ActionListener() {
+        audiFacturas.setText("Auditar Facturas");
+        audiFacturas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verdetActionPerformed(evt);
+                audiFacturasActionPerformed(evt);
             }
         });
-        getContentPane().add(verdet, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, 120, 40));
+        getContentPane().add(audiFacturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 120, 40));
+
+        audiventas.setText("Auditar ventas");
+        audiventas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                audiventasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(audiventas, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 120, 40));
 
         FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen_1.jpg"))); // NOI18N
         getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 940, 660));
@@ -88,21 +94,29 @@ public class Bitacora extends javax.swing.JFrame {
         p.setVisible(true);
     }//GEN-LAST:event_VolverActionPerformed
 
-    private void VerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerActionPerformed
+    private void audiProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_audiProductosActionPerformed
         try {
-            this.movimiento.setText(controlador.listarMovimientos().toString());
+            this.movimiento.setText(controlador.listarBitProductos().toString());
         } catch (SQLException ex) {
             Logger.getLogger(Bitacora.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_VerActionPerformed
+    }//GEN-LAST:event_audiProductosActionPerformed
 
-    private void verdetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verdetActionPerformed
+    private void audiFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_audiFacturasActionPerformed
         try {
-            this.movimiento.setText(controlador.listarDetallesBit().toString());
+            this.movimiento.setText(controlador.listarFacturas().toString());
         } catch (SQLException ex) {
             Logger.getLogger(Bitacora.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_verdetActionPerformed
+    }//GEN-LAST:event_audiFacturasActionPerformed
+
+    private void audiventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_audiventasActionPerformed
+        try {
+            this.movimiento.setText(controlador.listarDetalles().toString());
+        } catch (SQLException ex) {
+            Logger.getLogger(Bitacora.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_audiventasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,12 +155,13 @@ public class Bitacora extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FondoCliente;
-    private javax.swing.JButton Ver;
     private javax.swing.JButton Volver;
+    private javax.swing.JButton audiFacturas;
+    private javax.swing.JButton audiProductos;
+    private javax.swing.JButton audiventas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea movimiento;
-    private javax.swing.JButton verdet;
     // End of variables declaration//GEN-END:variables
     Controlador controlador = new Controlador();
 }

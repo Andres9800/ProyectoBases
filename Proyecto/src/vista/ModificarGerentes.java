@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vista;
 
 import controlador.Controlador;
@@ -10,16 +6,15 @@ import entidades.Producto;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class ModificarEAN extends javax.swing.JFrame {
+public class ModificarGerentes extends javax.swing.JFrame {
 
     /**
      * Creates new form ModificarEAN
      */
-    public ModificarEAN(int numero) {
+    public ModificarGerentes(int numero) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.numero = numero;
-
     }
 
     /**
@@ -194,13 +189,13 @@ public class ModificarEAN extends javax.swing.JFrame {
                 limpiarCampos();
             } else {
                 Object[] message = {"Codigo no valido para actualizar"};
-                JOptionPane.showMessageDialog(ModificarEAN.this, message, "Error", JOptionPane.OK_OPTION);
+                JOptionPane.showMessageDialog(ModificarGerentes.this, message, "Error", JOptionPane.OK_OPTION);
                 limpiarCampos();
             }
 
         } catch (SQLException | NumberFormatException ex) {
             Object[] message = {"Código ya existe u ocurrió error al ingresar un dato"};
-            JOptionPane.showMessageDialog(ModificarEAN.this, message, "Error", JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(ModificarGerentes.this, message, "Error", JOptionPane.OK_OPTION);
             limpiarCampos();
 
         }
@@ -240,21 +235,22 @@ public class ModificarEAN extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarEAN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarGerentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarEAN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarGerentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarEAN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarGerentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarEAN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarGerentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 int i = 0;
-                new ModificarEAN(i).setVisible(true);
+                new ModificarGerentes(i).setVisible(true);
             }
         });
     }
