@@ -10,7 +10,6 @@ import java.util.Observer;
 import modelo.Dao;
 import modelo.Modelo;
 
-
 public class Controlador {
 
     public Controlador(Modelo modelo) {
@@ -114,6 +113,24 @@ public class Controlador {
             }
         }
         return null;
+    }
+
+    public Producto recuperarProductoPorCodObOdES(String codigo) throws SQLException {
+        List<Producto> listaA = dao.listaProductos();
+        Producto pro = null;
+        for (Producto p : listaA) {
+            if (p.getCodigo().equals(codigo)) {
+                pro = p;
+            }
+        }
+        if (pro == null) {
+            for (Producto p : listaA) {
+                if (p.getDescripcion().equals(codigo)) {
+                    pro = p;
+                }
+            }
+        }
+        return pro;
     }
 
     public String recuperarProductoPorCod(String codigo) throws SQLException {
@@ -280,6 +297,24 @@ public class Controlador {
         return fin;
     }
 
+    public List<Producto> parseaListaObje(List<Producto> lista) {
+        String fin = "Codigo   Descripcion     Peso       Precio c/u      Total" + "\n";
+        List<Producto> miLista = new ArrayList<Producto>();
+
+        for (Producto p : lista) {
+            if (p.getArea().equals("Fresco")) {
+                p.setEan((p.getPeso() * p.getPrecio()));
+                miLista.add(p);
+                //fin += p.getCodigo() + "        " + p.getDescripcion() + "      " + p.getPeso() + "           " + p.getPrecio() + "       " + (p.getPeso() * p.getPrecio()) + "\n";
+            } else {
+                p.setEan((p.getCantidad() * p.getPrecio()));
+                miLista.add(p);
+                //fin += p.getCodigo() + "        " + p.getDescripcion() + "      " + p.getCantidad() + "           " + p.getPrecio() + "        " + (p.getCantidad() * p.getPrecio()) + "\n";
+            }
+        }
+        return miLista;
+    }
+
     public float suma() {
         float tot = 0f;
         for (Producto p : modelo.todoCarrito()) {
@@ -305,10 +340,7 @@ public class Controlador {
             }
         }
 
-        
     }
-
-
 
     public Usuario empleado() {
         return modelo.getUser();

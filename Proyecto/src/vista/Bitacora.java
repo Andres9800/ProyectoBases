@@ -28,10 +28,10 @@ public class Bitacora extends javax.swing.JFrame {
 
         Volver = new javax.swing.JButton();
         audiProductos = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        movimiento = new javax.swing.JTextArea();
         audiFacturas = new javax.swing.JButton();
         audiventas = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
         FondoCliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,13 +53,6 @@ public class Bitacora extends javax.swing.JFrame {
         });
         getContentPane().add(audiProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 200, 60));
 
-        movimiento.setColumns(20);
-        movimiento.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        movimiento.setRows(5);
-        jScrollPane1.setViewportView(movimiento);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 920, 440));
-
         audiFacturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Auditar Facturas.png"))); // NOI18N
         audiFacturas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +69,21 @@ public class Bitacora extends javax.swing.JFrame {
         });
         getContentPane().add(audiventas, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 100, 180, 60));
 
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Codigo", "Accion", "Fecha", "Usuario", "Tabla Afectada"
+            }
+        ));
+        jScrollPane2.setViewportView(tabla);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 970, 440));
+
         FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/MovimientoProductos.jpg"))); // NOI18N
         getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1100, 700));
 
@@ -90,7 +98,7 @@ public class Bitacora extends javax.swing.JFrame {
 
     private void audiProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_audiProductosActionPerformed
         try {
-            this.movimiento.setText(controlador.listarBitProductos().toString());
+            tabla.setModel(new TablaBit(controlador.listarBitProductos()));
         } catch (SQLException ex) {
             Logger.getLogger(Bitacora.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -98,7 +106,7 @@ public class Bitacora extends javax.swing.JFrame {
 
     private void audiFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_audiFacturasActionPerformed
         try {
-            this.movimiento.setText(controlador.listarFacturas().toString());
+            tabla.setModel(new TablaBit(controlador.listarFacturas()));
         } catch (SQLException ex) {
             Logger.getLogger(Bitacora.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -106,7 +114,7 @@ public class Bitacora extends javax.swing.JFrame {
 
     private void audiventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_audiventasActionPerformed
         try {
-            this.movimiento.setText(controlador.listarDetalles().toString());
+            tabla.setModel(new TablaBit(controlador.listarDetalles()));
         } catch (SQLException ex) {
             Logger.getLogger(Bitacora.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -153,8 +161,8 @@ public class Bitacora extends javax.swing.JFrame {
     private javax.swing.JButton audiFacturas;
     private javax.swing.JButton audiProductos;
     private javax.swing.JButton audiventas;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea movimiento;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
     Controlador controlador = new Controlador();
 }

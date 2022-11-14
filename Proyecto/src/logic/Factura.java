@@ -22,7 +22,6 @@ public class Factura implements Serializable {
         this.cedClie = cedClie;
         this.codCaja = codCaja;
         this.nomCaja = nomCaja;
-        //this.lp = lp;
         this.subTotal = subTotal;
         this.descuento = descuento;
         this.IVA = IVA;

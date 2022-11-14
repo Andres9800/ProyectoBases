@@ -7,9 +7,12 @@ package vista;
 
 import controlador.Controlador;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import logic.Producto;
 
 public class Facturar extends javax.swing.JFrame {
 
@@ -35,13 +38,13 @@ public class Facturar extends javax.swing.JFrame {
         jSpinner1 = new javax.swing.JSpinner();
         codigoprod = new javax.swing.JTextField();
         cantProd = new javax.swing.JSpinner();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        productos = new javax.swing.JTextArea();
         deleteP = new javax.swing.JButton();
         genFact = new javax.swing.JButton();
         Volver1 = new javax.swing.JButton();
         add = new javax.swing.JButton();
         totalText = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
         FondoCliente = new javax.swing.JLabel();
 
         jLabel4.setText("jLabel4");
@@ -61,14 +64,6 @@ public class Facturar extends javax.swing.JFrame {
         cantProd.setFont(new java.awt.Font("Haettenschweiler", 0, 24)); // NOI18N
         cantProd.setModel(new javax.swing.SpinnerNumberModel(0.0f, 0.0f, null, 1.0f));
         getContentPane().add(cantProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, 106, 35));
-
-        productos.setEditable(false);
-        productos.setColumns(20);
-        productos.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        productos.setRows(5);
-        jScrollPane1.setViewportView(productos);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 950, 390));
 
         deleteP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Eliminar.png"))); // NOI18N
         deleteP.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +101,21 @@ public class Facturar extends javax.swing.JFrame {
         totalText.setFont(new java.awt.Font("Haettenschweiler", 0, 36)); // NOI18N
         totalText.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(totalText, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 640, 156, 40));
+
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Codigo", "Descripcion", "Peso", "Precio", "Total"
+            }
+        ));
+        jScrollPane2.setViewportView(table);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 1030, 370));
 
         FondoCliente.setForeground(new java.awt.Color(153, 255, 153));
         FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Facturar.jpg"))); // NOI18N
@@ -167,12 +177,12 @@ public class Facturar extends javax.swing.JFrame {
              // TODO add your handling code here:
              controlador.meterAlCarro(this.codigoprod.getText(),(Float)this.cantProd.getValue());
              
-             this.productos.setText(controlador.parseaLista(controlador.todoCarrito()));
+             
+             table.setModel(new TablaFacturar(controlador.parseaListaObje(controlador.todoCarrito())));
              this.codigoprod.setText("");
              this.cantProd.setValue(0f);
              this.totalText.setText(String.valueOf(controlador.suma()));
          } catch (SQLException ex) {
-             //Logger.getLogger(Facturar.class.getName()).log(Level.SEVERE, null, ex);
              Object[] mensaje = {"Producto no encontrado o supera cantidad"};
              JOptionPane.showMessageDialog(Facturar.this, mensaje, "Error", JOptionPane.OK_OPTION);
          }
@@ -180,9 +190,9 @@ public class Facturar extends javax.swing.JFrame {
 
     private void deletePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePActionPerformed
          try {
-             // TODO add your handling code here:
              controlador.sacarDelCarro(this.codigoprod.getText());
-             this.productos.setText(controlador.parseaLista(controlador.todoCarrito()));
+             
+             table.setModel(new TablaFacturar(controlador.parseaListaObje(controlador.todoCarrito())));
              this.totalText.setText(String.valueOf(controlador.suma()));
          } catch (Exception ex) {
              Object[] mensaje = {"Producto no encontrado en factura"};
@@ -195,12 +205,12 @@ public class Facturar extends javax.swing.JFrame {
 
     private void genFactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genFactActionPerformed
          try {
+             List<Producto> miLista = new ArrayList<Producto>();
              // TODO add your handling code here:
              controlador.enviar((Integer)this.jSpinner1.getValue());
              controlador.vaciarCarro();
-             this.productos.setText("");
-             Object[] mensaje = {"Factura ingresada con exito"};
-             JOptionPane.showMessageDialog(Facturar.this, mensaje, "Hecho!", JOptionPane.OK_OPTION);
+             table.setModel(new TablaFacturar(miLista));
+             JOptionPane.showMessageDialog(null, "Accion realizada Correctamente!");
          } catch (SQLException ex) {
               Object[] mensaje = {"Factura no se pudo ingresar"};
              JOptionPane.showMessageDialog(Facturar.this, mensaje, "Error", JOptionPane.OK_OPTION);
@@ -252,9 +262,9 @@ public class Facturar extends javax.swing.JFrame {
     private javax.swing.JButton deleteP;
     private javax.swing.JButton genFact;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextArea productos;
+    private javax.swing.JTable table;
     private javax.swing.JLabel totalText;
     // End of variables declaration//GEN-END:variables
 

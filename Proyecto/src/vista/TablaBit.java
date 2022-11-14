@@ -4,9 +4,6 @@
  */
 package vista;
 
-import java.util.List;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableModel;
 
 
 
