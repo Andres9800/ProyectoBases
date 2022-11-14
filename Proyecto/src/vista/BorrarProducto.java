@@ -31,8 +31,6 @@ public class BorrarProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         Salir = new javax.swing.JButton();
         Modificar = new javax.swing.JButton();
         CampoCodigo = new javax.swing.JTextField();
@@ -41,44 +39,36 @@ public class BorrarProducto extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel1.setText("Eliminar producto");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel6.setText("Código ");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
-
-        Salir.setText("Salir");
+        Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Salir.png"))); // NOI18N
         Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirActionPerformed(evt);
             }
         });
-        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 90, -1));
+        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 430, 110, -1));
 
         Modificar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        Modificar.setText("Eliminar");
+        Modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Eliminar.png"))); // NOI18N
         Modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
+        getContentPane().add(Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, 110, -1));
 
-        CampoCodigo.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
+        CampoCodigo.setFont(new java.awt.Font("Haettenschweiler", 0, 24)); // NOI18N
+        CampoCodigo.setForeground(new java.awt.Color(0, 0, 0));
+        CampoCodigo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CampoCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoCodigoActionPerformed(evt);
             }
         });
-        getContentPane().add(CampoCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 310, -1));
+        getContentPane().add(CampoCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 230, 40));
 
         FondoCliente.setForeground(new java.awt.Color(153, 255, 153));
-        FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen_1.jpg"))); // NOI18N
-        getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, -40, 700, 460));
+        FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/EliminarProducto.jpg"))); // NOI18N
+        getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -173,8 +163,6 @@ public class BorrarProducto extends javax.swing.JFrame {
     private javax.swing.JLabel FondoCliente;
     private javax.swing.JButton Modificar;
     private javax.swing.JButton Salir;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
     int numero;
     int numero2;

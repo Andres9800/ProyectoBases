@@ -26,9 +26,6 @@ public class GerenteAbarrote extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         Salir = new javax.swing.JButton();
         ModificarAbarrote = new javax.swing.JButton();
         ConsultarAbarrote = new javax.swing.JButton();
@@ -37,48 +34,33 @@ public class GerenteAbarrote extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel1.setText("Que desea realizar Gerente de Abarrote:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 580, 40));
-
-        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel2.setText("Modificar producto");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel3.setText("Consultar producto");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, -1, -1));
-
-        Salir.setText("Salir");
+        Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Salir.png"))); // NOI18N
         Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirActionPerformed(evt);
             }
         });
-        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 530, 90, -1));
+        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 550, 120, -1));
 
-        ModificarAbarrote.setText("Modificar");
+        ModificarAbarrote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/modificar.png"))); // NOI18N
         ModificarAbarrote.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModificarAbarroteActionPerformed(evt);
             }
         });
-        getContentPane().add(ModificarAbarrote, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 90, -1));
+        getContentPane().add(ModificarAbarrote, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 120, -1));
 
-        ConsultarAbarrote.setText("Consultar");
+        ConsultarAbarrote.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Consulta.png"))); // NOI18N
         ConsultarAbarrote.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConsultarAbarroteActionPerformed(evt);
             }
         });
-        getContentPane().add(ConsultarAbarrote, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 90, -1));
+        getContentPane().add(ConsultarAbarrote, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 270, 130, -1));
 
         FondoCliente.setForeground(new java.awt.Color(153, 255, 153));
-        FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen_1.jpg"))); // NOI18N
-        getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, -60, -1, 650));
+        FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/GerenteAbarrotes.jpg"))); // NOI18N
+        getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -143,8 +125,5 @@ public class GerenteAbarrote extends javax.swing.JFrame {
     private javax.swing.JLabel FondoCliente;
     private javax.swing.JButton ModificarAbarrote;
     private javax.swing.JButton Salir;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

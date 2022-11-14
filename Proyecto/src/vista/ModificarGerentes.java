@@ -31,119 +31,95 @@ public class ModificarGerentes extends javax.swing.JFrame {
         CampoPrecio = new javax.swing.JTextField();
         CampoCantidad = new javax.swing.JTextField();
         CampoDescripcion = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         CampoCodigo = new javax.swing.JTextField();
         Modificar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         CampoArea = new javax.swing.JTextField();
         FondoCliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Salir.setText("Salir");
+        Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Salir.png"))); // NOI18N
         Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirActionPerformed(evt);
             }
         });
-        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 530, 90, -1));
+        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 580, 110, -1));
 
-        CampoPeso.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
+        CampoPeso.setFont(new java.awt.Font("Haettenschweiler", 0, 36)); // NOI18N
+        CampoPeso.setForeground(new java.awt.Color(0, 0, 0));
+        CampoPeso.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CampoPeso.setPreferredSize(new java.awt.Dimension(40, 55));
         CampoPeso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoPesoActionPerformed(evt);
             }
         });
-        getContentPane().add(CampoPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 310, -1));
+        getContentPane().add(CampoPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 590, 310, -1));
 
-        CampoPrecio.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
+        CampoPrecio.setFont(new java.awt.Font("Haettenschweiler", 0, 36)); // NOI18N
+        CampoPrecio.setForeground(new java.awt.Color(0, 0, 0));
+        CampoPrecio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CampoPrecio.setPreferredSize(new java.awt.Dimension(40, 55));
         CampoPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoPrecioActionPerformed(evt);
             }
         });
-        getContentPane().add(CampoPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, 310, -1));
+        getContentPane().add(CampoPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 310, -1));
 
-        CampoCantidad.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
+        CampoCantidad.setFont(new java.awt.Font("Haettenschweiler", 0, 36)); // NOI18N
+        CampoCantidad.setForeground(new java.awt.Color(0, 0, 0));
+        CampoCantidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CampoCantidad.setPreferredSize(new java.awt.Dimension(40, 55));
         CampoCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoCantidadActionPerformed(evt);
             }
         });
-        getContentPane().add(CampoCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, 310, -1));
+        getContentPane().add(CampoCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 310, -1));
 
-        CampoDescripcion.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
-        getContentPane().add(CampoDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 170, 310, -1));
+        CampoDescripcion.setFont(new java.awt.Font("Haettenschweiler", 0, 36)); // NOI18N
+        CampoDescripcion.setForeground(new java.awt.Color(0, 0, 0));
+        CampoDescripcion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CampoDescripcion.setPreferredSize(new java.awt.Dimension(40, 55));
+        getContentPane().add(CampoDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 310, -1));
 
-        jLabel5.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel5.setText("Area");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel4.setText("Precio");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel3.setText("Cantidad");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel2.setText("Descripción");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, -1));
-
-        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel1.setText("Datos a modificar");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, -1, -1));
-
-        CampoCodigo.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
+        CampoCodigo.setFont(new java.awt.Font("Haettenschweiler", 0, 36)); // NOI18N
+        CampoCodigo.setForeground(new java.awt.Color(0, 0, 0));
+        CampoCodigo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CampoCodigo.setPreferredSize(new java.awt.Dimension(40, 55));
         CampoCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoCodigoActionPerformed(evt);
             }
         });
-        getContentPane().add(CampoCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 310, -1));
+        getContentPane().add(CampoCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 310, -1));
 
         Modificar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        Modificar.setText("Modificar");
+        Modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/modificar.png"))); // NOI18N
         Modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 460, -1, -1));
+        getContentPane().add(Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 130, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel6.setText("Ingrese el código del producto");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel7.setText("Peso");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 375, 90, 50));
-
-        CampoArea.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
+        CampoArea.setFont(new java.awt.Font("Haettenschweiler", 0, 36)); // NOI18N
+        CampoArea.setForeground(new java.awt.Color(0, 0, 0));
+        CampoArea.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CampoArea.setPreferredSize(new java.awt.Dimension(40, 55));
         CampoArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoAreaActionPerformed(evt);
             }
         });
-        getContentPane().add(CampoArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, 310, -1));
+        getContentPane().add(CampoArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 510, 310, -1));
 
         FondoCliente.setForeground(new java.awt.Color(153, 255, 153));
-        FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen_1.jpg"))); // NOI18N
-        getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, -40, -1, 620));
+        FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/ModificarEAN.jpg"))); // NOI18N
+        getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1000, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -265,13 +241,6 @@ public class ModificarGerentes extends javax.swing.JFrame {
     private javax.swing.JLabel FondoCliente;
     private javax.swing.JButton Modificar;
     private javax.swing.JButton Salir;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
     Controlador controlador = new Controlador();
     int numero;

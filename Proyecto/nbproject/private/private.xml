@@ -3,36 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/entidades/Factura.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/vista/PrincipalSistemas.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/vista/ModificarEAN.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/vista/Login.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/vista/GerenteFresco.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/vista/GerenteAbarrote.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/modelo/Modelo.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/vista/GerenteMercancia.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/modelo/Dao.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/entidades/Cliente.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/entidades/Invoice.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/vista/BackupRecovery.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/modelo/Conexion.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/entidades/Usuario.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/vista/ConsultarProducto.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/proyecto/Proyecto.java</file>
             <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/vista/Bitacora.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/vista/ModificarProducto.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/entidades/Detalle.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/entidades/Vendedor.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/vista/GerenteGeneral.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/vista/PrincipalCajero.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/vista/Facturar.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/entidades/Producto.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/vista/InsertarProducto.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/entidades/Monitoreo.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/imagen/imagen_1.jpg</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/vista/GerentePersonal.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/vista/BorrarProducto.java</file>
-            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/controlador/Controlador.java</file>
+            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/vista/TablaBit.java</file>
+            <file>file:/C:/Users/adsc9/Documents/Repositorios/ProyectoBases/Proyecto/src/logic/Monitoreo.java</file>
         </group>
     </open-files>
 </project-private>

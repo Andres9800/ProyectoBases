@@ -44,13 +44,9 @@ public class ModificarProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
         Salir = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         CampoCodigo = new javax.swing.JTextField();
         btnModificar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         CampoCantidad = new javax.swing.JTextField();
         CampoDescripcion = new javax.swing.JTextField();
         FondoCliente = new javax.swing.JLabel();
@@ -58,65 +54,51 @@ public class ModificarProducto extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel3.setText("Cantidad");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, -1));
-
-        Salir.setText("Salir");
+        Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Salir.png"))); // NOI18N
         Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirActionPerformed(evt);
             }
         });
-        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 530, 90, -1));
+        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 500, 100, -1));
 
-        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel2.setText("Descripción");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
-
-        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel1.setText("Datos a modificar");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, -1, -1));
-
-        CampoCodigo.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
+        CampoCodigo.setFont(new java.awt.Font("Haettenschweiler", 0, 36)); // NOI18N
+        CampoCodigo.setForeground(java.awt.Color.black);
+        CampoCodigo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CampoCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoCodigoActionPerformed(evt);
             }
         });
-        getContentPane().add(CampoCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 310, -1));
+        getContentPane().add(CampoCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 310, -1));
 
         btnModificar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        btnModificar.setText("Modificar");
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/modificar.png"))); // NOI18N
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 460, -1, -1));
+        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 420, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel6.setText("Ingrese el código del producto");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
-
-        CampoCantidad.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
+        CampoCantidad.setFont(new java.awt.Font("Haettenschweiler", 0, 36)); // NOI18N
+        CampoCantidad.setForeground(java.awt.Color.black);
+        CampoCantidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CampoCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoCantidadActionPerformed(evt);
             }
         });
-        getContentPane().add(CampoCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 310, -1));
+        getContentPane().add(CampoCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, 310, -1));
 
-        CampoDescripcion.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
-        getContentPane().add(CampoDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 310, -1));
+        CampoDescripcion.setFont(new java.awt.Font("Haettenschweiler", 0, 36)); // NOI18N
+        CampoDescripcion.setForeground(java.awt.Color.black);
+        CampoDescripcion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(CampoDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 310, -1));
 
         FondoCliente.setForeground(new java.awt.Color(153, 255, 153));
-        FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen_1.jpg"))); // NOI18N
-        getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, -40, -1, 620));
+        FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/ModificarProducto.jpg"))); // NOI18N
+        getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -163,13 +145,14 @@ public class ModificarProducto extends javax.swing.JFrame {
                     prod.setDescripcion(this.CampoDescripcion.getText());
                     prod.setCantidad(Integer.parseInt(this.CampoCantidad.getText()));
                     controlador.modificarProducto(prod);
-
+                    JOptionPane.showMessageDialog(null, "Accion realizada Correctamente!");
+                    
                 } else {
+                    
                     Object[] message = {"El gerente no Pertenece al area del producto"};
                     JOptionPane.showMessageDialog(ModificarProducto.this, message, "Error", JOptionPane.OK_OPTION);
                     limpiarCampos();
                 }
-
                 limpiarCampos();
             } else {
                 Object[] message = {"Codigo No existe"};
@@ -243,10 +226,6 @@ public class ModificarProducto extends javax.swing.JFrame {
     private javax.swing.JLabel FondoCliente;
     private javax.swing.JButton Salir;
     private javax.swing.JButton btnModificar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
     Controlador controlador = new Controlador();
     int numero;

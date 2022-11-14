@@ -30,7 +30,6 @@ public class Bitacora extends javax.swing.JFrame {
         audiProductos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         movimiento = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
         audiFacturas = new javax.swing.JButton();
         audiventas = new javax.swing.JButton();
         FondoCliente = new javax.swing.JLabel();
@@ -38,52 +37,47 @@ public class Bitacora extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Volver.setText("Volver");
+        Volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Volver.png"))); // NOI18N
         Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VolverActionPerformed(evt);
             }
         });
-        getContentPane().add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 590, 90, -1));
+        getContentPane().add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 640, 90, -1));
 
-        audiProductos.setText("Auditar Productos");
+        audiProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Auditar Productos.png"))); // NOI18N
         audiProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 audiProductosActionPerformed(evt);
             }
         });
-        getContentPane().add(audiProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 110, 40));
+        getContentPane().add(audiProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 200, 60));
 
         movimiento.setColumns(20);
         movimiento.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         movimiento.setRows(5);
         jScrollPane1.setViewportView(movimiento);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 920, 440));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 920, 440));
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel1.setText("Movimiento de productos");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, -1));
-
-        audiFacturas.setText("Auditar Facturas");
+        audiFacturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Auditar Facturas.png"))); // NOI18N
         audiFacturas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 audiFacturasActionPerformed(evt);
             }
         });
-        getContentPane().add(audiFacturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 120, 40));
+        getContentPane().add(audiFacturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 190, 60));
 
-        audiventas.setText("Auditar ventas");
+        audiventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Auditar ventas.png"))); // NOI18N
         audiventas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 audiventasActionPerformed(evt);
             }
         });
-        getContentPane().add(audiventas, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 120, 40));
+        getContentPane().add(audiventas, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 100, 180, 60));
 
-        FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen_1.jpg"))); // NOI18N
-        getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 940, 660));
+        FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/MovimientoProductos.jpg"))); // NOI18N
+        getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1100, 700));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -159,7 +153,6 @@ public class Bitacora extends javax.swing.JFrame {
     private javax.swing.JButton audiFacturas;
     private javax.swing.JButton audiProductos;
     private javax.swing.JButton audiventas;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea movimiento;
     // End of variables declaration//GEN-END:variables

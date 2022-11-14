@@ -39,8 +39,6 @@ public class ConsultarProducto extends javax.swing.JFrame {
         Mercancia = new javax.swing.JButton();
         Personal = new javax.swing.JButton();
         Fresco = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         campoBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         FondoCliente = new javax.swing.JLabel();
@@ -48,74 +46,70 @@ public class ConsultarProducto extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Volver.setText("Volver");
+        Volver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Salir.png"))); // NOI18N
         Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VolverActionPerformed(evt);
             }
         });
-        getContentPane().add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 620, 90, -1));
+        getContentPane().add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 700, 110, -1));
 
+        productos.setBackground(new java.awt.Color(51, 51, 51));
         productos.setColumns(20);
         productos.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        productos.setForeground(new java.awt.Color(255, 255, 255));
         productos.setRows(5);
         jScrollPane1.setViewportView(productos);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 920, 410));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 920, 410));
 
-        Abarrotes.setText("Abarrotes");
+        Abarrotes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Abarrotes.png"))); // NOI18N
         Abarrotes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AbarrotesActionPerformed(evt);
             }
         });
-        getContentPane().add(Abarrotes, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 110, 40));
+        getContentPane().add(Abarrotes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 110, 40));
 
-        Mercancia.setText("Mercancia");
+        Mercancia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Mercancia.png"))); // NOI18N
         Mercancia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MercanciaActionPerformed(evt);
             }
         });
-        getContentPane().add(Mercancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 110, 40));
+        getContentPane().add(Mercancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 110, 40));
 
-        Personal.setText("Personal");
+        Personal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Personal.png"))); // NOI18N
         Personal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PersonalActionPerformed(evt);
             }
         });
-        getContentPane().add(Personal, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 110, 40));
+        getContentPane().add(Personal, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 110, 40));
 
-        Fresco.setText("Fresco");
+        Fresco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Fresco.png"))); // NOI18N
         Fresco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FrescoActionPerformed(evt);
             }
         });
-        getContentPane().add(Fresco, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 110, 40));
+        getContentPane().add(Fresco, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 110, 40));
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel1.setText("Lista de productos");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
+        campoBuscar.setBackground(new java.awt.Color(51, 51, 51));
+        campoBuscar.setFont(new java.awt.Font("Haettenschweiler", 0, 36)); // NOI18N
+        campoBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(campoBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 200, 50));
 
-        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 255, 153));
-        jLabel2.setText("Buscar por código o descripción");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
-        getContentPane().add(campoBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, 180, 30));
-
-        btnBuscar.setText("Buscar");
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Buscar.png"))); // NOI18N
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 140, 80, -1));
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 90, 100, -1));
 
-        FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/imagen_1.jpg"))); // NOI18N
-        getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 940, 670));
+        FondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/Consultarproducto.jpg"))); // NOI18N
+        getContentPane().add(FondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 780));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -260,8 +254,6 @@ public class ConsultarProducto extends javax.swing.JFrame {
     private javax.swing.JButton Volver;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JTextField campoBuscar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea productos;
     // End of variables declaration//GEN-END:variables
