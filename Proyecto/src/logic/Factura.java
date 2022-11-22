@@ -1,13 +1,6 @@
 package logic;
 
-import java.io.Serializable;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-@XmlRootElement(name = "factura")
-@XmlType(propOrder = {"nomEmp", "direcEmp", "telEmp", "cedJur", "fecha", "numFactElec", "nomClie", "cedClie", "codCaja", "nomCaja", "lp", "subTotal", "descuento", "IVA", "total"})
-public class Factura implements Serializable {
+public class Factura {
 
     public Factura(String nomEmp, String DirecEmp, int TelEmp, int CedJur, String Fecha, int numFactElec, String nomClie, String cedClie, int codCaja, String nomCaja,
             double subTotal, double descuento, double IVA, double total) {
@@ -45,72 +38,58 @@ public class Factura implements Serializable {
         this.total = 0;
     }
 
-    @XmlElement
     public String getNomEmp() {
         return nomEmp;
     }
 
-    @XmlElement
     public String getDirecEmp() {
         return DirecEmp;
     }
 
-    @XmlElement
     public int getTelEmp() {
         return TelEmp;
     }
 
-    @XmlElement
     public int getCedJur() {
         return CedJur;
     }
 
-    @XmlElement
     public String getFecha() {
         return Fecha;
     }
 
-    @XmlElement
     public int getNumFactElec() {
         return numFactElec;
     }
 
-    @XmlElement
     public String getNomClie() {
         return nomClie;
     }
 
-    @XmlElement
     public String getCedClie() {
         return cedClie;
     }
 
-    @XmlElement
     public int getCodCaja() {
         return codCaja;
     }
 
-    @XmlElement
     public String getNomCaja() {
         return nomCaja;
     }
 
-    @XmlElement
     public double getSubTotal() {
         return subTotal;
     }
 
-    @XmlElement
     public double getDescuento() {
         return descuento;
     }
 
-    @XmlElement
     public double getIVA() {
         return IVA;
     }
 
-    @XmlElement
     public double getTotal() {
         return total;
     }

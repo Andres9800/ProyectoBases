@@ -131,7 +131,7 @@ public class Dao {
         return lista;
     }
 
-    // public Monitoreo(String codigo, String accion, Date fecha, String usuario, String tabla_afec) {
+
     public List<Monitoreo> listarFacturas() throws SQLException {
         List<Monitoreo> lista = new ArrayList<>();
         conn = c.conectar();

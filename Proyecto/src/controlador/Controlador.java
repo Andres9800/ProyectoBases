@@ -59,8 +59,8 @@ public class Controlador {
         modelo.addObserver(obs);
     }
 
-    ////////////////////////////////////////////////////////////////////////////
-    public void modificarProducto(Producto prod) throws SQLException { // que reciba el area y verifique que el area sea igual a la del codigo si es igual que haga la actualizacion
+
+    public void modificarProducto(Producto prod) throws SQLException {
 
         dao.updateProducto(prod);
     }
@@ -285,17 +285,6 @@ public class Controlador {
         return modelo.todoCarrito();
     }
 
-    public String parseaLista(List<Producto> lista) {
-        String fin = "Codigo   Descripcion     Peso       Precio c/u      Total" + "\n";
-        for (Producto p : lista) {
-            if (p.getArea().equals("Fresco")) {
-                fin += p.getCodigo() + "        " + p.getDescripcion() + "      " + p.getPeso() + "           " + p.getPrecio() + "       " + (p.getPeso() * p.getPrecio()) + "\n";
-            } else {
-                fin += p.getCodigo() + "        " + p.getDescripcion() + "      " + p.getCantidad() + "           " + p.getPrecio() + "        " + (p.getCantidad() * p.getPrecio()) + "\n";
-            }
-        }
-        return fin;
-    }
 
     public List<Producto> parseaListaObje(List<Producto> lista) {
         String fin = "Codigo   Descripcion     Peso       Precio c/u      Total" + "\n";
@@ -305,11 +294,9 @@ public class Controlador {
             if (p.getArea().equals("Fresco")) {
                 p.setEan((p.getPeso() * p.getPrecio()));
                 miLista.add(p);
-                //fin += p.getCodigo() + "        " + p.getDescripcion() + "      " + p.getPeso() + "           " + p.getPrecio() + "       " + (p.getPeso() * p.getPrecio()) + "\n";
             } else {
                 p.setEan((p.getCantidad() * p.getPrecio()));
                 miLista.add(p);
-                //fin += p.getCodigo() + "        " + p.getDescripcion() + "      " + p.getCantidad() + "           " + p.getPrecio() + "        " + (p.getCantidad() * p.getPrecio()) + "\n";
             }
         }
         return miLista;

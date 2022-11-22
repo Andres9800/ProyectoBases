@@ -9,15 +9,6 @@
 alter session set "_ORACLE_SCRIPT"=true;
 
 /**************************** SECCION DE DROPS *******************************/
-PROMPT === DROPS DE USUARIOS ===
-drop user "cajero" CASCADE;
-drop user "gerentefrescos" CASCADE;
-drop user "gerenteabarrotes" CASCADE;
-drop user "gerentepersonal" CASCADE;
-drop user "gerentemercancia" CASCADE;
-drop user "gerentegeneral" CASCADE;
-drop user sistemas CASCADE;
-
 PROMPT === DROPS DE TABLAS ===
 DROP TABLE usuario CASCADE CONSTRAINTS;
 DROP TABLE producto CASCADE CONSTRAINTS;
@@ -27,17 +18,6 @@ DROP TABLE detalle CASCADE CONSTRAINTS;
 
 DROP TABLE tabla_maestra_auditoria CASCADE CONSTRAINTS;
 DROP TABLE registroUsuario CASCADE CONSTRAINTS;
-
-
-PROMPT === DROPS DE ROLES ===
-drop role "cajeros";
-drop role "fresco";
-drop role "mercancia";
-drop role "personal";
-drop role "abarrote";
-drop role "general";
-drop role "sistema";
-
 
 /******************  SECCION DE CREACION DE TABLAS ************************/
 PROMPT === CREAICON DE TABLAS DE NEGOCIO ===
@@ -99,117 +79,6 @@ cedula int not null,
 username varchar(45) not null,
 constraint FK_cedula_RU foreign key (cedula) references usuario (cedula)
 );
-
-/***************** SECCION DE USUARIOS Y ROLES **************************/
-PROMPT === CREACION DE USUARIOS ===
-create user "cajero" identified by "cajero"
-default tablespace users
-temporary TABLESPACE temp
-quota unlimited on users;
-
-create user "gerentefrescos" identified by "gerentefrescos"
-default tablespace users
-temporary TABLESPACE temp
-quota unlimited on users;
-
-create user "gerenteabarrotes" identified by "gerenteabarrotes"
-default tablespace users
-temporary TABLESPACE temp
-quota unlimited on users;
-
-create user "gerentepersonal" identified by "gerentepersonal"
-default tablespace users
-temporary TABLESPACE temp
-quota unlimited on users;
-
-create user "gerentemercancia" identified by "gerentemercancia"
-default tablespace users
-temporary TABLESPACE temp
-quota unlimited on users;
-
-create user "gerentegeneral" identified by "gerentegeneral"
-default tablespace users
-temporary TABLESPACE temp
-quota unlimited on users;
-
-create user sistemas identified by sistemas
-default tablespace users
-temporary TABLESPACE temp
-quota unlimited on users;
-
-
-
-PROMPT === CREAICION DE ROLES ===
-create role "cajeros";
-create role "fresco";
-create role "mercancia";
-create role "personal";
-create role "abarrote";
-create role "general";
-create role "sistema";
-
-grant all privileges to sistemas;
-
-grant update (descripcion, peso) on producto to "fresco";
-grant update (descripcion, cantidad) on producto to "abarrote";
-grant update (descripcion, cantidad) on producto to "mercancia";
-grant update (descripcion, cantidad) on producto to "personal";
-grant select on producto to "fresco";
-grant select on producto to "abarrote";
-grant select on producto to "mercancia";
-grant select on producto to "personal";
-grant update (peso) on producto to "cajeros";
-grant update (cantidad) on producto to "cajeros";
-grant select on producto to "cajeros";
-grant select,update,insert,delete on producto to "general";
-
-grant insert on factura to "cajeros";
-grant insert on detalle to "cajeros";
-grant update, select on factura to "general";
-grant update, select on detalle to "general";
-
-PROMPT === GRANT A USUARIOS ===
-grant connect, resource to "cajero";
-grant connect, resource to "gerentefrescos";
-grant connect, resource to "gerenteabarrotes";
-grant connect, resource to "gerentepersonal";
-grant connect, resource to "gerentemercancia";
-grant connect, resource to "gerentegeneral";
-
-grant create session to "cajero";
-grant create session to "gerentefrescos";
-grant create session to "gerenteabarrotes";
-grant create session to "gerentepersonal";
-grant create session to "gerentemercancia";
-grant create session to "gerentegeneral";
-
-
-PROMPT === ASIGNAR PRIVILEGIOS A ROLES ===
-grant update (descripcion, peso) on producto to "fresco";
-grant update (descripcion, cantidad) on producto to "abarrote";
-grant update (descripcion, cantidad) on producto to "mercancia";
-grant update (descripcion, cantidad) on producto to "personal";
-grant select on producto to "fresco";
-grant select on producto to "abarrote";
-grant select on producto to "mercancia";
-grant select on producto to "personal";
-grant update (peso) on producto to "cajeros";
-grant update (cantidad) on producto to "cajeros";
-grant select on producto to "cajeros";
-grant select,update,insert,delete on producto to "general";
-grant insert on factura to "cajeros";
-grant insert on detalle to "cajeros";
-grant update, select on factura to "general";
-grant update, select on detalle to "general";
-
-PROMPT === ASIGNAR ROLES A USUARIOS ===
-grant "cajeros" to "cajero";
-grant "fresco" to "gerentefrescos";
-grant "mercancia" to "gerentemercancia";
-grant "personal" to "gerentepersonal";
-grant "abarrote" to "gerenteabarrotes";
-grant "general" to "gerentegeneral";
-
 
 /****** SECCION DE CREACION DE TRIGGERS ****/
 PROMPT == CREACION DE TRIGGERS ==
@@ -469,39 +338,9 @@ END;
 /
 
 
-/**************** modificadores de peso y cant ***************/
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------ELIMINAR
-CREATE OR REPLACE PROCEDURE modifica_peso_fresco_dif (prod producto.codigo%type, cant producto.peso%type) 
-AS
-    v_old_cant float;
-    err1 exception;
-BEGIN
-    select peso into v_old_cant from producto where codigo=prod;
-    if((v_old_cant - cant)>-1) then
-        UPDATE producto set peso=(v_old_cant - cant) where codigo=prod;
-    else
-        raise err1;
-    end if;
-
-EXCEPTION
-    WHEN err1 THEN
-        RAISE_APPLICATION_ERROR(NUM=> -20012, MSG=> 'SUPERA PESO');
-    WHEN OTHERS THEN 
-        RAISE_APPLICATION_ERROR(NUM=> -20011, MSG=> 'ERROR usuario no logeado');
-END;
-/
 
 
 
-
-
-
-
-
-
-/*********************************************************************************************************************/
-/**********************************************Insertar Detalle*******************************************************/
-/*********************************************************************************************************************/
 
 CREATE OR REPLACE PROCEDURE producto_resta_cantidad (prod producto.codigo%type, cant producto.cantidad%type) 
 AS
@@ -548,7 +387,7 @@ END;
 show error
 
 
---call insertar_detalle(3,5,10,'1234',1);
+
 /*------------------------------------------------------------------------------------------------Inserts*/
 
 
@@ -574,34 +413,6 @@ Insert into SYSTEM.PRODUCTO (CODIGO,PLU,EAN,DESCRIPCION,PRECIO,PESO,CANTIDAD,ARE
 Insert into SYSTEM.PRODUCTO (CODIGO,PLU,EAN,DESCRIPCION,PRECIO,PESO,CANTIDAD,AREA) values ('8080',4110,216451874,'TioPelon',110,1,20,'Mercancia');
 
 
-
-
-
-
-
-
---select *from usuario;
-
 commit;
---quitar nombre y apellido
---nombre se pasa a username
-
---select* from tabla_maestra_auditoria;
---select* from registroUsuario;
-
-
-
-/*************** SECCION DE CREACION DE VISTAS *********************/
-
---select* from auditoria_producto;
-
-
---select* from  auditoria_factura;
-
-    
---select* from auditoria_datalle;
-
-
---9:46
 
 

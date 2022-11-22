@@ -44,7 +44,7 @@ public class Modelo extends Observable {
     
     public void setUser(Usuario u){
         user=u;
-        user.setPass("");/*nunca se debe almacenar contra*/
+        user.setPass("");
     }
     
     public Usuario getUser(){
