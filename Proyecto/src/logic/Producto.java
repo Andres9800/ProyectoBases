@@ -19,7 +19,7 @@ public class Producto {
         this.peso = peso;
         this.area = area;
         this.plu = (int)(peso != 0 ? precio + 4000 : 0);
-        this.ean = (cantidad * 379);
+        this.ean = ((cantidad + peso)* 379);
     }
 
     public Producto(String codigo, String descripcion, int cantidad, float precio, float peso, String area, int plu, float ean) {
